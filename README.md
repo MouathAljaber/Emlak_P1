@@ -13,7 +13,7 @@ Full-stack enquiry website for football training camps.
 ## Run locally
 
 1. Install Node.js 20+ and Docker.
-2. Start PostgreSQL:
+2. Start MySQL:
 
    ```sh
    docker compose up -d mysql
@@ -61,3 +61,11 @@ Connect with:
 - Default schema: `trainingslager`
 
 The enquiries table is `trainingslager.enquiries`.
+
+## SEO and analytics launch checklist
+
+1. Set `PUBLIC_SITE_URL` to the canonical production URL.
+2. Create a GA4 web data stream and set its Measurement ID in `GA4_MEASUREMENT_ID`. Analytics loads only after cookie consent.
+3. Add the site in Google Search Console, set the verification token in `GOOGLE_SITE_VERIFICATION`, deploy, and submit `/sitemap.xml`.
+4. Configure HTTPS, SMTP, a managed MySQL instance, and a strong `ADMIN_API_KEY` before launch.
+5. Add licensed WebP/AVIF photos and videos with descriptive `alt` text when the final media is supplied. The page already exposes semantic headings, metadata, JSON-LD, canonical URL, robots.txt, and sitemap.xml.

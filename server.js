@@ -26,6 +26,26 @@ const services = new Set([
 
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: '32kb' }));
+app.get('/site-config.js', (_req, res) => {
+  res.type('application/javascript').send(
+    `window.SITE_CONFIG=${JSON.stringify({
+      siteUrl: process.env.PUBLIC_SITE_URL || 'http://localhost:3000',
+      ga4MeasurementId: process.env.GA4_MEASUREMENT_ID || '',
+      googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION || ''
+    })};`
+  );
+});
+app.get('/robots.txt', (_req, res) => {
+  res.type('text/plain').send(`User-agent: *
+Allow: /
+Sitemap: ${(process.env.PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '')}/sitemap.xml
+`);
+});
+app.get('/sitemap.xml', (_req, res) => {
+  const siteUrl = (process.env.PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+  res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${siteUrl}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url></urlset>`);
+});
 app.use(express.static(__dirname, { extensions: ['html'] }));
 
 function requiredString(value, field, max = 500) {

@@ -4,6 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title data-i18n="meta.title">Trainingslager Antalya — Fußball-Trainingslager für Vereine</title>
+<meta name="description" content="Trainingslager Antalya für Jugendteams, Amateurvereine, Akademien und Profimannschaften. Hotel, Trainingsplätze, Testspiele und Transfers aus einer Hand.">
+<meta name="robots" content="index,follow">
+<meta name="author" content="Antalya Camp">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Trainingslager Antalya für Fußballvereine">
+<meta property="og:description" content="Professionelle Fußball-Trainingslager in Antalya mit Unterkunft, Plätzen, Testspielen und Betreuung.">
+<meta property="og:locale" content="de_DE">
+<link rel="canonical" href="https://trainingslager-antalya.de/">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  "name": "Antalya Camp",
+  "url": "https://trainingslager-antalya.de/",
+  "description": "Professionelle Fußball-Trainingslager in Antalya für Vereine, Akademien und Profiteams.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Antalya",
+    "addressCountry": "TR"
+  },
+  "sport": "Football",
+  "areaServed": "Europe"
+}
+</script>
+<script src="/site-config.js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ window.dataLayer.push(arguments); };
+  window.enableAnalytics = function() {
+    var id = window.SITE_CONFIG && window.SITE_CONFIG.ga4MeasurementId;
+    if (!id || window.analyticsLoaded) return;
+    window.analyticsLoaded = true;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+    document.head.appendChild(script);
+    window.gtag('js', new Date());
+    window.gtag('config', id, { anonymize_ip: true });
+  };
+  if (window.SITE_CONFIG && window.SITE_CONFIG.googleSiteVerification) {
+    var verification = document.createElement('meta');
+    verification.name = 'google-site-verification';
+    verification.content = window.SITE_CONFIG.googleSiteVerification;
+    document.head.appendChild(verification);
+  }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -227,6 +274,12 @@
   .footer-legal { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 13.5px; color: var(--text-faint); padding-top: 26px; border-top: 1px solid var(--line); }
   .footer-legal a { color: var(--text-faint); text-decoration: none; margin-left: 18px; }
   .footer-legal a:hover { color: var(--text-muted); }
+  .cookie-banner { position: fixed; z-index: 100; left: 20px; right: 20px; bottom: 20px; max-width: 720px; margin: auto; padding: 18px 20px; background: var(--text); color: #fff; border-radius: var(--radius-m); box-shadow: 0 12px 30px rgba(0,0,0,.18); display: flex; align-items: center; gap: 18px; justify-content: space-between; }
+  .cookie-banner p { color: rgba(255,255,255,.82); font-size: 13px; }
+  .cookie-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .cookie-actions button { padding: 9px 14px; border: 1px solid rgba(255,255,255,.4); border-radius: 4px; background: transparent; color: #fff; cursor: pointer; }
+  .cookie-actions .accept { background: var(--pitch); border-color: var(--pitch); color: var(--text); font-weight: 600; }
+  @media (max-width: 620px) { .cookie-banner { display: block; } .cookie-actions { margin-top: 12px; } }
 </style>
 </head>
 <body>
@@ -548,7 +601,30 @@
   </div>
 </footer>
 
+<aside class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie settings" hidden>
+  <p>Wir verwenden optionale Analyse-Cookies, um die Website zu verbessern. Sie entscheiden selbst.</p>
+  <div class="cookie-actions">
+    <button type="button" id="cookieReject">Nur notwendige</button>
+    <button type="button" class="accept" id="cookieAccept">Analyse erlauben</button>
+  </div>
+</aside>
+
 <script>
+  const consentKey = 'antalya-camp-analytics-consent';
+  const cookieBanner = document.getElementById('cookieBanner');
+  const savedConsent = localStorage.getItem(consentKey);
+  if (savedConsent === 'granted') window.enableAnalytics();
+  if (!savedConsent) cookieBanner.hidden = false;
+  document.getElementById('cookieAccept').addEventListener('click', () => {
+    localStorage.setItem(consentKey, 'granted');
+    cookieBanner.hidden = true;
+    window.enableAnalytics();
+  });
+  document.getElementById('cookieReject').addEventListener('click', () => {
+    localStorage.setItem(consentKey, 'denied');
+    cookieBanner.hidden = true;
+  });
+
   var dict = {
     de: {
       "meta.title": "Trainingslager Antalya — Fußball-Trainingslager für Vereine",
@@ -770,6 +846,7 @@
       form.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
       formNav.style.display = 'none';
       successPanel.style.display = 'block';
+      if (window.analyticsLoaded) window.gtag('event', 'generate_lead', { event_category: 'enquiry_form' });
     } catch (error) {
       errorEl.textContent = currentLang === 'de'
         ? 'Die Anfrage konnte nicht gesendet werden. Bitte versucht es erneut.'
