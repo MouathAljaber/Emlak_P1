@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enquiries | Trainingslager Antalya</title>
+  <style>
+    body { font: 15px system-ui, sans-serif; max-width: 1200px; margin: 40px auto; padding: 0 20px; color: #172019; }
+    input, button, select { padding: 9px; border: 1px solid #ccd2cb; border-radius: 4px; }
+    button { cursor: pointer; background: #9c6b1a; color: white; border: 0; }
+    table { border-collapse: collapse; width: 100%; margin-top: 24px; }
+    th, td { text-align: left; padding: 11px 8px; border-bottom: 1px solid #e1e5e0; vertical-align: top; }
+    th { background: #f5f6f2; }
+    .toolbar { display: flex; gap: 8px; flex-wrap: wrap; }
+    .error { color: #a42626; margin-top: 14px; }
+  </style>
+</head>
+<body>
+  <h1>Enquiries</h1>
+  <div class="toolbar">
+    <input id="key" type="password" placeholder="Admin API key" autocomplete="off">
+    <button id="load">Load enquiries</button>
+  </div>
+  <p id="error" class="error"></p>
+  <table>
+    <thead><tr><th>Date</th><th>Club/contact</th><th>Trip</th><th>Services</th><th>Status</th></tr></thead>
+    <tbody id="rows"><tr><td colspan="5">Enter your key and load enquiries.</td></tr></tbody>
+  </table>
+  <script>
+    const key = document.getElementById('key');
+    const rows = document.getElementById('rows');
+    const error = document.getElementById('error');
+    async function load() {
+      error.textContent = '';
+      const response = await fetch('/api/admin/enquiries', { headers: { 'x-admin-key': key.value } });
+      const data = await response.json();
+      if (!response.ok) { error.textContent = data.error || 'Unable to load enquiries'; return; }
+      rows.innerHTML = data.map((item) => `<tr>
+        <td>${new Date(item.created_at).toLocaleString()}</td>
+        <td><strong>${item.club_name}</strong><br>${item.contact_person}<br><a href="mailto:${item.email}">${item.email}</a><br>${item.phone}</td>
+        <td>${item.dates || '-'}<br>${item.nights || '-'} nights<br>${item.players || '-'} players / ${item.staff || '-'} staff</td>
+        <td>${(item.services || []).join(', ') || '-'}</td>
+        <td><select data-id="${item.id}"><option ${item.status === 'new' ? 'selected' : ''}>new</option><option ${item.status === 'contacted' ? 'selected' : ''}>contacted</option><option ${item.status === 'closed' ? 'selected' : ''}>closed</option></select></td>
+      </tr>`).join('');
+      rows.querySelectorAll('select').forEach((select) => select.addEventListener('change', async () => {
+        await fetch('/api/admin/enquiries/' + select.dataset.id, {
+          method: 'PATCH', headers: { 'Content-Type': 'application/json', 'x-admin-key': key.value },
+          body: JSON.stringify({ status: select.value })
+        });
+      }));
+    }
+    document.getElementById('load').addEventListener('click', load);
+  </script>
+</body>
+</html>

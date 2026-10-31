@@ -470,13 +470,13 @@
             <h3 data-i18n="step4.title">Gewünschte Leistungen</h3>
             <p class="step-intro" data-i18n="step4.intro">Mehrfachauswahl möglich.</p>
             <div class="chip-group" id="serviceChips">
-              <div class="chip" data-i18n="chip.1">Hotel &amp; Zimmer</div>
-              <div class="chip" data-i18n="chip.2">Verpflegung</div>
-              <div class="chip" data-i18n="chip.3">Trainingsplätze</div>
-              <div class="chip" data-i18n="chip.4">Gym &amp; Regeneration</div>
-              <div class="chip" data-i18n="chip.5">Testspiele</div>
-              <div class="chip" data-i18n="chip.6">Flughafentransfer</div>
-              <div class="chip" data-i18n="chip.7">Lokaler Transport</div>
+              <div class="chip" data-service="Hotel &amp; Zimmer" data-i18n="chip.1">Hotel &amp; Zimmer</div>
+              <div class="chip" data-service="Verpflegung" data-i18n="chip.2">Verpflegung</div>
+              <div class="chip" data-service="Trainingsplätze" data-i18n="chip.3">Trainingsplätze</div>
+              <div class="chip" data-service="Gym &amp; Regeneration" data-i18n="chip.4">Gym &amp; Regeneration</div>
+              <div class="chip" data-service="Testspiele" data-i18n="chip.5">Testspiele</div>
+              <div class="chip" data-service="Flughafentransfer" data-i18n="chip.6">Flughafentransfer</div>
+              <div class="chip" data-service="Lokaler Transport" data-i18n="chip.7">Lokaler Transport</div>
             </div>
             <div class="field" style="margin-top:22px;"><label for="extras" data-i18n="step4.extras">Sonstige Wünsche</label><textarea id="extras" data-i18n-ph="step4.extras.ph" placeholder="z. B. besondere Ernährung, medizinische Betreuung..."></textarea></div>
           </div>
@@ -499,6 +499,7 @@
             <p data-i18n="success.text">Danke! Wir melden uns innerhalb von 24 Stunden mit einem individuellen Angebot für euer Trainingslager.</p>
           </div>
 
+          <p id="formError" role="alert" style="display:none; color:#9b2c2c; margin-top:18px;"></p>
           <div class="form-nav" id="formNav">
             <button type="button" class="btn-ghost" id="prevBtn" style="visibility:hidden;" data-i18n="btn.back">Zurück</button>
             <button type="button" class="btn-primary" id="nextBtn" data-i18n="btn.next">Weiter</button>
@@ -753,16 +754,62 @@
     return true;
   }
 
-  nextBtn.addEventListener('click', () => {
+  function collectFormData() {
+    const value = id => document.getElementById(id).value.trim();
+    return {
+      clubName: value('clubName'),
+      country: value('country'),
+      teamType: document.getElementById('teamType').value,
+      contactPerson: value('contactPerson'),
+      email: value('email'),
+      phone: value('phone'),
+      players: value('players'),
+      staff: value('staff'),
+      ageGroup: value('ageGroup'),
+      level: value('level'),
+      dates: value('dates'),
+      nights: value('nights'),
+      budget: value('budget'),
+      services: Array.from(document.querySelectorAll('#serviceChips .chip.selected')).map(chip => chip.dataset.service),
+      extras: value('extras'),
+      message: value('message'),
+      consent: document.getElementById('gdpr').checked
+    };
+  }
+
+  async function submitEnquiry() {
+    const errorEl = document.getElementById('formError');
+    errorEl.style.display = 'none';
+    nextBtn.disabled = true;
+    nextBtn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
+    try {
+      const response = await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(collectFormData())
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Unable to send request');
+      form.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+      formNav.style.display = 'none';
+      successPanel.style.display = 'block';
+    } catch (error) {
+      errorEl.textContent = currentLang === 'de'
+        ? 'Die Anfrage konnte nicht gesendet werden. Bitte versucht es erneut.'
+        : 'Your request could not be sent. Please try again.';
+      errorEl.style.display = 'block';
+      nextBtn.disabled = false;
+      updateNextBtnLabel();
+    }
+  }
+
+  nextBtn.addEventListener('click', async () => {
     if (!currentStepValid()) return;
     if (current < total) {
       current++;
       render();
     } else {
-      // final submit (no backend wired yet — replace with API call)
-      form.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
-      formNav.style.display = 'none';
-      successPanel.style.display = 'block';
+      await submitEnquiry();
     }
   });
 
