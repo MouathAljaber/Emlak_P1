@@ -6,7 +6,7 @@ Full-stack enquiry website for football training camps.
 
 - Frontend: responsive HTML/CSS/JavaScript landing page with German/English UI
 - Backend: Node.js 20 + Express
-- Database: PostgreSQL
+- Database: MySQL 8
 - Email: SMTP via Nodemailer
 - Admin: API-key protected enquiry dashboard at `/admin.html`
 
@@ -16,7 +16,7 @@ Full-stack enquiry website for football training camps.
 2. Start PostgreSQL:
 
    ```sh
-   docker compose up -d postgres
+   docker compose up -d mysql
    ```
 
 3. Configure the app:
@@ -47,4 +47,17 @@ Full-stack enquiry website for football training camps.
 
 ## Production configuration
 
-Set `DATABASE_URL`, `ADMIN_API_KEY`, and all `SMTP_*`/`ADMIN_EMAIL` values in the hosting provider's secret environment variables. Do not commit `.env`. Use a managed PostgreSQL database and enable HTTPS at the hosting layer.
+Set `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE`, `ADMIN_API_KEY`, and all `SMTP_*`/`ADMIN_EMAIL` values in the hosting provider's secret environment variables. Do not commit `.env`. Use a managed MySQL database and enable HTTPS at the hosting layer.
+
+## MySQL Workbench
+
+Connect with:
+
+- Connection method: Standard TCP/IP
+- Hostname: `127.0.0.1`
+- Port: `3306`
+- Username: `root`
+- Password: leave blank for this local development install
+- Default schema: `trainingslager`
+
+The enquiries table is `trainingslager.enquiries`.

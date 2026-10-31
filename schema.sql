@@ -1,25 +1,24 @@
 CREATE TABLE IF NOT EXISTS enquiries (
-  id BIGSERIAL PRIMARY KEY,
-  club_name TEXT NOT NULL,
-  country TEXT NOT NULL,
-  team_type TEXT NOT NULL,
-  contact_person TEXT NOT NULL,
-  email TEXT NOT NULL,
-  phone TEXT NOT NULL,
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  club_name VARCHAR(500) NOT NULL,
+  country VARCHAR(100) NOT NULL,
+  team_type VARCHAR(100) NOT NULL,
+  contact_person VARCHAR(200) NOT NULL,
+  email VARCHAR(320) NOT NULL,
+  phone VARCHAR(60) NOT NULL,
   players INTEGER,
   staff INTEGER,
-  age_group TEXT,
-  level TEXT,
-  dates TEXT,
+  age_group VARCHAR(100),
+  level VARCHAR(150),
+  dates VARCHAR(200),
   nights INTEGER,
-  budget TEXT,
-  services TEXT[] NOT NULL DEFAULT '{}',
+  budget VARCHAR(200),
+  services JSON NOT NULL,
   extras TEXT,
   message TEXT,
   consent BOOLEAN NOT NULL,
-  status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'contacted', 'closed')),
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  status ENUM('new', 'contacted', 'closed') NOT NULL DEFAULT 'new',
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX enquiries_created_at_idx (created_at),
+  INDEX enquiries_status_idx (status)
 );
-
-CREATE INDEX IF NOT EXISTS enquiries_created_at_idx ON enquiries (created_at DESC);
-CREATE INDEX IF NOT EXISTS enquiries_status_idx ON enquiries (status);

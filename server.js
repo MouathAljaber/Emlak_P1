@@ -4,14 +4,21 @@ import { fileURLToPath } from 'node:url';
 import express from 'express';
 import helmet from 'helmet';
 import nodemailer from 'nodemailer';
-import pg from 'pg';
 import { readFile } from 'node:fs/promises';
 
-const { Pool } = pg;
+import mysql from 'mysql2/promise';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = Number(process.env.PORT || 3000);
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const pool = mysql.createPool({
+  host: process.env.MYSQL_HOST || '127.0.0.1',
+  port: Number(process.env.MYSQL_PORT || 3306),
+  user: process.env.MYSQL_USER || 'root',
+  password: process.env.MYSQL_PASSWORD || '',
+  database: process.env.MYSQL_DATABASE || 'trainingslager',
+  waitForConnections: true,
+  connectionLimit: 10
+});
 const services = new Set([
   'Hotel & Zimmer', 'Verpflegung', 'Trainingsplätze', 'Gym & Regeneration',
   'Testspiele', 'Flughafentransfer', 'Lokaler Transport'
@@ -134,18 +141,18 @@ app.post('/api/enquiries', async (req, res) => {
   let enquiry;
   try {
     enquiry = validateEnquiry(req.body);
-    const { rows } = await pool.query(
+    const [rows] = await pool.execute(
       `INSERT INTO enquiries
         (club_name, country, team_type, contact_person, email, phone, players, staff, age_group, level, dates, nights, budget, services, extras, message, consent)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)
-       RETURNING id, created_at`,
+       VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
       [enquiry.clubName, enquiry.country, enquiry.teamType, enquiry.contactPerson, enquiry.email, enquiry.phone,
         enquiry.players, enquiry.staff, enquiry.ageGroup, enquiry.level, enquiry.dates, enquiry.nights, enquiry.budget,
-        enquiry.services, enquiry.extras, enquiry.message, enquiry.consent]
+        JSON.stringify(enquiry.services), enquiry.extras, enquiry.message, enquiry.consent]
     );
-    enquiry.id = rows[0].id;
+    const [created] = await pool.execute('SELECT id, created_at FROM enquiries WHERE id = ?', [result.insertId]);
+    enquiry.id = created[0].id;
     await sendNotifications(enquiry);
-    res.status(201).json({ id: rows[0].id, createdAt: rows[0].created_at });
+    res.status(201).json({ id: created[0].id, createdAt: created[0].created_at });
   } catch (error) {
     if (error.message.includes('required') || error.message.includes('valid') || error.message.includes('too long') || error.message.includes('Consent')) {
       return res.status(400).json({ error: error.message });
@@ -157,8 +164,8 @@ app.post('/api/enquiries', async (req, res) => {
 
 app.get('/api/admin/enquiries', adminOnly, async (_req, res) => {
   try {
-    const { rows } = await pool.query('SELECT * FROM enquiries ORDER BY created_at DESC LIMIT 200');
-    res.json(rows);
+    const [rows] = await pool.query('SELECT * FROM enquiries ORDER BY created_at DESC LIMIT 200');
+    res.json(rows.map((row) => ({ ...row, services: typeof row.services === 'string' ? JSON.parse(row.services) : row.services })));
   } catch (error) {
     console.error('Admin enquiry listing failed', error);
     res.status(500).json({ error: 'Unable to load enquiries' });
@@ -170,12 +177,12 @@ app.patch('/api/admin/enquiries/:id', adminOnly, async (req, res) => {
     return res.status(400).json({ error: 'Invalid status' });
   }
   try {
-    const { rows } = await pool.query(
-      'UPDATE enquiries SET status = $1 WHERE id = $2 RETURNING id, status',
+    const [result] = await pool.execute(
+      'UPDATE enquiries SET status = ? WHERE id = ?',
       [req.body.status, req.params.id]
     );
-    if (!rows[0]) return res.status(404).json({ error: 'Enquiry not found' });
-    res.json(rows[0]);
+    if (!result.affectedRows) return res.status(404).json({ error: 'Enquiry not found' });
+    res.json({ id: Number(req.params.id), status: req.body.status });
   } catch (error) {
     console.error('Admin enquiry update failed', error);
     res.status(500).json({ error: 'Unable to update enquiry' });
@@ -189,6 +196,6 @@ async function start() {
 }
 
 start().catch((error) => {
-  console.error('Unable to start server. Check DATABASE_URL and PostgreSQL availability.', error);
+  console.error('Unable to start server. Check MySQL configuration and availability.', error);
   process.exitCode = 1;
 });

@@ -1,14 +1,13 @@
 services:
-  postgres:
-    image: postgres:16-alpine
+  mysql:
+    image: mysql:8.4
     environment:
-      POSTGRES_DB: trainingslager
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      MYSQL_DATABASE: trainingslager
+      MYSQL_ROOT_PASSWORD: root
     ports:
-      - "5432:5432"
+      - "3306:3306"
     volumes:
-      - trainingslager-postgres:/var/lib/postgresql/data
+      - trainingslager-mysql:/var/lib/mysql
 
 volumes:
-  trainingslager-postgres:
+  trainingslager-mysql:
