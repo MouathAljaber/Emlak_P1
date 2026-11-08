@@ -7,6 +7,25 @@ main > section {
   overflow: hidden;
 }
 
+.hero {
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.88) 46%, rgba(255,255,255,.34) 100%),
+    url("https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=2200&q=85");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero::after {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  border-radius: 0;
+  opacity: .06;
+  background: linear-gradient(120deg, var(--accent), transparent 55%);
+  filter: none;
+  animation: none;
+}
+
 .nav-links a,
 .nav-cta {
   position: relative;
@@ -464,6 +483,17 @@ body.motion-ready .motion-spotlight { opacity: 1; }
 @keyframes motion-orbit {
   from { transform: translate3d(-12px, 8px, 0) scale(.92); }
   to { transform: translate3d(22px, -18px, 0) scale(1.08); }
+}
+
+.hero::after {
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  border-radius: 0;
+  opacity: .06;
+  background: linear-gradient(120deg, var(--accent), transparent 55%);
+  filter: none;
+  animation: none;
 }
 
 @keyframes motion-spotlight-pulse {
