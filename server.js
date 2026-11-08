@@ -161,7 +161,7 @@ app.post('/api/enquiries', async (req, res) => {
   let enquiry;
   try {
     enquiry = validateEnquiry(req.body);
-    const [rows] = await pool.execute(
+    const [result] = await pool.execute(
       `INSERT INTO enquiries
         (club_name, country, team_type, contact_person, email, phone, players, staff, age_group, level, dates, nights, budget, services, extras, message, consent)
        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
@@ -196,13 +196,15 @@ app.patch('/api/admin/enquiries/:id', adminOnly, async (req, res) => {
   if (!['new', 'contacted', 'closed'].includes(req.body.status)) {
     return res.status(400).json({ error: 'Invalid status' });
   }
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id < 1) return res.status(400).json({ error: 'Invalid enquiry id' });
   try {
     const [result] = await pool.execute(
       'UPDATE enquiries SET status = ? WHERE id = ?',
-      [req.body.status, req.params.id]
+      [req.body.status, id]
     );
     if (!result.affectedRows) return res.status(404).json({ error: 'Enquiry not found' });
-    res.json({ id: Number(req.params.id), status: req.body.status });
+    res.json({ id, status: req.body.status });
   } catch (error) {
     console.error('Admin enquiry update failed', error);
     res.status(500).json({ error: 'Unable to update enquiry' });
