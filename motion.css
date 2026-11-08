@@ -7,6 +7,93 @@ main > section {
   overflow: hidden;
 }
 
+.nav-links a,
+.nav-cta {
+  position: relative;
+}
+
+.nav-links a::after,
+.nav-cta::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  left: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: right;
+  background: var(--pitch);
+  transition: transform .35s var(--motion-ease);
+}
+
+.nav-links a:hover::after,
+.nav-links a.motion-active::after,
+.nav-cta:hover::after,
+.nav-cta.motion-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+main h2,
+main h3 {
+  position: relative;
+}
+
+main h2::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  margin-top: 12px;
+  background: linear-gradient(90deg, var(--pitch), var(--accent));
+  transition: width 1s var(--motion-ease);
+}
+
+[data-reveal].is-visible h2::after,
+[data-reveal].is-visible h3::after {
+  width: 64px;
+}
+
+.button,
+.btn-primary,
+.nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after,
+.btn-primary::after,
+.nav-cta::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: -80%;
+  width: 35%;
+  transform: rotate(20deg);
+  background: rgba(255,255,255,.35);
+  transition: left .65s ease;
+}
+
+.button:hover::after,
+.btn-primary:hover::after,
+.nav-cta:hover::after {
+  left: 140%;
+}
+
+.motion-velocity {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 0;
+  height: 20vh;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(0deg, rgba(47,109,79,.08), transparent);
+  transition: opacity .4s ease;
+}
+
+.motion-velocity.active { opacity: 1; }
+
 .motion-top {
   position: fixed;
   right: 24px;

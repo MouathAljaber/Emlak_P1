@@ -16,7 +16,12 @@
   topButton.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
+  var velocity = document.createElement('div');
+  velocity.className = 'motion-velocity';
+  document.body.appendChild(velocity);
   if (!reduceMotion) {
+    var lastScroll = window.scrollY;
+    var velocityTimer;
     for (var particleIndex = 0; particleIndex < 16; particleIndex += 1) {
       var particle = document.createElement('span');
       particle.className = 'motion-particle';
@@ -160,6 +165,12 @@
       topButton.classList.toggle('visible', window.scrollY > window.innerHeight * .7);
       var scrollable = document.documentElement.scrollHeight - window.innerHeight;
       progress.style.width = (scrollable ? window.scrollY / scrollable * 100 : 0) + '%';
+      if (Math.abs(window.scrollY - lastScroll) > 10) {
+        velocity.classList.add('active');
+        window.clearTimeout(velocityTimer);
+        velocityTimer = window.setTimeout(function () { velocity.classList.remove('active'); }, 180);
+      }
+      lastScroll = window.scrollY;
     }, { passive: true });
   }
 
