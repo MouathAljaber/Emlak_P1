@@ -143,6 +143,36 @@
   animation: motion-marquee 20s linear infinite;
 }
 
+.motion-particle {
+  position: fixed;
+  z-index: 1;
+  width: 5px;
+  height: 5px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: #d39f26;
+  box-shadow: 0 0 12px rgba(211,159,38,.75);
+  animation: motion-particle 9s linear infinite;
+}
+
+.motion-confetti {
+  position: fixed;
+  z-index: 1000;
+  width: 9px;
+  height: 14px;
+  pointer-events: none;
+  animation: motion-confetti 1.4s cubic-bezier(.15,.8,.25,1) forwards;
+}
+
+body.motion-loading main {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+body main {
+  transition: opacity .8s var(--motion-ease), transform .8s var(--motion-ease);
+}
+
 .hero .hero-copy { will-change: transform; }
 
 body.motion-ready .motion-spotlight { opacity: 1; }
@@ -192,6 +222,17 @@ body.motion-ready .motion-spotlight { opacity: 1; }
   to { transform: translateX(-100%); }
 }
 
+@keyframes motion-particle {
+  0% { opacity: 0; transform: translate3d(0, 20px, 0) scale(.5); }
+  15%, 80% { opacity: .7; }
+  100% { opacity: 0; transform: translate3d(80px, -100vh, 0) scale(1.2); }
+}
+
+@keyframes motion-confetti {
+  0% { opacity: 1; transform: translate3d(0, 0, 0) rotate(0); }
+  100% { opacity: 0; transform: translate3d(var(--x), 85vh, 0) rotate(720deg); }
+}
+
 @keyframes motion-float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(1deg); }
@@ -213,4 +254,5 @@ body.motion-ready .motion-spotlight { opacity: 1; }
   .motion-progress { display: none; }
   .motion-spotlight { display: none; }
   .motion-trail, .motion-ripple, .motion-marquee { display: none; }
+  .motion-particle, .motion-confetti { display: none; }
 }

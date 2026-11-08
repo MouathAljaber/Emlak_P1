@@ -1,10 +1,23 @@
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.add('motion-loading');
+  window.requestAnimationFrame(function () { document.body.classList.remove('motion-loading'); });
   var marquee = document.createElement('div');
   marquee.className = 'motion-marquee';
   marquee.innerHTML = '<span>ANTALYA CAMP · TRAIN · CONNECT · PERFORM · ANTALYA CAMP · TRAIN · CONNECT · PERFORM · </span>';
   var main = document.querySelector('main');
   if (main) main.parentNode.insertBefore(marquee, main);
+  if (!reduceMotion) {
+    for (var particleIndex = 0; particleIndex < 16; particleIndex += 1) {
+      var particle = document.createElement('span');
+      particle.className = 'motion-particle';
+      particle.style.left = (5 + Math.random() * 90) + '%';
+      particle.style.top = (55 + Math.random() * 45) + '%';
+      particle.style.animationDelay = (-Math.random() * 9) + 's';
+      particle.style.animationDuration = (7 + Math.random() * 6) + 's';
+      document.body.appendChild(particle);
+    }
+  }
   var progress = document.createElement('div');
   progress.className = 'motion-progress';
   document.body.appendChild(progress);
@@ -98,6 +111,12 @@
       document.body.appendChild(ripple);
       ripple.addEventListener('animationend', function () { ripple.remove(); });
     });
+    var successPanel = document.getElementById('successPanel');
+    if (successPanel) {
+      new MutationObserver(function () {
+        if (successPanel.style.display !== 'none') celebrate();
+      }).observe(successPanel, { attributes: true, attributeFilter: ['style'] });
+    }
 
     window.addEventListener('scroll', function () {
       var heroCopy = document.querySelector('.hero-copy');
@@ -105,5 +124,19 @@
       var scrollable = document.documentElement.scrollHeight - window.innerHeight;
       progress.style.width = (scrollable ? window.scrollY / scrollable * 100 : 0) + '%';
     }, { passive: true });
+  }
+
+  function celebrate() {
+    for (var index = 0; index < 28; index += 1) {
+      var piece = document.createElement('span');
+      piece.className = 'motion-confetti';
+      piece.style.left = (35 + Math.random() * 30) + '%';
+      piece.style.top = '18%';
+      piece.style.setProperty('--x', ((Math.random() - .5) * 70) + 'vw');
+      piece.style.background = ['#d39f26', '#2f6d4f', '#8bc34a', '#f4c95d'][index % 4];
+      piece.style.animationDelay = (Math.random() * .18) + 's';
+      document.body.appendChild(piece);
+      piece.addEventListener('animationend', function () { piece.remove(); });
+    }
   }
 }());
