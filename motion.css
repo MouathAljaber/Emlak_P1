@@ -7,6 +7,47 @@ main > section {
   overflow: hidden;
 }
 
+.motion-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 40;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(47,109,79,.25);
+  border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  color: var(--accent);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  box-shadow: 0 8px 22px rgba(18,23,29,.12);
+  transition: opacity .3s ease, transform .3s var(--motion-ease), background .3s ease;
+}
+
+.motion-top.visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.motion-top:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+.nav.motion-compact {
+  box-shadow: 0 8px 24px rgba(18,23,29,.08);
+}
+
+main a:focus-visible,
+main button:focus-visible {
+  outline: 3px solid var(--pitch);
+  outline-offset: 4px;
+}
+
 main > section::before {
   content: "";
   position: absolute;
@@ -376,4 +417,5 @@ body.motion-ready .motion-spotlight { opacity: 1; }
   .motion-particle, .motion-confetti { display: none; }
   .motion-section-active::after { display: none; }
   main > section::before { display: none; }
+  .motion-top { right: 14px; bottom: 14px; }
 }
