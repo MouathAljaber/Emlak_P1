@@ -3,6 +3,9 @@
   var progress = document.createElement('div');
   progress.className = 'motion-progress';
   document.body.appendChild(progress);
+  var spotlight = document.createElement('div');
+  spotlight.className = 'motion-spotlight';
+  document.body.appendChild(spotlight);
   var revealItems = document.querySelectorAll(
     'main > section, .feature-card, .service-card, .step, .faq-item, .quote, .form-card, article'
   );
@@ -37,6 +40,22 @@
   });
 
   if (!reduceMotion) {
+    document.body.classList.add('motion-ready');
+    window.addEventListener('pointermove', function (event) {
+      spotlight.style.left = event.clientX + 'px';
+      spotlight.style.top = event.clientY + 'px';
+    }, { passive: true });
+
+    document.querySelectorAll('.hero-visual, .hero-art, .hero-card, [data-motion-card]').forEach(function (item) {
+      item.addEventListener('pointermove', function (event) {
+        var box = item.getBoundingClientRect();
+        var rotateX = ((event.clientY - box.top) / box.height - .5) * -7;
+        var rotateY = ((event.clientX - box.left) / box.width - .5) * 7;
+        item.style.transform = 'perspective(700px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px)';
+      });
+      item.addEventListener('pointerleave', function () { item.style.transform = ''; });
+    });
+
     window.addEventListener('scroll', function () {
       var scrollable = document.documentElement.scrollHeight - window.innerHeight;
       progress.style.width = (scrollable ? window.scrollY / scrollable * 100 : 0) + '%';

@@ -87,9 +87,56 @@
   animation: motion-float 5s ease-in-out infinite;
 }
 
+.motion-spotlight {
+  position: fixed;
+  z-index: 20;
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(211,159,38,.14), transparent 68%);
+  transition: opacity .35s ease;
+}
+
+body.motion-ready .motion-spotlight { opacity: 1; }
+
+.hero .headline em {
+  background: linear-gradient(110deg, var(--pitch), #8bc34a, var(--pitch));
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: motion-gradient 5s ease-in-out infinite;
+}
+
+.hero .hero-visual,
+.hero .hero-art,
+.hero .hero-card {
+  transform-style: preserve-3d;
+  transition: transform .18s ease-out;
+}
+
+.hero::after { animation-duration: 8s; }
+
+[data-reveal].is-visible {
+  animation: motion-reveal-glow .9s var(--motion-ease) both;
+}
+
 @keyframes motion-enter {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
+}
+
+@keyframes motion-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes motion-reveal-glow {
+  0% { filter: brightness(1.12); }
+  100% { filter: brightness(1); }
 }
 
 @keyframes motion-float {
@@ -111,4 +158,5 @@
   }
 
   .motion-progress { display: none; }
+  .motion-spotlight { display: none; }
 }
