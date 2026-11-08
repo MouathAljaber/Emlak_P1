@@ -62,6 +62,12 @@
   document.querySelectorAll(
     '.feature-card, .service-card, .step, .faq-item, .quote, .form-card, article'
   ).forEach(function (item) { item.setAttribute('data-motion-card', ''); });
+  document.querySelectorAll('.faq-q').forEach(function (item) {
+    item.addEventListener('click', function () {
+      item.closest('.faq-item').classList.toggle('motion-faq-bounce');
+      window.setTimeout(function () { item.closest('.faq-item').classList.remove('motion-faq-bounce'); }, 420);
+    });
+  });
   document.querySelectorAll('a, button').forEach(function (item) {
     if (item.classList.contains('nav-link')) return;
     item.setAttribute('data-motion-button', '');

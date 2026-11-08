@@ -2,6 +2,78 @@
   --motion-ease: cubic-bezier(.22, 1, .36, 1);
 }
 
+main > section {
+  position: relative;
+  overflow: hidden;
+}
+
+main > section::before {
+  content: "";
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  right: -9rem;
+  top: 20%;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: .08;
+  background: radial-gradient(circle, var(--pitch), transparent 68%);
+  animation: motion-drift 14s ease-in-out infinite alternate;
+}
+
+main > section:nth-of-type(even)::before {
+  right: auto;
+  left: -9rem;
+  animation-delay: -5s;
+}
+
+.feature-card,
+.service-card,
+.step,
+.faq-item,
+.quote,
+.form-card,
+article {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-motion-card]::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.55), transparent 80%);
+  transform: translateX(-120%);
+  transition: opacity .3s ease;
+}
+
+[data-motion-card]:hover::before {
+  opacity: .7;
+  animation: motion-shine .9s ease forwards;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 0;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(47,109,79,.14);
+  animation: motion-focus .35s var(--motion-ease);
+}
+
+.faq-item.open,
+.form-shell:focus-within,
+.leadform:focus-within {
+  box-shadow: 0 18px 46px rgba(18,23,29,.1);
+}
+
+.motion-faq-bounce {
+  animation: motion-faq-bounce .42s var(--motion-ease);
+}
+
 .motion-progress {
   position: fixed;
   inset: 0 0 auto;
@@ -271,6 +343,25 @@ body.motion-ready .motion-spotlight { opacity: 1; }
   100% { opacity: 0; transform: translate(-50%, -50%) scale(1.7); }
 }
 
+@keyframes motion-shine {
+  to { transform: translateX(120%); }
+}
+
+@keyframes motion-focus {
+  from { transform: scale(.99); }
+  to { transform: scale(1); }
+}
+
+@keyframes motion-faq-bounce {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.015); }
+}
+
+@keyframes motion-drift {
+  from { transform: translate3d(-18px, 12px, 0) scale(.8); }
+  to { transform: translate3d(20px, -24px, 0) scale(1.12); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
@@ -284,4 +375,5 @@ body.motion-ready .motion-spotlight { opacity: 1; }
   .motion-trail, .motion-ripple, .motion-marquee { display: none; }
   .motion-particle, .motion-confetti { display: none; }
   .motion-section-active::after { display: none; }
+  main > section::before { display: none; }
 }
