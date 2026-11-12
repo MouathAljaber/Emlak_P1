@@ -48,7 +48,12 @@ app.get('/sitemap.xml', (_req, res) => {
     '/senior-teams/', '/football-academies/', '/services/', '/how-it-works/',
     '/test-matches/', '/hotels-with-pitches/', '/winter-break-camp/',
     '/plan-football-camp/', '/best-time-training-camp/', '/training-camp-costs/',
-    '/request-offer/', '/football-training-camp-turkey/'
+    '/request-offer/', '/football-training-camp-turkey/', '/preseason-football-camp/',
+    '/football-team-building/', '/football-pitches-antalya/', '/football-recovery-camp/',
+    '/airport-transfers-antalya/', '/youth-football-camp-turkey/',
+    '/amateur-football-camp-turkey/', '/professional-football-camp-turkey/',
+    '/football-camp-europe/', '/about-us/', '/faq/', '/contact/', '/imprint/',
+    '/privacy-policy/', '/cookie-policy/', '/references/'
   ];
   const urls = paths.map((route, index) => {
     const priority = index === 0 ? '1.0' : '0.8';
