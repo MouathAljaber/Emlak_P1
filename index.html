@@ -308,6 +308,14 @@
   .footer-sister { background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
   .footer-sister p { font-size: 14.5px; }
   .footer-sister a { color: var(--accent-strong); text-decoration: none; font-weight: 500; font-size: 14.5px; }
+  .footer-states { padding: 28px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .footer-states h3 { font-size: 16px; color: var(--text); margin-bottom: 16px; }
+  .state-links { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+  .state-links a { color: var(--text-muted); font-size: 14px; text-decoration: none; }
+  .state-links a:hover { color: var(--accent-strong); }
+  .emlak-signature { display: flex; align-items: center; gap: 14px; padding: 26px 0; color: var(--text-muted); font-size: 13px; }
+  .emlak-mark { display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg-elevated); color: var(--accent-strong); font-weight: 700; letter-spacing: -.02em; }
+  .emlak-mark span { color: var(--text); }
   .footer-legal { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 13.5px; color: var(--text-faint); padding-top: 26px; border-top: 1px solid var(--line); }
   .footer-legal a { color: var(--text-faint); text-decoration: none; margin-left: 18px; }
   .footer-legal a:hover { color: var(--text-muted); }
@@ -701,6 +709,38 @@
         <a href="https://fussballcamp-antalya.de" target="_blank" rel="noopener">fussballcamp-antalya.de →</a>
       </div>
     </div>
+    <div class="footer-states">
+      <h3 data-i18n="footer.statesTitle">Auktionen nach Bundesland</h3>
+      <nav class="state-links" aria-label="Bundesländer">
+        <a href="#anfrage">Baden-Württemberg</a>
+        <a href="#anfrage">Bayern</a>
+        <a href="#anfrage">Berlin</a>
+        <a href="#anfrage">Bremen</a>
+        <a href="#anfrage">Hessen</a>
+        <a href="#anfrage">Schleswig-Holstein</a>
+        <a href="#anfrage">Thüringen</a>
+      </nav>
+    </div>
+    <div class="emlak-signature">
+      <span class="emlak-mark" aria-label="Emlak AG"><span>▣</span> Emlak <span>AG</span></span>
+      <span data-i18n="footer.emlakProduct">AntalyaCamp ist ein Produkt der Emlak AG</span>
+    </div>
+    <div class="footer-states">
+      <h3 data-i18n="footer.statesTitle">Auktionen nach Bundesland</h3>
+      <nav class="state-links" aria-label="Bundesländer">
+        <a href="#anfrage">Baden-Württemberg</a>
+        <a href="#anfrage">Bayern</a>
+        <a href="#anfrage">Berlin</a>
+        <a href="#anfrage">Bremen</a>
+        <a href="#anfrage">Hessen</a>
+        <a href="#anfrage">Schleswig-Holstein</a>
+        <a href="#anfrage">Thüringen</a>
+      </nav>
+    </div>
+    <div class="emlak-signature">
+      <span class="emlak-mark" aria-label="Emlak AG"><span>▣</span> Emlak <span>AG</span></span>
+      <span data-i18n="footer.emlakProduct">AntalyaCamp ist ein Produkt der Emlak AG</span>
+    </div>
     <div class="footer-legal">
       <span data-i18n="footer.copyright">© 2026 Trainingslager Antalya</span>
       <span>
@@ -791,6 +831,7 @@
       "faq.3.q": "Könnt ihr auch Testspiele organisieren?", "faq.3.a": "Ja, wir vermitteln passende Testspielgegner vor Ort entsprechend eurem Niveau und Terminwunsch.",
       "faq.4.q": "Was passiert mit unseren Daten aus dem Formular?", "faq.4.a": "Eure Angaben werden ausschließlich zur Bearbeitung der Anfrage verwendet und DSGVO-konform gespeichert. Details in der Datenschutzerklärung.",
       "footer.tagline": "Trainingslager für Fußballvereine und -teams in Antalya, Türkei.",
+      "footer.statesTitle": "Auktionen nach Bundesland", "footer.emlakProduct": "AntalyaCamp ist ein Produkt der Emlak AG",
       "footer.sister": "Sucht ihr ein Familien- oder Jugendcamp statt Vereinstraining?",
       "footer.copyright": "© 2026 Trainingslager Antalya", "footer.impressum": "Impressum", "footer.datenschutz": "Datenschutz"
     },
@@ -849,6 +890,7 @@
       "faq.3.q": "Can you also organise test matches?", "faq.3.a": "Yes, we arrange suitable local opponents matched to your level and schedule.",
       "faq.4.q": "What happens to the data from the form?", "faq.4.a": "Your details are used solely to process the request and stored in compliance with GDPR. See the privacy policy for details.",
       "footer.tagline": "Football training camps for clubs and teams in Antalya, Turkey.",
+      "footer.statesTitle": "Auctions by state", "footer.emlakProduct": "AntalyaCamp is a product of Emlak AG",
       "footer.sister": "Looking for a family or youth camp instead of club training?",
       "footer.copyright": "© 2026 Training Camp Antalya", "footer.impressum": "Legal notice", "footer.datenschutz": "Privacy policy"
     }
