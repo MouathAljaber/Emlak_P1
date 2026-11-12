@@ -43,8 +43,16 @@ Sitemap: ${(process.env.PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$
 });
 app.get('/sitemap.xml', (_req, res) => {
   const siteUrl = (process.env.PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+  const paths = [
+    '/', '/youth-teams/', '/amateur-clubs/', '/professional-teams/',
+    '/test-matches/', '/hotels-with-pitches/', '/winter-break-camp/'
+  ];
+  const urls = paths.map((route, index) => {
+    const priority = index === 0 ? '1.0' : '0.8';
+    return `<url><loc>${siteUrl}${route}</loc><changefreq>weekly</changefreq><priority>${priority}</priority></url>`;
+  }).join('');
   res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${siteUrl}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url></urlset>`);
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`);
 });
 app.use(express.static(__dirname, { extensions: ['html'] }));
 
