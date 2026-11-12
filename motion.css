@@ -1181,3 +1181,123 @@ body > section#explore .section-head .tag {
   color: #fff;
   text-shadow: 0 2px 14px rgba(0,0,0,.62);
 }
+
+/* Final readability pass. */
+.hero .eyebrow,
+.hero .headline,
+.hero .hero-sub {
+  color: #fff !important;
+  text-shadow: 0 2px 16px rgba(0,0,0,.72);
+}
+
+.hero .eyebrow-dot {
+  background: var(--pitch) !important;
+  box-shadow: 0 0 0 5px rgba(211,159,38,.22);
+}
+
+.hero .headline em {
+  color: #f4c95d !important;
+  text-shadow: 0 2px 18px rgba(0,0,0,.72);
+}
+
+.hero .hero-panel {
+  background: rgba(18,23,29,.82) !important;
+  border-color: rgba(255,255,255,.28) !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,.22);
+  backdrop-filter: blur(10px);
+}
+
+.hero .hero-stat,
+.hero .hero-stat .num,
+.hero .hero-stat .label {
+  color: #fff !important;
+  border-color: rgba(255,255,255,.22) !important;
+}
+
+.hero .btn-ghost {
+  color: #fff !important;
+  border-color: rgba(255,255,255,.65) !important;
+  background: rgba(18,23,29,.28) !important;
+}
+
+.hero .btn-ghost:hover {
+  background: rgba(18,23,29,.58) !important;
+  border-color: #fff !important;
+}
+
+body > section#teams .section-head h2,
+body > section#teams .section-head p,
+body > section#teams .section-head .tag,
+body > section#leistungen .section-head h2,
+body > section#leistungen .section-head p,
+body > section#leistungen .section-head .tag,
+body > section#anlagen .section-head h2,
+body > section#anlagen .section-head p,
+body > section#anlagen .section-head .tag,
+body > section#testspiele .section-head h2,
+body > section#testspiele .section-head p,
+body > section#testspiele .section-head .tag,
+body > section#ratgeber .section-head h2,
+body > section#ratgeber .section-head p,
+body > section#ratgeber .section-head .tag,
+body > section#anfrage .section-head h2,
+body > section#anfrage .section-head p,
+body > section#anfrage .section-head .tag,
+body > section#explore .section-head h2,
+body > section#explore .section-head p,
+body > section#explore .section-head .tag {
+  color: #fff !important;
+  text-shadow: 0 2px 16px rgba(0,0,0,.72);
+}
+
+body > section#teams .roster-card,
+body > section#leistungen .service-card,
+body > section#anlagen .facility-card,
+body > section#testspiele .proof-card,
+body > section#ratgeber .guide-card,
+body > section#explore .proof-card {
+  background: rgba(255,255,255,.96) !important;
+}
+
+body > section#referenzen .section-head h2,
+body > section#referenzen .section-head p,
+body > section#referenzen .section-head .tag,
+body > section#ablauf .section-head h2,
+body > section#ablauf .section-head p,
+body > section#ablauf .section-head .tag,
+body > section#faq .section-head h2,
+body > section#faq .section-head p,
+body > section#faq .section-head .tag {
+  color: #12171d !important;
+  text-shadow: none;
+}
+
+body > section#anfrage .form-card,
+body > section#faq .faq-item {
+  background: #fff !important;
+  color: #12171d !important;
+  box-shadow: 0 12px 30px rgba(18,23,29,.1);
+}
+
+body > section#anfrage label,
+body > section#anfrage .step-intro,
+body > section#anfrage h3,
+body > section#anfrage .gdpr-row,
+body > section#faq .faq-q,
+body > section#faq .faq-a p {
+  color: #12171d !important;
+}
+
+body > section#anfrage input,
+body > section#anfrage select,
+body > section#anfrage textarea {
+  background: #fff !important;
+  color: #12171d !important;
+  border-color: rgba(15,20,15,.22) !important;
+}
+
+@media (max-width: 720px) {
+  .hero .headline { font-size: clamp(38px, 12vw, 58px); }
+  .hero .hero-sub { font-size: 16px; max-width: 100%; }
+  .hero .hero-panel { margin-top: 6px; }
+}
