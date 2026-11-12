@@ -45,7 +45,10 @@ app.get('/sitemap.xml', (_req, res) => {
   const siteUrl = (process.env.PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
   const paths = [
     '/', '/youth-teams/', '/amateur-clubs/', '/professional-teams/',
-    '/test-matches/', '/hotels-with-pitches/', '/winter-break-camp/'
+    '/senior-teams/', '/football-academies/', '/services/', '/how-it-works/',
+    '/test-matches/', '/hotels-with-pitches/', '/winter-break-camp/',
+    '/plan-football-camp/', '/best-time-training-camp/', '/training-camp-costs/',
+    '/request-offer/', '/football-training-camp-turkey/'
   ];
   const urls = paths.map((route, index) => {
     const priority = index === 0 ? '1.0' : '0.8';
