@@ -633,6 +633,85 @@ body.motion-ready .motion-spotlight { opacity: 1; }
   to { background-position: 54% 46%; }
 }
 
+/* Keep the homepage visually connected: one football setting, different crops. */
+main > section:not(.hero) {
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.88)),
+    url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=2200&q=85") !important;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+main > section:nth-of-type(3n+2):not(.hero) {
+  background-position: 42% 50%;
+}
+
+main > section:nth-of-type(3n):not(.hero) {
+  background-position: 58% 50%;
+}
+
+main > section.motion-section-active:not(.hero) {
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.91), rgba(255,255,255,.84)),
+    url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=2200&q=85") !important;
+}
+
+main > section .section-head,
+main > section .section-head h2,
+main > section .section-head p,
+main > section .section-head .tag {
+  position: relative;
+  z-index: 2;
+}
+
+main > section .section-head h2,
+main > section .section-head p,
+main > section .section-head .tag,
+main > section .proof-card,
+main > section .facility-card,
+main > section .guide-card,
+main > section .service-card,
+main > section .roster-card,
+main > section .step,
+main > section .form-card,
+main > section .faq-item {
+  text-shadow: none;
+}
+
+main > section .proof-card,
+main > section .facility-card,
+main > section .guide-card,
+main > section .service-card,
+main > section .roster-card,
+main > section .step,
+main > section .form-card,
+main > section .faq-item {
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(8px);
+}
+
+main > section .section-head p,
+main > section .proof-card p,
+main > section .facility-card p,
+main > section .guide-card p,
+main > section .service-card p,
+main > section .roster-card p,
+main > section .step p,
+main > section .faq-a p {
+  color: #4b5660;
+}
+
+main > section .section-head h2,
+main > section .proof-card h3,
+main > section .facility-card h3,
+main > section .guide-card h3,
+main > section .service-card h3,
+main > section .roster-card h3,
+main > section .step h3,
+main > section .faq-q {
+  color: #12171d;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
@@ -649,5 +728,6 @@ body.motion-ready .motion-spotlight { opacity: 1; }
   main > section::before { display: none; }
   main > section { animation: none; }
   body::before, body::after { display: none; }
+  main > section:not(.hero) { background-attachment: scroll; }
   .motion-top { right: 14px; bottom: 14px; }
 }
