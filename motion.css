@@ -56,8 +56,8 @@ main > section::after {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: .8;
-  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.76));
+  opacity: 1;
+  background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.42));
   transition: opacity .6s ease, background .6s ease;
 }
 
@@ -67,7 +67,7 @@ main > section.motion-section-active {
 }
 
 main > section.motion-section-active::after {
-  opacity: .68;
+  opacity: .8;
 }
 
 #teams {
@@ -636,24 +636,70 @@ body.motion-ready .motion-spotlight { opacity: 1; }
 /* Keep the homepage visually connected: one football setting, different crops. */
 main > section:not(.hero) {
   background-image:
-    linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.88)),
+    linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,.7)),
     url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=2200&q=85") !important;
   background-size: cover;
   background-attachment: fixed;
 }
 
-main > section:nth-of-type(3n+2):not(.hero) {
+main > section#teams:not(.hero) {
+  background-position: 0% 50%;
+}
+
+main > section#leistungen:not(.hero) {
+  background-position: 14% 50%;
+}
+
+main > section#anlagen:not(.hero) {
+  background-position: 28% 50%;
+}
+
+main > section#testspiele:not(.hero) {
   background-position: 42% 50%;
 }
 
-main > section:nth-of-type(3n):not(.hero) {
-  background-position: 58% 50%;
+main > section#referenzen:not(.hero) {
+  background-position: 56% 50%;
+}
+
+main > section#ratgeber:not(.hero) {
+  background-position: 68% 50%;
+}
+
+main > section#ablauf:not(.hero) {
+  background-position: 78% 50%;
+}
+
+main > section#anfrage:not(.hero) {
+  background-position: 87% 50%;
+}
+
+main > section#faq:not(.hero) {
+  background-position: 94% 50%;
+}
+
+main > section#explore:not(.hero) {
+  background-position: 100% 50%;
 }
 
 main > section.motion-section-active:not(.hero) {
   background-image:
-    linear-gradient(180deg, rgba(255,255,255,.91), rgba(255,255,255,.84)),
+    linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,.66)),
     url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=2200&q=85") !important;
+}
+
+main > section:not(.hero) .section-head,
+main > section:not(.hero) .grid,
+main > section:not(.hero) .roster,
+main > section:not(.hero) .services-grid,
+main > section:not(.hero) .facility-grid,
+main > section:not(.hero) .proof-grid,
+main > section:not(.hero) .guide-grid,
+main > section:not(.hero) .steps,
+main > section:not(.hero) .form-shell,
+main > section:not(.hero) #faqList {
+  position: relative;
+  z-index: 2;
 }
 
 main > section .section-head,
