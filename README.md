@@ -9,6 +9,8 @@ Full-stack enquiry website for football training camps.
 - Database: MySQL 8
 - Email: SMTP via Nodemailer
 - Admin: API-key protected enquiry dashboard at `/admin.html`
+- Product positioning: B2B football training camps for youth teams, amateur clubs, senior teams, academies, and professional teams
+- Conversion sections: team categories, services, facilities and hotels, test matches, planning guides, references, FAQ, and a five-step offer request
 
 ## Run locally
 
@@ -68,4 +70,4 @@ The enquiries table is `trainingslager.enquiries`.
 2. Create a GA4 web data stream and set its Measurement ID in `GA4_MEASUREMENT_ID`. Analytics loads only after cookie consent.
 3. Add the site in Google Search Console, set the verification token in `GOOGLE_SITE_VERIFICATION`, deploy, and submit `/sitemap.xml`.
 4. Configure HTTPS, SMTP, a managed MySQL instance, and a strong `ADMIN_API_KEY` before launch.
-5. Add licensed WebP/AVIF photos and videos with descriptive `alt` text when the final media is supplied. The page already exposes semantic headings, metadata, JSON-LD, canonical URL, robots.txt, and sitemap.xml.
+5. Add licensed WebP/AVIF photos and videos with descriptive `alt` text when the final media is supplied. The page exposes semantic headings, metadata, Open Graph/Twitter previews, hreflang, Organization/Brand/SportsActivityLocation/FAQ JSON-LD, canonical URL, robots.txt, and sitemap.xml.

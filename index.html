@@ -48,6 +48,17 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"Wie schnell bekommen wir ein Angebot?","acceptedAnswer":{"@type":"Answer","text":"In der Regel innerhalb von 24 Stunden nach eurer Anfrage."}},
+    {"@type":"Question","name":"Für welche Teams eignet sich ein Trainingslager in Antalya?","acceptedAnswer":{"@type":"Answer","text":"Für Jugendteams, Amateurvereine, Seniorenteams, Akademien und Profimannschaften."}},
+    {"@type":"Question","name":"Können Sie Testspiele organisieren?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir organisieren passende lokale Gegner, Plätze und die zeitliche Abstimmung."}}
+  ]
+}
+</script>
 <script src="/site-config.js"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -215,6 +226,13 @@
   .service-icon { width: 34px; height: 34px; margin-bottom: 18px; color: var(--accent); }
   .service-card h3 { font-size: 20px; color: var(--text); margin-bottom: 8px; }
   .service-card p { font-size: 14.5px; }
+  .facility-grid, .proof-grid, .guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .facility-card, .proof-card, .guide-card { background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 26px; }
+  .facility-card h3, .proof-card h3, .guide-card h3 { font-size: 22px; color: var(--text); margin-bottom: 10px; }
+  .facility-card p, .proof-card p, .guide-card p { font-size: 14.5px; }
+  .proof-card strong { display: block; color: var(--accent-strong); font-size: 14px; margin-bottom: 8px; }
+  .guide-card a { display: inline-block; margin-top: 18px; color: var(--accent-strong); font-size: 14px; font-weight: 600; text-decoration: none; }
+  @media (max-width: 760px) { .facility-grid, .proof-grid, .guide-grid { grid-template-columns: 1fr; } }
 
   /* ---------- how it works ---------- */
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
@@ -318,6 +336,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#leistungen" data-i18n="nav.leistungen">Leistungen</a></li>
+      <li><a href="#anlagen">Anlagen &amp; Hotels</a></li>
       <li><a href="#teams" data-i18n="nav.teams">Teamkategorien</a></li>
       <li><a href="#ablauf" data-i18n="nav.ablauf">Ablauf</a></li>
       <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
@@ -424,6 +443,75 @@
         <h3 data-i18n="service.4.title">Transfer &amp; Logistik</h3>
         <p data-i18n="service.4.desc">Flughafentransfer und lokale Mobilität zwischen Hotel, Plätzen und Testspielen.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="anlagen">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Anlagen &amp; Hotels</span>
+      <h2>Kurze Wege. Klare Abläufe. Beste Bedingungen.</h2>
+      <p>Wir wählen Unterkunft und Trainingsumgebung passend zu eurem Team, eurem Budget und eurem Vorbereitungsziel.</p>
+    </div>
+    <div class="facility-grid">
+      <article class="facility-card">
+        <h3>Hotels für Teams</h3>
+        <p>Zimmeraufteilung, Voll- oder Halbpension und Besprechungsräume werden vorab auf eure Gruppe abgestimmt.</p>
+      </article>
+      <article class="facility-card">
+        <h3>Plätze in Trainingsqualität</h3>
+        <p>Rasen- und Kunstrasenplätze mit planbaren Slots, damit jede Einheit konzentriert und pünktlich stattfinden kann.</p>
+      </article>
+      <article class="facility-card">
+        <h3>Regeneration &amp; Medizin</h3>
+        <p>Gym, Recovery-Angebote und medizinische Betreuung können je nach Leistungsniveau und Bedarf ergänzt werden.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="testspiele">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Testspiele</span>
+      <h2>Der richtige Gegner für eure Vorbereitung</h2>
+      <p>Testspiele geben eurem Trainingslager einen sportlichen Abschluss. Wir suchen passende Gegner und koordinieren Termin, Platz und Ablauf.</p>
+    </div>
+    <div class="proof-grid">
+      <article class="proof-card"><strong>01 · Niveau</strong><h3>Passend statt beliebig</h3><p>Wir berücksichtigen Altersklasse, Spielniveau, Trainingsziel und gewünschte Intensität.</p></article>
+      <article class="proof-card"><strong>02 · Organisation</strong><h3>Alles aus einer Hand</h3><p>Spielpartner, Schiedsrichter, Platz und Transfer werden in euren Ablauf integriert.</p></article>
+      <article class="proof-card"><strong>03 · Ergebnis</strong><h3>Mehr als ein Freundschaftsspiel</h3><p>Ihr bekommt eine realistische Standortbestimmung und wertvolle Minuten unter Wettkampfbedingungen.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="referenzen">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Warum Antalya Camp</span>
+      <h2>Ein Ansprechpartner für die ganze Reise</h2>
+      <p>Von der ersten Anfrage bis zur Abreise bleibt die Organisation übersichtlich, persönlich und auf euren Trainingsalltag ausgerichtet.</p>
+    </div>
+    <div class="proof-grid">
+      <article class="proof-card"><strong>Für Trainer</strong><h3>Mehr Zeit für das Team</h3><p>Wir nehmen euch Hotel-, Platz- und Transferkoordination ab, damit ihr euch auf die Einheiten konzentriert.</p></article>
+      <article class="proof-card"><strong>Für Vorstände</strong><h3>Planbar kalkuliert</h3><p>Ihr erhaltet ein transparentes, individuelles Angebot mit Leistungen, Zeitplan und Ansprechpartner.</p></article>
+      <article class="proof-card"><strong>Für Teams</strong><h3>Eine Woche mit Struktur</h3><p>Training, Regeneration, Testspiele und gemeinsame Zeit werden zu einem stimmigen Camp-Plan verbunden.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="ratgeber">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Ratgeber für Vereine</span>
+      <h2>Gut vorbereitet ins Trainingslager</h2>
+      <p>Praktische Orientierung für Trainer, Teammanager und Vereinsverantwortliche, die ein Fußball-Trainingslager in Antalya planen.</p>
+    </div>
+    <div class="guide-grid">
+      <article class="guide-card"><h3>Trainingslager planen</h3><p>Welche Angaben wir für ein passendes Angebot brauchen: Teamgröße, Zeitraum, Ziele und gewünschte Services.</p><a href="#anfrage">Planung starten →</a></article>
+      <article class="guide-card"><h3>Die beste Reisezeit</h3><p>Antalya eignet sich besonders für Wintervorbereitung und Saisonpausen. Wir helfen bei Zeitraum, Belastung und Ablauf.</p><a href="#anfrage">Zeitraum anfragen →</a></article>
+      <article class="guide-card"><h3>Kosten im Blick behalten</h3><p>Hotelstandard, Nächte, Platzanzahl, Testspiele und Transfers bestimmen den Gesamtpreis. Ihr bekommt ein individuelles Angebot.</p><a href="#anfrage">Kosten kalkulieren →</a></article>
     </div>
   </div>
 </section>
