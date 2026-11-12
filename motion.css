@@ -409,31 +409,6 @@ textarea:focus {
   animation: motion-float 5s ease-in-out infinite;
 }
 
-.motion-spotlight {
-  position: fixed;
-  z-index: 20;
-  width: 280px;
-  height: 280px;
-  pointer-events: none;
-  border-radius: 50%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(211,159,38,.14), transparent 68%);
-  transition: opacity .35s ease;
-}
-
-.motion-trail {
-  position: fixed;
-  z-index: 19;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  pointer-events: none;
-  background: #d39f26;
-  box-shadow: 0 0 16px #d39f26;
-  transition: transform .18s ease-out, opacity .4s ease;
-}
-
 .motion-ripple {
   position: fixed;
   z-index: 30;
@@ -496,12 +471,6 @@ body main {
 }
 
 .hero .hero-copy { will-change: transform; }
-
-body.motion-ready .motion-spotlight { opacity: 1; }
-
-.motion-spotlight.pulse {
-  animation: motion-spotlight-pulse 1.1s ease-out;
-}
 
 .motion-section-active {
   position: relative;
@@ -597,11 +566,6 @@ body.motion-ready .motion-spotlight { opacity: 1; }
   background: linear-gradient(120deg, var(--accent), transparent 55%);
   filter: none;
   animation: none;
-}
-
-@keyframes motion-spotlight-pulse {
-  0% { opacity: .35; transform: translate(-50%, -50%) scale(.6); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.7); }
 }
 
 @keyframes motion-shine {
@@ -807,8 +771,7 @@ main > section .faq-q {
   }
 
   .motion-progress { display: none; }
-  .motion-spotlight { display: none; }
-  .motion-trail, .motion-ripple, .motion-marquee { display: none; }
+  .motion-ripple, .motion-marquee { display: none; }
   .motion-particle, .motion-confetti { display: none; }
   .motion-section-active::after { display: none; }
   main > section::before { display: none; }

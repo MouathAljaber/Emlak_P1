@@ -35,19 +35,6 @@
   var progress = document.createElement('div');
   progress.className = 'motion-progress';
   document.body.appendChild(progress);
-  var spotlight = document.createElement('div');
-  spotlight.className = 'motion-spotlight';
-  document.body.appendChild(spotlight);
-  var trails = [];
-  if (!reduceMotion) {
-    for (var trailIndex = 0; trailIndex < 7; trailIndex += 1) {
-      var trail = document.createElement('div');
-      trail.className = 'motion-trail';
-      trail.style.opacity = String(1 - trailIndex / 8);
-      document.body.appendChild(trail);
-      trails.push({ element: trail, x: 0, y: 0 });
-    }
-  }
   var revealItems = document.querySelectorAll(
     'main > section, .feature-card, .service-card, .step, .faq-item, .quote, .form-card, article'
   );
@@ -89,26 +76,6 @@
 
   if (!reduceMotion) {
     document.body.classList.add('motion-ready');
-    window.addEventListener('pointermove', function (event) {
-      spotlight.style.left = event.clientX + 'px';
-      spotlight.style.top = event.clientY + 'px';
-      trails[0].x = event.clientX;
-      trails[0].y = event.clientY;
-    }, { passive: true });
-    document.addEventListener('pointerdown', function () {
-      spotlight.classList.remove('pulse');
-      window.requestAnimationFrame(function () { spotlight.classList.add('pulse'); });
-    }, { passive: true });
-    function animateTrails() {
-      trails.forEach(function (trail, index) {
-        var target = index === 0 ? trails[0] : trails[index - 1];
-        trail.x += (target.x - trail.x) * .28;
-        trail.y += (target.y - trail.y) * .28;
-        trail.element.style.transform = 'translate(' + trail.x + 'px,' + trail.y + 'px) scale(' + (1 - index * .08) + ')';
-      });
-      requestAnimationFrame(animateTrails);
-    }
-    animateTrails();
 
     document.querySelectorAll('.hero-visual, .hero-art, .hero-card, [data-motion-card]').forEach(function (item) {
       item.addEventListener('pointermove', function (event) {
