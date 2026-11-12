@@ -921,3 +921,134 @@ main > section:not(.hero) .faq-item {
 @media (prefers-reduced-motion: reduce) {
   main > section:not(.hero) { background-attachment: scroll !important; }
 }
+
+/* Editorial sequence: image-led football sections alternate with clean reading sections. */
+main > section:not(.hero) {
+  background-image: none !important;
+  background-color: #fff !important;
+  background-attachment: scroll !important;
+}
+
+main > section:not(.hero)::after {
+  display: none;
+}
+
+main > section:not(.hero) .section-head h2,
+main > section:not(.hero) .section-head p,
+main > section:not(.hero) .section-head .tag,
+main > section:not(.hero) .proof-card h3,
+main > section:not(.hero) .proof-card p,
+main > section:not(.hero) .facility-card h3,
+main > section:not(.hero) .facility-card p,
+main > section:not(.hero) .guide-card h3,
+main > section:not(.hero) .guide-card p,
+main > section:not(.hero) .service-card h3,
+main > section:not(.hero) .service-card p,
+main > section:not(.hero) .roster-card h3,
+main > section:not(.hero) .roster-card p,
+main > section:not(.hero) .step h3,
+main > section:not(.hero) .step p,
+main > section:not(.hero) .faq-q,
+main > section:not(.hero) .faq-a p {
+  color: #12171d;
+  text-shadow: none;
+}
+
+main > section:not(.hero) .section-head p,
+main > section:not(.hero) .proof-card p,
+main > section:not(.hero) .facility-card p,
+main > section:not(.hero) .guide-card p,
+main > section:not(.hero) .service-card p,
+main > section:not(.hero) .roster-card p,
+main > section:not(.hero) .step p,
+main > section:not(.hero) .faq-a p {
+  color: #4b5660;
+}
+
+main > section:not(.hero) .proof-card,
+main > section:not(.hero) .facility-card,
+main > section:not(.hero) .guide-card,
+main > section:not(.hero) .service-card,
+main > section:not(.hero) .roster-card,
+main > section:not(.hero) .step,
+main > section:not(.hero) .form-card,
+main > section:not(.hero) .faq-item {
+  background: #fff !important;
+  border-color: var(--line);
+  backdrop-filter: none;
+}
+
+/* Training story: team -> service -> facility -> match. */
+#teams {
+  background-image:
+    linear-gradient(90deg, rgba(10,25,18,.62), rgba(10,25,18,.18)),
+    url("https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=2200&q=88") !important;
+  background-color: #173326 !important;
+}
+
+#leistungen {
+  background-image:
+    linear-gradient(90deg, rgba(10,25,18,.58), rgba(10,25,18,.16)),
+    url("https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=2200&q=88") !important;
+  background-color: #173326 !important;
+}
+
+#anlagen {
+  background-image:
+    linear-gradient(90deg, rgba(10,25,18,.58), rgba(10,25,18,.16)),
+    url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=2200&q=88") !important;
+  background-color: #173326 !important;
+}
+
+#testspiele {
+  background-image:
+    linear-gradient(90deg, rgba(10,25,18,.62), rgba(10,25,18,.18)),
+    url("https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=2200&q=88") !important;
+  background-color: #173326 !important;
+}
+
+/* These sections are deliberately clean: they carry reading, process and conversion. */
+#referenzen,
+#ratgeber,
+#ablauf,
+#anfrage,
+#faq,
+#explore {
+  background-image: none !important;
+  background-color: #fff !important;
+}
+
+#referenzen,
+#ratgeber,
+#anfrage,
+#explore {
+  background-color: #f6f6f3 !important;
+}
+
+#teams .section-head h2,
+#teams .section-head p,
+#teams .section-head .tag,
+#leistungen .section-head h2,
+#leistungen .section-head p,
+#leistungen .section-head .tag,
+#anlagen .section-head h2,
+#anlagen .section-head p,
+#anlagen .section-head .tag,
+#testspiele .section-head h2,
+#testspiele .section-head p,
+#testspiele .section-head .tag {
+  color: #fff;
+  text-shadow: 0 2px 14px rgba(0,0,0,.62);
+}
+
+#teams .roster-card,
+#leistungen .service-card,
+#anlagen .facility-card,
+#testspiele .proof-card {
+  background: rgba(255,255,255,.95) !important;
+}
+
+#anfrage .form-card,
+#faq .faq-item {
+  background: #fff !important;
+}
