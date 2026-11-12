@@ -54,6 +54,9 @@ app.get('/sitemap.xml', (_req, res) => {
     '/amateur-football-camp-turkey/', '/professional-football-camp-turkey/',
     '/football-camp-europe/', '/about-us/', '/faq/', '/contact/', '/imprint/',
     '/privacy-policy/', '/cookie-policy/', '/references/'
+    ,'/trainingslager-antalya/', '/fussball-trainingslager-tuerkei/',
+    '/jugend-trainingslager-antalya/', '/vereins-trainingslager/',
+    '/trainingslager-kosten/', '/trainingslager-checkliste/'
   ];
   const urls = paths.map((route, index) => {
     const priority = index === 0 ? '1.0' : '0.8';
