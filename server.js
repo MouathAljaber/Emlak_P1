@@ -46,7 +46,8 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '32kb' }));
 app.get('/site-config.js', (_req, res) => {
   res.type('application/javascript').send(
-    `window.SITE_CONFIG=${JSON.stringify({
+    `/* Set GA4_MEASUREMENT_ID and GOOGLE_SITE_VERIFICATION in the deployment environment. */
+window.SITE_CONFIG=${JSON.stringify({
       siteUrl: SITE_URL,
       ga4MeasurementId: process.env.GA4_MEASUREMENT_ID || '',
       googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION || ''
@@ -71,21 +72,28 @@ app.get('/sitemap.xml', (_req, res) => {
     '/football-team-building/', '/football-pitches-antalya/', '/football-recovery-camp/',
     '/airport-transfers-antalya/', '/youth-football-camp-turkey/',
     '/amateur-football-camp-turkey/', '/professional-football-camp-turkey/',
-    '/football-camp-europe/', '/about-us/', '/faq/', '/contact/', '/imprint/',
-    '/privacy-policy/', '/cookie-policy/', '/references/'
+    '/football-camp-europe/', '/about-us/', '/faq/', '/contact/'
     ,'/trainingslager-antalya/', '/fussball-trainingslager-tuerkei/',
     '/jugend-trainingslager-antalya/', '/vereins-trainingslager/',
     '/trainingslager-kosten/', '/trainingslager-checkliste/'
   ];
   const urls = paths.map((route, index) => {
     const priority = index === 0 ? '1.0' : '0.8';
-    return `<url><loc>${siteUrl}${route}</loc><changefreq>weekly</changefreq><priority>${priority}</priority></url>`;
+    return `<url><loc>${siteUrl}${route}</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>${priority}</priority></url>`;
   }).join('');
   res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`);
 });
 app.get('/404', (_req, res) => {
   res.status(404).sendFile(path.join(__dirname, '404.html'));
+});
+
+app.use((req, res, next) => {
+  if (req.path.endsWith('/index.html')) {
+    const target = req.path.slice(0, -'index.html'.length) || '/';
+    return res.redirect(301, `${target}${req.url.slice(req.path.length)}`);
+  }
+  next();
 });
 
 app.use(express.static(__dirname, { extensions: ['html'] }));
