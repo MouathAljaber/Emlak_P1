@@ -5,33 +5,6 @@
 body {
   position: relative;
   overflow-x: hidden;
-  background-image:
-    radial-gradient(circle at 8% 18%, rgba(211,159,38,.08), transparent 22rem),
-    radial-gradient(circle at 92% 78%, rgba(47,109,79,.08), transparent 24rem);
-  background-attachment: fixed;
-}
-
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  z-index: -1;
-  width: 28rem;
-  height: 28rem;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: .08;
-  filter: blur(4px);
-  background: radial-gradient(circle, var(--pitch), transparent 68%);
-  animation: motion-orbit 18s ease-in-out infinite alternate;
-}
-
-body::before { top: 12%; right: -16rem; }
-body::after {
-  bottom: 4%;
-  left: -16rem;
-  background: radial-gradient(circle, var(--accent), transparent 68%);
-  animation-delay: -7s;
 }
 
 main > section {
@@ -41,8 +14,7 @@ main > section {
   background-color: var(--bg);
   background-size: cover;
   background-position: center;
-  animation: motion-section-pan 24s ease-in-out infinite alternate;
-  transition: background-position 1.2s ease, box-shadow .6s ease;
+  transition: box-shadow .6s ease;
 }
 
 main > section > .wrap {
@@ -62,7 +34,6 @@ main > section::after {
 }
 
 main > section.motion-section-active {
-  background-position: 54% 46%;
   box-shadow: inset 0 0 90px rgba(47,109,79,.08);
 }
 
@@ -126,7 +97,7 @@ main > section.motion-section-active::after {
   opacity: .06;
   background: linear-gradient(120deg, var(--accent), transparent 55%);
   filter: none;
-  animation: motion-hero-wash 8s ease-in-out infinite alternate;
+  animation: none;
 }
 
 .nav-links a,
@@ -274,7 +245,6 @@ main > section::before {
 main > section:nth-of-type(even)::before {
   right: auto;
   left: -9rem;
-  animation-delay: -5s;
 }
 
 .feature-card,
@@ -353,7 +323,6 @@ textarea:focus {
   filter: blur(2px);
   opacity: .14;
   background: radial-gradient(circle, #d39f26, transparent 68%);
-  animation: motion-orbit 12s ease-in-out infinite alternate;
 }
 
 .hero::before { top: -10rem; right: -7rem; }
@@ -590,66 +559,6 @@ body main {
 @keyframes motion-hero-wash {
   from { opacity: .04; transform: translateX(-2%) scale(1); }
   to { opacity: .14; transform: translateX(2%) scale(1.05); }
-}
-
-@keyframes motion-section-pan {
-  from { background-position: 46% 50%; }
-  to { background-position: 54% 46%; }
-}
-
-/* Keep the homepage visually connected: one football setting, different crops. */
-main > section:not(.hero) {
-  background-image:
-    linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,255,255,.7)),
-    url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=2200&q=85") !important;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-main > section#teams:not(.hero) {
-  background-position: 0% 50%;
-}
-
-main > section#leistungen:not(.hero) {
-  background-position: 14% 50%;
-}
-
-main > section#anlagen:not(.hero) {
-  background-position: 28% 50%;
-}
-
-main > section#testspiele:not(.hero) {
-  background-position: 42% 50%;
-}
-
-main > section#referenzen:not(.hero) {
-  background-position: 56% 50%;
-}
-
-main > section#ratgeber:not(.hero) {
-  background-position: 68% 50%;
-}
-
-main > section#ablauf:not(.hero) {
-  background-position: 78% 50%;
-}
-
-main > section#anfrage:not(.hero) {
-  background-position: 87% 50%;
-}
-
-main > section#faq:not(.hero) {
-  background-position: 94% 50%;
-}
-
-main > section#explore:not(.hero) {
-  background-position: 100% 50%;
-}
-
-main > section.motion-section-active:not(.hero) {
-  background-image:
-    linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,.66)),
-    url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=2200&q=85") !important;
 }
 
 main > section:not(.hero) .section-head,
