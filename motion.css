@@ -1740,6 +1740,39 @@ body > section#ansprechpartner {
   outline-offset: 3px;
 }
 
+.field-error {
+  display: block;
+  margin-top: 6px;
+  color: #9b2c2c;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.field input.invalid,
+.field select.invalid,
+.field textarea.invalid {
+  border-color: #9b2c2c !important;
+  box-shadow: 0 0 0 3px rgba(155,44,44,.12);
+}
+
+.form-summary {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 24px;
+  padding: 16px 18px;
+  border-left: 3px solid var(--pitch);
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.form-summary strong {
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 15px;
+}
+
 @media (max-width: 700px) {
   .form-progress-text { margin-inline: 22px; }
 }

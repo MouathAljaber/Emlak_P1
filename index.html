@@ -25,6 +25,7 @@
 <link rel="alternate" hreflang="en" href="https://trainingslager-antalya.de/">
 <link rel="alternate" hreflang="x-default" href="https://trainingslager-antalya.de/">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<!-- TODO: Add FAQPage entries for the six placeholder questions only after verified answers are visible. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -719,6 +720,7 @@
           <div class="form-step" data-step="5">
             <h3 data-i18n="step5.title">Fast geschafft</h3>
             <p class="step-intro" data-i18n="step5.intro">Noch eine kurze Nachricht an uns, dann könnt ihr absenden.</p>
+            <div class="form-summary" id="formSummary" aria-live="polite"></div>
             <div class="field"><label for="message" data-i18n="step5.message">Nachricht</label><textarea id="message" name="message" data-i18n-ph="step5.message.ph" placeholder="Gibt es sonst noch etwas, das wir wissen sollten?"></textarea></div>
             <div class="gdpr-row" style="margin-top:22px;">
               <input type="checkbox" id="gdpr" required>
@@ -753,21 +755,45 @@
     </div>
     <div id="faqList">
       <div class="faq-item">
-        <button class="faq-q"><span data-i18n="faq.1.q">Wie schnell bekommen wir ein Angebot?</span><span class="plus">+</span></button>
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq.1.q">Wie schnell bekommen wir ein Angebot?</span><span class="plus">+</span></button>
         <div class="faq-a"><p data-i18n="faq.1.a">In der Regel innerhalb von 24 Stunden nach eurer Anfrage. Bei komplexeren Anfragen melden wir uns zunächst kurz für Rückfragen.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span data-i18n="faq.2.q">Für welche Teamgrößen eignet sich ein Trainingslager?</span><span class="plus">+</span></button>
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq.2.q">Für welche Teamgrößen eignet sich ein Trainingslager?</span><span class="plus">+</span></button>
         <div class="faq-a"><p data-i18n="faq.2.a">Von kleinen Jugendkadern bis zu kompletten Profikadern mit Staff — die Infrastruktur wird passend zur Gruppengröße ausgewählt.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span data-i18n="faq.3.q">Könnt ihr auch Testspiele organisieren?</span><span class="plus">+</span></button>
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq.3.q">Könnt ihr auch Testspiele organisieren?</span><span class="plus">+</span></button>
         <div class="faq-a"><p data-i18n="faq.3.a">Ja, wir vermitteln passende Testspielgegner vor Ort entsprechend eurem Niveau und Terminwunsch.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q"><span data-i18n="faq.4.q">Was passiert mit unseren Daten aus dem Formular?</span><span class="plus">+</span></button>
+        <button class="faq-q" aria-expanded="false"><span data-i18n="faq.4.q">Was passiert mit unseren Daten aus dem Formular?</span><span class="plus">+</span></button>
         <div class="faq-a"><p data-i18n="faq.4.a">Eure Angaben werden ausschließlich zur Bearbeitung der Anfrage verwendet und DSGVO-konform gespeichert. Details in der Datenschutzerklärung.</p></div>
       </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.5.q">Was kostet ein Trainingslager?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.5.a">[[TODO: Antwort zu Preisen nach Freigabe ergänzen.]]</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.6.q">Wie organisieren wir die Flüge?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.6.a">[[TODO: Verbindliche Information zu Flugoptionen ergänzen.]]</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.7.q">Welche Versicherung brauchen wir?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.7.a">[[TODO: Versicherungsinformationen nach rechtlicher Prüfung ergänzen.]]</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.8.q">Gibt es Verpflegung für Jugendteams?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.8.a">[[TODO: Verpflegungsdetails für Jugendteams ergänzen.]]</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.9.q">Wie sind Sicherheit und Betreuung geregelt?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.9.a">[[TODO: Geprüfte Angaben zu Sicherheit und Betreuung ergänzen.]]</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.10.q">Wie funktioniert eine Stornierung?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p data-i18n="faq.10.a">[[TODO: Stornierungsbedingungen nach Freigabe ergänzen.]]</p></div>
+        </div>
     </div>
   </div>
 </section>
@@ -931,6 +957,7 @@
       "chip.5": "Testspiele", "chip.6": "Flughafentransfer", "chip.7": "Lokaler Transport",
       "step4.extras": "Sonstige Wünsche", "step4.extras.ph": "z. B. besondere Ernährung, medizinische Betreuung...",
       "step5.title": "Fast geschafft", "step5.intro": "Noch eine kurze Nachricht an uns, dann könnt ihr absenden.",
+      "summary.title": "Eure Angaben", "summary.club": "Verein", "summary.team": "Team", "summary.group": "Gruppe", "summary.trip": "Reise", "summary.services": "Leistungen", "summary.players": "Spieler", "summary.staff": "Staff", "summary.nights": "Nächte",
       "step5.message": "Nachricht", "step5.message.ph": "Gibt es sonst noch etwas, das wir wissen sollten?",
       "step5.gdpr": "Ich stimme zu, dass meine Angaben zur Bearbeitung dieser Anfrage gespeichert werden. Mehr dazu in der <a href=\"#\">Datenschutzerklärung</a>.",
       "success.title": "Anfrage gesendet", "success.text": "Danke! Wir melden uns innerhalb von 24 Stunden mit einem individuellen Angebot für euer Trainingslager.",
@@ -940,6 +967,13 @@
       "faq.2.q": "Für welche Teamgrößen eignet sich ein Trainingslager?", "faq.2.a": "Von kleinen Jugendkadern bis zu kompletten Profikadern mit Staff — die Infrastruktur wird passend zur Gruppengröße ausgewählt.",
       "faq.3.q": "Könnt ihr auch Testspiele organisieren?", "faq.3.a": "Ja, wir vermitteln passende Testspielgegner vor Ort entsprechend eurem Niveau und Terminwunsch.",
       "faq.4.q": "Was passiert mit unseren Daten aus dem Formular?", "faq.4.a": "Eure Angaben werden ausschließlich zur Bearbeitung der Anfrage verwendet und DSGVO-konform gespeichert. Details in der Datenschutzerklärung.",
+      "faq.5.q": "Was kostet ein Trainingslager?", "faq.5.a": "[[TODO: Antwort zu Preisen nach Freigabe ergänzen.]]",
+      "faq.6.q": "Wie organisieren wir die Flüge?", "faq.6.a": "[[TODO: Verbindliche Information zu Flugoptionen ergänzen.]]",
+      "faq.7.q": "Welche Versicherung brauchen wir?", "faq.7.a": "[[TODO: Versicherungsinformationen nach rechtlicher Prüfung ergänzen.]]",
+      "faq.8.q": "Gibt es Verpflegung für Jugendteams?", "faq.8.a": "[[TODO: Verpflegungsdetails für Jugendteams ergänzen.]]",
+      "faq.9.q": "Wie sind Sicherheit und Betreuung geregelt?", "faq.9.a": "[[TODO: Geprüfte Angaben zu Sicherheit und Betreuung ergänzen.]]",
+      "faq.10.q": "Wie funktioniert eine Stornierung?", "faq.10.a": "[[TODO: Stornierungsbedingungen nach Freigabe ergänzen.]]",
+      "errors.required": "Bitte füllt dieses Feld aus.", "errors.email": "Bitte gebt eine gültige E-Mail-Adresse ein.", "errors.number": "Bitte gebt eine gültige Zahl ein.",
       "footer.tagline": "Trainingslager für Fußballvereine und -teams in Antalya, Türkei.",
       "footer.statesTitle": "Trainingslager nach Teamart", "footer.emlakProduct": "AntalyaCamp ist ein Produkt der Emlak AG",
       "footer.sister": "Sucht ihr ein Familien- oder Jugendcamp statt Vereinstraining?",
@@ -1000,6 +1034,7 @@
       "chip.5": "Test matches", "chip.6": "Airport transfer", "chip.7": "Local transport",
       "step4.extras": "Other requests", "step4.extras.ph": "e.g. special diet, medical support...",
       "step5.title": "Almost done", "step5.intro": "One more short message, then you can submit.",
+      "summary.title": "Your details", "summary.club": "Club", "summary.team": "Team", "summary.group": "Group", "summary.trip": "Trip", "summary.services": "Services", "summary.players": "players", "summary.staff": "staff", "summary.nights": "nights",
       "step5.message": "Message", "step5.message.ph": "Anything else we should know?",
       "step5.gdpr": "I agree that my details will be stored to process this request. More in the <a href=\"#\">privacy policy</a>.",
       "success.title": "Request sent", "success.text": "Thanks! We'll get back to you within 24 hours with a tailored offer for your training camp.",
@@ -1009,6 +1044,13 @@
       "faq.2.q": "What team sizes are training camps suitable for?", "faq.2.a": "From small youth squads to full professional squads with staff — the infrastructure is matched to your group size.",
       "faq.3.q": "Can you also organise test matches?", "faq.3.a": "Yes, we arrange suitable local opponents matched to your level and schedule.",
       "faq.4.q": "What happens to the data from the form?", "faq.4.a": "Your details are used solely to process the request and stored in compliance with GDPR. See the privacy policy for details.",
+      "faq.5.q": "What does a training camp cost?", "faq.5.a": "[[TODO: Add approved pricing information.]]",
+      "faq.6.q": "How do we organise flights?", "faq.6.a": "[[TODO: Add verified flight information.]]",
+      "faq.7.q": "Which insurance do we need?", "faq.7.a": "[[TODO: Add legally reviewed insurance information.]]",
+      "faq.8.q": "Is catering available for youth teams?", "faq.8.a": "[[TODO: Add catering details for youth teams.]]",
+      "faq.9.q": "How are safety and supervision handled?", "faq.9.a": "[[TODO: Add verified safety and supervision details.]]",
+      "faq.10.q": "How does cancellation work?", "faq.10.a": "[[TODO: Add approved cancellation terms.]]",
+      "errors.required": "Please complete this field.", "errors.email": "Please enter a valid email address.", "errors.number": "Please enter a valid number.",
       "footer.tagline": "Football training camps for clubs and teams in Antalya, Turkey.",
       "footer.statesTitle": "Training camps by team type", "footer.emlakProduct": "AntalyaCamp is a product of Emlak AG",
       "footer.sister": "Looking for a family or youth camp instead of club training?",
@@ -1079,14 +1121,51 @@
     if (progressText) progressText.textContent = currentLang === 'de'
       ? 'Schritt ' + current + ' von ' + total
       : 'Step ' + current + ' of ' + total;
+    const summary = document.getElementById('formSummary');
+    if (summary && current === total) {
+      const data = collectFormData();
+      summary.innerHTML = '';
+      const heading = document.createElement('strong');
+      heading.textContent = dict[currentLang]['summary.title'];
+      summary.appendChild(heading);
+      [
+        [dict[currentLang]['summary.club'], data.clubName],
+        [dict[currentLang]['summary.team'], data.teamType],
+        [dict[currentLang]['summary.group'], [data.players && `${data.players} ${dict[currentLang]['summary.players']}`, data.staff && `${data.staff} ${dict[currentLang]['summary.staff']}`].filter(Boolean).join(' · ')],
+        [dict[currentLang]['summary.trip'], [data.dates, data.nights && `${data.nights} ${dict[currentLang]['summary.nights']}`].filter(Boolean).join(' · ')],
+        [dict[currentLang]['summary.services'], data.services.join(', ')]
+      ].forEach(([label, value]) => {
+        const row = document.createElement('span');
+        row.textContent = `${label}: ${value || '—'}`;
+        summary.appendChild(row);
+      });
+    }
     updateNextBtnLabel();
   }
 
   function currentStepValid() {
     const stepEl = steps.find(s => Number(s.dataset.step) === current);
     const required = stepEl.querySelectorAll('[required]');
+    stepEl.querySelectorAll('.field-error').forEach(error => error.remove());
+    stepEl.querySelectorAll('[aria-invalid="true"]').forEach(field => {
+      field.removeAttribute('aria-invalid');
+      field.classList.remove('invalid');
+    });
     for (const el of required) {
-      if (!el.checkValidity()) { el.reportValidity(); return false; }
+      let errorKey = '';
+      if (el.type === 'checkbox' ? !el.checked : !el.value.trim()) errorKey = 'errors.required';
+      else if (el.type === 'email' && !el.validity.valid) errorKey = 'errors.email';
+      else if (el.type === 'number' && !el.validity.valid) errorKey = 'errors.number';
+      if (errorKey) {
+        el.setAttribute('aria-invalid', 'true');
+        el.classList.add('invalid');
+        const error = document.createElement('span');
+        error.className = 'field-error';
+        error.textContent = dict[currentLang][errorKey];
+        el.parentElement.appendChild(error);
+        el.focus();
+        return false;
+      }
     }
     return true;
   }
@@ -1192,7 +1271,15 @@
 
   restoreFormProgress();
   render();
-  form.addEventListener('input', saveFormProgress);
+  form.addEventListener('input', event => {
+    if (event.target.matches('[aria-invalid="true"]') && event.target.validity.valid && event.target.value.trim()) {
+      event.target.removeAttribute('aria-invalid');
+      event.target.classList.remove('invalid');
+      const error = event.target.parentElement.querySelector('.field-error');
+      if (error) error.remove();
+    }
+    saveFormProgress();
+  });
   form.addEventListener('change', saveFormProgress);
 
   // Service chip toggles
@@ -1234,8 +1321,14 @@
   document.querySelectorAll('.faq-item').forEach(item => {
     item.querySelector('.faq-q').addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-q').setAttribute('aria-expanded', 'true');
+      }
     });
   });
 </script>
