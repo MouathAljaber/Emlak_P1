@@ -77,12 +77,17 @@ app.get('/sitemap.xml', (_req, res) => {
     '/jugend-trainingslager-antalya/', '/vereins-trainingslager/',
     '/trainingslager-kosten/', '/trainingslager-checkliste/'
   ];
+  paths.push(...paths.filter((route) => route !== '/en/' && !route.startsWith('/en/'))
+    .map((route) => route === '/' ? '/en/' : `/en${route}`));
   const urls = paths.map((route, index) => {
     const priority = index === 0 ? '1.0' : '0.8';
-    return `<url><loc>${siteUrl}${route}</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>${priority}</priority></url>`;
+    const alternates = route === '/' || route === '/en/'
+      ? `<xhtml:link rel="alternate" hreflang="de" href="${siteUrl}/"/><xhtml:link rel="alternate" hreflang="en" href="${siteUrl}/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="${siteUrl}/"/>`
+      : '';
+    return `<url><loc>${siteUrl}${route}</loc><lastmod>2026-11-16</lastmod>${alternates}<changefreq>weekly</changefreq><priority>${priority}</priority></url>`;
   }).join('');
   res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`);
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${urls}</urlset>`);
 });
 app.get('/404', (_req, res) => {
   res.status(404).sendFile(path.join(__dirname, '404.html'));
