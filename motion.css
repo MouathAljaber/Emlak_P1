@@ -1264,3 +1264,185 @@ body > section#anfrage textarea {
   .hero .hero-sub { font-size: 16px; max-width: 100%; }
   .hero .hero-panel { margin-top: 6px; }
 }
+
+/* Refined facilities and FAQ layouts. */
+body > section#anlagen {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(33,80,57,.98), rgba(25,62,44,.96)),
+    radial-gradient(circle at 85% 20%, rgba(211,159,38,.22), transparent 28%);
+}
+
+body > section#anlagen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .14;
+  background:
+    linear-gradient(90deg, transparent 49.8%, #fff 50%, transparent 50.2%),
+    linear-gradient(0deg, transparent 49.8%, #fff 50%, transparent 50.2%);
+  background-size: 150px 100%, 100% 150px;
+  transform: perspective(500px) rotateX(55deg) scale(1.7);
+  transform-origin: center bottom;
+}
+
+body > section#anlagen .section-head {
+  max-width: 720px;
+  margin-bottom: 38px;
+}
+
+body > section#anlagen .section-head .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  color: #f4c95d !important;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body > section#anlagen .section-head h2 {
+  max-width: 650px;
+  margin-top: 18px;
+  color: #fff !important;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: .98;
+  text-shadow: 0 3px 18px rgba(0,0,0,.24);
+}
+
+body > section#anlagen .section-head p {
+  max-width: 590px;
+  color: rgba(255,255,255,.78) !important;
+}
+
+body > section#anlagen .facility-grid {
+  gap: 18px;
+}
+
+body > section#anlagen .facility-card {
+  position: relative;
+  min-height: 235px;
+  padding: 30px 28px 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.62);
+  border-radius: 18px;
+  background: rgba(255,255,255,.96) !important;
+  box-shadow: 0 18px 34px rgba(7,28,18,.2);
+}
+
+body > section#anlagen .facility-card::before {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 28px;
+  border-radius: 12px;
+  background: var(--accent-strong);
+  color: #f4c95d;
+  font: 600 18px/1 'Barlow Condensed', sans-serif;
+}
+
+body > section#anlagen .facility-card:nth-child(1)::before { content: "01"; }
+body > section#anlagen .facility-card:nth-child(2)::before { content: "02"; }
+body > section#anlagen .facility-card:nth-child(3)::before { content: "03"; }
+
+body > section#anlagen .facility-card h3 {
+  margin-bottom: 10px;
+  color: #173326 !important;
+  font-size: 24px;
+}
+
+body > section#anlagen .facility-card p {
+  color: #5b6570 !important;
+  line-height: 1.65;
+}
+
+body > section#faq {
+  background: #f6f6f3 !important;
+}
+
+body > section#faq .section-head {
+  max-width: 720px;
+  margin-bottom: 30px;
+}
+
+body > section#faq .section-head .tag {
+  color: var(--accent-strong) !important;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body > section#faq .section-head h2 {
+  margin-top: 10px;
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1;
+}
+
+body > section#faq #faqList {
+  max-width: 900px;
+  border-top: 1px solid rgba(15,20,15,.12);
+}
+
+body > section#faq .faq-item {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid rgba(15,20,15,.12);
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent !important;
+}
+
+body > section#faq .faq-q {
+  min-height: 78px;
+  padding: 21px 4px;
+  color: #12171d !important;
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 600;
+  transition: color .25s ease, padding .25s ease;
+}
+
+body > section#faq .faq-q:hover,
+body > section#faq .faq-item.open .faq-q {
+  color: var(--accent-strong) !important;
+}
+
+body > section#faq .faq-q .plus {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid rgba(47,109,79,.28);
+  border-radius: 50%;
+  color: var(--accent-strong);
+  font-size: 21px;
+  line-height: 1;
+  transition: transform .25s ease, background .25s ease, color .25s ease;
+}
+
+body > section#faq .faq-item.open .faq-q .plus {
+  background: var(--accent-strong);
+  color: #fff;
+}
+
+body > section#faq .faq-a p {
+  max-width: 680px;
+  padding: 0 56px 24px 4px;
+  color: #5b6570 !important;
+  line-height: 1.7;
+}
+
+@media (max-width: 720px) {
+  body > section#anlagen .facility-card { min-height: 0; }
+  body > section#anlagen .section-head h2,
+  body > section#faq .section-head h2 { font-size: 40px; }
+  body > section#faq .faq-q { min-height: 70px; padding-inline: 0; }
+  body > section#faq .faq-a p { padding-inline: 0 38px; }
+}
