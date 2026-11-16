@@ -16,22 +16,93 @@
   topButton.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   });
+  var mobileToggle = document.getElementById('mobileMenuToggle');
+  var mobilePanel = document.getElementById('mobileMenuPanel');
+  if (mobileToggle && mobilePanel) {
+    var closeMobileMenu = function () {
+      mobilePanel.hidden = true;
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      mobileToggle.setAttribute('aria-label', 'Menü öffnen');
+    };
+    var openMobileMenu = function () {
+      mobilePanel.hidden = false;
+      mobileToggle.setAttribute('aria-expanded', 'true');
+      mobileToggle.setAttribute('aria-label', 'Menü schließen');
+      var firstLink = mobilePanel.querySelector('a, button');
+      if (firstLink) firstLink.focus();
+    };
+    mobileToggle.addEventListener('click', function () {
+      if (mobilePanel.hidden) openMobileMenu();
+      else closeMobileMenu();
+    });
+    mobilePanel.addEventListener('click', function (event) {
+      if (event.target.closest('a')) closeMobileMenu();
+    });
+    document.addEventListener('click', function (event) {
+      if (!mobilePanel.hidden && !mobilePanel.contains(event.target) && event.target !== mobileToggle) closeMobileMenu();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (mobilePanel.hidden) return;
+      if (event.key === 'Escape') {
+        closeMobileMenu();
+        mobileToggle.focus();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      var focusable = Array.from(mobilePanel.querySelectorAll('a, button')).filter(function (item) {
+        return !item.hasAttribute('disabled');
+      });
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+  }
   var velocity = document.createElement('div');
   velocity.className = 'motion-velocity';
   document.body.appendChild(velocity);
   if (!reduceMotion) {
     var lastScroll = window.scrollY;
     var velocityTimer;
-    for (var particleIndex = 0; particleIndex < 16; particleIndex += 1) {
+    var particleHost = document.querySelector('.hero');
+    for (var particleIndex = 0; particleHost && particleIndex < 8; particleIndex += 1) {
       var particle = document.createElement('span');
       particle.className = 'motion-particle';
       particle.style.left = (5 + Math.random() * 90) + '%';
-      particle.style.top = (55 + Math.random() * 45) + '%';
+      particle.style.top = (12 + Math.random() * 72) + '%';
       particle.style.animationDelay = (-Math.random() * 9) + 's';
       particle.style.animationDuration = (7 + Math.random() * 6) + 's';
-      document.body.appendChild(particle);
+      particleHost.appendChild(particle);
     }
   }
+  var mobileCta = document.getElementById('mobileCta');
+  var cookieBanner = document.getElementById('cookieBanner');
+  var enquirySection = document.getElementById('anfrage');
+  var heroSection = document.querySelector('.hero');
+  var enquiryVisible = false;
+  var updateMobileCta = function () {
+    if (!mobileCta || !heroSection || !enquirySection) return;
+    var shouldShow = window.innerWidth <= 860 &&
+      window.scrollY > heroSection.offsetTop + heroSection.offsetHeight * .65 &&
+      !enquiryVisible &&
+      (!cookieBanner || cookieBanner.hidden);
+    mobileCta.hidden = !shouldShow;
+  };
+  if (mobileCta && enquirySection && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      enquiryVisible = entries.some(function (entry) { return entry.isIntersecting; });
+      updateMobileCta();
+    }, { threshold: .12 }).observe(enquirySection);
+  }
+  window.addEventListener('scroll', updateMobileCta, { passive: true });
+  window.addEventListener('resize', updateMobileCta, { passive: true });
+  updateMobileCta();
   var progress = document.createElement('div');
   progress.className = 'motion-progress';
   document.body.appendChild(progress);
@@ -122,6 +193,7 @@
       var nav = document.querySelector('.nav');
       if (nav) nav.classList.toggle('motion-compact', window.scrollY > 24);
       topButton.classList.toggle('visible', window.scrollY > window.innerHeight * .7);
+      updateMobileCta();
       var scrollable = document.documentElement.scrollHeight - window.innerHeight;
       progress.style.width = (scrollable ? window.scrollY / scrollable * 100 : 0) + '%';
       if (Math.abs(window.scrollY - lastScroll) > 10) {

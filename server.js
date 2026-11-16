@@ -10,6 +10,8 @@ import mysql from 'mysql2/promise';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const port = Number(process.env.PORT || 3000);
+const SITE_URL = 'https://trainingslager-antalya.de';
+const productionHosts = new Set(['trainingslager-antalya.de', 'www.trainingslager-antalya.de']);
 const pool = mysql.createPool({
   host: process.env.MYSQL_HOST || '127.0.0.1',
   port: Number(process.env.MYSQL_PORT || 3306),
@@ -24,12 +26,28 @@ const services = new Set([
   'Testspiele', 'Flughafentransfer', 'Lokaler Transport'
 ]);
 
-app.use(helmet({ contentSecurityPolicy: false }));
+app.set('trust proxy', true);
+app.use(helmet({
+  contentSecurityPolicy: false,
+  referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+  permittedCrossDomainPolicies: false
+}));
+app.use((req, res, next) => {
+  const host = (req.hostname || '').toLowerCase();
+  if (host === 'www.trainingslager-antalya.de') {
+    return res.redirect(301, `${SITE_URL}${req.originalUrl}`);
+  }
+  if (!productionHosts.has(host)) {
+    res.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+  res.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  next();
+});
 app.use(express.json({ limit: '32kb' }));
 app.get('/site-config.js', (_req, res) => {
   res.type('application/javascript').send(
     `window.SITE_CONFIG=${JSON.stringify({
-      siteUrl: process.env.PUBLIC_SITE_URL || 'http://localhost:3000',
+      siteUrl: SITE_URL,
       ga4MeasurementId: process.env.GA4_MEASUREMENT_ID || '',
       googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION || ''
     })};`
@@ -38,11 +56,12 @@ app.get('/site-config.js', (_req, res) => {
 app.get('/robots.txt', (_req, res) => {
   res.type('text/plain').send(`User-agent: *
 Allow: /
-Sitemap: ${(process.env.PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '')}/sitemap.xml
+Disallow: /api/
+Sitemap: ${SITE_URL}/sitemap.xml
 `);
 });
 app.get('/sitemap.xml', (_req, res) => {
-  const siteUrl = (process.env.PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+  const siteUrl = SITE_URL;
   const paths = [
     '/', '/youth-teams/', '/amateur-clubs/', '/professional-teams/',
     '/senior-teams/', '/football-academies/', '/services/', '/how-it-works/',
@@ -65,7 +84,15 @@ app.get('/sitemap.xml', (_req, res) => {
   res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`);
 });
+app.get('/404', (_req, res) => {
+  res.status(404).sendFile(path.join(__dirname, '404.html'));
+});
+
 app.use(express.static(__dirname, { extensions: ['html'] }));
+
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, '404.html'));
+});
 
 function requiredString(value, field, max = 500) {
   if (typeof value !== 'string' || value.trim().length === 0) {

@@ -1446,3 +1446,82 @@ body > section#faq .faq-a p {
   body > section#faq .faq-q { min-height: 70px; padding-inline: 0; }
   body > section#faq .faq-a p { padding-inline: 0 38px; }
 }
+
+@media (max-width: 860px) {
+  header:has(.mobile-menu-panel:not([hidden])) {
+    box-shadow: 0 14px 30px rgba(18,23,29,.14);
+  }
+
+  .mobile-menu-panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: block;
+    padding: 14px 20px 20px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255,255,255,.98);
+    box-shadow: 0 18px 30px rgba(18,23,29,.12);
+  }
+
+  .mobile-menu-panel[hidden] { display: none; }
+  .mobile-menu-links { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+  .mobile-menu-links a {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .mobile-menu-links a:hover,
+  .mobile-menu-links a:focus-visible { background: var(--bg-elevated); color: var(--accent-strong); }
+  .mobile-menu-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .mobile-menu-actions .nav-cta { display: inline-flex; min-height: 44px; align-items: center; }
+}
+
+.mobile-cta {
+  position: fixed;
+  right: 12px;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  left: 12px;
+  z-index: 45;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(15,20,15,.12);
+  border-radius: 14px;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 14px 32px rgba(18,23,29,.18);
+  backdrop-filter: blur(12px);
+}
+
+.mobile-cta[hidden] { display: none; }
+.mobile-cta a { flex: 1; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; text-decoration: none; }
+.mobile-cta .btn-primary { color: #fff; }
+.mobile-whatsapp { background: #e8f4ec; color: var(--accent-strong); font-weight: 600; }
+
+.hero .motion-particle {
+  position: absolute;
+  z-index: 0;
+  top: auto;
+  bottom: auto;
+}
+
+@media (min-width: 861px) {
+  .mobile-cta { display: none !important; }
+}
+
+@media (max-width: 720px) {
+  body:has(.mobile-cta:not([hidden])) { padding-bottom: 76px; }
+  .motion-top { right: 14px; bottom: 86px; width: 38px; height: 38px; }
+  .cookie-banner { max-height: 30vh; overflow: auto; }
+}

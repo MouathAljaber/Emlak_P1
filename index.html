@@ -18,6 +18,8 @@
 <meta name="twitter:title" content="Trainingslager Antalya für Fußballvereine">
 <meta name="twitter:description" content="Professionelle Fußball-Trainingslager in Antalya mit Unterkunft, Plätzen, Testspielen und Betreuung.">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;w=1600&amp;q=85">
+<meta name="theme-color" content="#2F6D4F">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://trainingslager-antalya.de/">
 <link rel="alternate" hreflang="de" href="https://trainingslager-antalya.de/">
 <link rel="alternate" hreflang="en" href="https://trainingslager-antalya.de/">
@@ -151,6 +153,11 @@
   .nav-links { display: flex; gap: 34px; list-style: none; margin: 0; padding: 0; font-size: 15px; flex: 1; justify-content: center; }
   .nav-links a { text-decoration: none; color: var(--text-muted); transition: color .15s; }
   .nav-links a:hover { color: var(--text); }
+  .skip-link { position: fixed; top: 8px; left: 8px; z-index: 200; padding: 10px 14px; background: var(--accent-strong); color: #fff; transform: translateY(-160%); transition: transform .2s ease; }
+  .skip-link:focus { transform: none; }
+  .mobile-menu-toggle { display: none; min-width: 44px; min-height: 44px; padding: 8px; border: 1px solid var(--line); border-radius: var(--radius-s); background: var(--bg); color: var(--text); cursor: pointer; }
+  .mobile-menu-toggle svg { display: block; width: 22px; height: 22px; }
+  .mobile-menu-panel { display: none; }
   .nav-right { display: flex; align-items: center; gap: 14px; }
   .lang-toggle { display: flex; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; font-size: 12.5px; font-weight: 600; }
   .lang-toggle button { background: none; border: none; color: var(--text-faint); padding: 7px 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: .02em; }
@@ -163,6 +170,7 @@
   .nav-cta:hover { background: var(--accent-strong); }
   @media (max-width: 860px) {
     .nav-links { display: none; }
+    .mobile-menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
   }
   @media (max-width: 560px) {
     .nav-cta { display: none; }
@@ -332,6 +340,7 @@
 <link rel="stylesheet" href="/motion.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
 
 <header>
   <nav class="wrap nav">
@@ -344,6 +353,9 @@
       </svg>
       ANTALYA<span>CAMP</span>
     </a>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mobileMenuPanel" aria-label="Menü öffnen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
     <ul class="nav-links">
       <li><a href="#leistungen" data-i18n="nav.leistungen">Leistungen</a></li>
       <li><a href="#anlagen">Anlagen &amp; Hotels</a></li>
@@ -360,8 +372,26 @@
       <a href="#anfrage" class="nav-cta" data-i18n="nav.cta">Angebot anfragen</a>
     </div>
   </nav>
+  <div class="mobile-menu-panel" id="mobileMenuPanel" hidden>
+    <ul class="mobile-menu-links">
+      <li><a href="#leistungen" data-i18n="nav.leistungen">Leistungen</a></li>
+      <li><a href="#anlagen">Anlagen &amp; Hotels</a></li>
+      <li><a href="#teams" data-i18n="nav.teams">Teamkategorien</a></li>
+      <li><a href="#ablauf" data-i18n="nav.ablauf">Ablauf</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="/about-us/">About us</a></li>
+    </ul>
+    <div class="mobile-menu-actions">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" id="mobileLangDe" class="active">DE</button>
+        <button type="button" id="mobileLangEn">EN</button>
+      </div>
+      <a href="#anfrage" class="nav-cta" data-i18n="nav.cta">Angebot anfragen</a>
+    </div>
+  </div>
 </header>
 
+<main id="main">
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -710,6 +740,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="wrap">
@@ -770,6 +801,12 @@
   </div>
 </aside>
 
+<!-- TODO: replace the WhatsApp placeholder with the verified business number. -->
+<aside class="mobile-cta" id="mobileCta" hidden>
+  <a href="#anfrage" class="btn-primary" data-i18n="sticky.cta">Angebot anfragen</a>
+  <a href="https://wa.me/[[WHATSAPP_NUMMER]]" class="mobile-whatsapp" data-i18n="sticky.whatsapp">WhatsApp</a>
+</aside>
+
 <script>
   const consentKey = 'antalya-camp-analytics-consent';
   const cookieBanner = document.getElementById('cookieBanner');
@@ -780,10 +817,12 @@
     localStorage.setItem(consentKey, 'granted');
     cookieBanner.hidden = true;
     window.enableAnalytics();
+    window.dispatchEvent(new Event('resize'));
   });
   document.getElementById('cookieReject').addEventListener('click', () => {
     localStorage.setItem(consentKey, 'denied');
     cookieBanner.hidden = true;
+    window.dispatchEvent(new Event('resize'));
   });
 
   var dict = {
@@ -793,7 +832,7 @@
       "hero.eyebrow": "Trainingslager für Vereine &amp; Teams",
       "hero.headline": "Euer nächstes<br>Trainingslager in <em>Antalya</em>",
       "hero.sub": "Professionelle Fußball-Trainingslager für Jugend-, Amateur- und Profiteams — Plätze, Unterkunft, Testspiele und Betreuung aus einer Hand. Ihr sagt uns, was ihr braucht, wir machen euch ein individuelles Angebot.",
-      "hero.cta1": "Jetzt Angebot anfragen", "hero.cta2": "So läuft's ab",
+      "hero.cta1": "Jetzt Angebot anfragen", "hero.cta2": "So läuft's ab", "sticky.cta": "Angebot anfragen", "sticky.whatsapp": "WhatsApp",
       "hero.stat1": "Teamkategorien — von Jugend bis Profi", "hero.stat2": "Antwortzeit auf eure Anfrage", "hero.stat3": "Ansprechpartner für Plätze, Hotel &amp; Testspiele",
       "teams.tag": "Für wen", "teams.h2": "Für jede Mannschaftsstufe die passende Umgebung",
       "teams.p": "Egal ob Nachwuchsleistungszentrum oder Herrenmannschaft — wir stellen das Trainingslager auf euer Niveau und eure Ziele ab.",
@@ -852,7 +891,7 @@
       "hero.eyebrow": "Training camps for clubs &amp; teams",
       "hero.headline": "Your next<br>training camp in <em>Antalya</em>",
       "hero.sub": "Professional football training camps for youth, amateur and professional teams — pitches, accommodation, test matches and on-site support, all from one partner. Tell us what you need, we'll put together a tailored offer.",
-      "hero.cta1": "Request an offer now", "hero.cta2": "See how it works",
+      "hero.cta1": "Request an offer now", "hero.cta2": "See how it works", "sticky.cta": "Request an offer", "sticky.whatsapp": "WhatsApp",
       "hero.stat1": "Team categories — from youth to professional", "hero.stat2": "Response time on your request", "hero.stat3": "Single point of contact for pitches, hotel &amp; test matches",
       "teams.tag": "Who it's for", "teams.h2": "The right setup for every level of team",
       "teams.p": "Whether it's a youth academy or a men's first team — we tailor the training camp to your level and goals.",
@@ -928,11 +967,19 @@
     });
     document.getElementById('langDe').classList.toggle('active', lang === 'de');
     document.getElementById('langEn').classList.toggle('active', lang === 'en');
+    var mobileLangDe = document.getElementById('mobileLangDe');
+    var mobileLangEn = document.getElementById('mobileLangEn');
+    if (mobileLangDe && mobileLangEn) {
+      mobileLangDe.classList.toggle('active', lang === 'de');
+      mobileLangEn.classList.toggle('active', lang === 'en');
+    }
     updateNextBtnLabel();
   }
 
   document.getElementById('langDe').addEventListener('click', function(){ applyLang('de'); });
   document.getElementById('langEn').addEventListener('click', function(){ applyLang('en'); });
+  document.getElementById('mobileLangDe').addEventListener('click', function(){ applyLang('de'); });
+  document.getElementById('mobileLangEn').addEventListener('click', function(){ applyLang('en'); });
 
   // Multi-step form logic
   const steps = Array.from(document.querySelectorAll('.form-step'));
