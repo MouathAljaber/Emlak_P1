@@ -163,7 +163,7 @@ async function listContentPages() {
   for (const base of ['', 'en']) {
     const dir = path.join(root, base);
     for (const name of await readdir(dir)) {
-      if (['en', 'node_modules', 'src', 'scripts', '.git'].includes(name) && base === '') continue;
+      if (['en', 'node_modules', 'src', 'scripts', '.git', 'antalya-camp-landing'].includes(name) && base === '') continue;
       const file = path.join(dir, name, 'index.html');
       try {
         if ((await stat(file)).isFile()) pages.push({ file, prefix: base ? '/en' : '', slug: name });

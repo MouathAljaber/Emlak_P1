@@ -316,7 +316,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const hiddenFiles = /^\/(?:server\.js|mailer\.js|schema\.sql|package(?:-lock)?\.json|docker-compose\.yml|README\.md|scripts\/|src\/|node_modules\/)/;
+const hiddenFiles = /^\/(?:server\.js|mailer\.js|schema\.sql|package(?:-lock)?\.json|docker-compose\.yml|README\.md|scripts\/|src\/|node_modules\/|antalya-camp-landing\/)/;
 app.use((req, res, next) => (hiddenFiles.test(req.path) ? res.status(404).sendFile(path.join(__dirname, '404.html')) : next()));
 
 app.use(express.static(__dirname, {
