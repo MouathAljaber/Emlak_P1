@@ -339,6 +339,7 @@ function enrichContentPage(html, lang, slug, prefix) {
       acceptedAnswer: { '@type': 'Answer', text: stripTags(answer) }
     }))
   };
+  html = html.replace(/<script type="application\/ld\+json">\{"@context":"https:\/\/schema\.org","@type":"FAQPage"[\s\S]*?<\/script>/gi, '');
   html = html.replace('</head>', `<script type="application/ld+json">${escapeJson(faqLd)}</script></head>`);
   return html;
 }
