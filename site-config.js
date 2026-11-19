@@ -1,0 +1,1 @@
+window.SITE_CONFIG={"siteUrl":"https://trainingslager-antalya.de","ga4MeasurementId":"","googleSiteVerification":"","whatsappNumber":""};

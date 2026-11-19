@@ -203,6 +203,146 @@ function upgradeLegacy(html, prefix) {
   return html;
 }
 
+function contentTopic(lang, slug) {
+  const de = lang === 'de';
+  const team = /youth|jugend|amateur|senior|academy|akademie|professional|profi|clubs|vereins|team/.test(slug);
+  const planning = /plan|cost|kosten|checkliste|best-time|winter|preseason|saison|europe|europa|turkey|tuerkei/.test(slug);
+  const facilities = /pitch|platz|hotel|transfer|airport|recovery|regeneration|test-match|testspiele/.test(slug);
+
+  if (team) return de ? {
+    eyebrow: 'Vorbereitung nach Mannschaftstyp',
+    lead: 'Der richtige Wochenplan hängt von Alter, Leistungsniveau, Mannschaftsgröße und sportlichem Ziel ab. Beschreibt diese Eckdaten vor der Anfrage, damit Hotel, Trainingseinheiten, Platzkapazität und Spielpraxis aufeinander abgestimmt werden.',
+    sections: [
+      ['Sportliches Ziel definieren', 'Leistungsstand, gewünschte Belastung, taktische Schwerpunkte und freie Tage geben die Reihenfolge der Trainingseinheiten vor.'],
+      ['Kader und Betreuer planen', 'Legt Spielerzahl, Begleitpersonal, Zimmerbelegung und separate Räumlichkeiten fest, bevor ein konkretes Angebot angefragt wird.'],
+      ['Wochenplan realistisch gestalten', 'Kombiniert Belastung und Regeneration mit An- und Abreise, Flugzeiten und einem oder mehreren Testspielen.'],
+      ['Unterkunft passend auswählen', 'Wichtig sind kurze Wege, Ruhezonen, Verpflegungszeiten und die Möglichkeit, Gruppen oder Einheiten getrennt zu organisieren.'],
+      ['Spielpraxis abstimmen', 'Für Testspiele sollten Altersklasse, Spielniveau, Termin, Platz und gewünschter Spielmodus schriftlich festgehalten werden.'],
+      ['Anfrage mit Daten vorbereiten', 'Teamtyp, Zeitraum, Spieler, Staff, Verpflegung, Transferbedarf und Budgetrahmen ermöglichen eine konkrete erste Einschätzung.']
+    ],
+    faq: [
+      ['Welche Angaben benötigt ihr für ein Angebot?', 'Nennt Teamtyp, Altersklasse, Leistungsniveau, Reisezeitraum, Teilnehmerzahl, gewünschte Leistungen und euren Budgetrahmen.'],
+      ['Kann die Woche nach meinem Trainingsplan aufgebaut werden?', 'Der Trainingsinhalt bleibt Sache des Vereins. Wir können Unterkunft, Platzzeiten, Transfers und Testspieloptionen in den gewünschten Ablauf einbinden.'],
+      ['Wie früh sollte angefragt werden?', 'Frühe Anfragen verbessern die Auswahl bei beliebten Trainingszeiten, Hotels und Spielpartnern. Ein flexibler Zeitraum schafft zusätzliche Optionen.']
+    ]
+  } : {
+    eyebrow: 'Preparation by team profile',
+    lead: 'A suitable camp plan depends on age, playing level, squad size and sporting objectives. Share these basics before requesting an offer so accommodation, pitch time, training sessions and match preparation can work as one schedule.',
+    sections: [
+      ['Define the sporting goal', 'Current performance, desired workload, tactical priorities and rest periods determine the sequence of training sessions.'],
+      ['Plan players and staff', 'Confirm squad size, accompanying staff, room allocation and any separate meeting or recovery spaces before requesting availability.'],
+      ['Build a realistic week', 'Balance training and recovery with arrival, flight times and one or more test matches where appropriate.'],
+      ['Choose suitable accommodation', 'Short travel distances, quiet rest areas, meal times and separate areas for groups or units are key considerations.'],
+      ['Align match opponents', 'For test matches, record age group, playing level, date, venue and preferred match format to request a suitable opponent.'],
+      ['Prepare a complete enquiry', 'Team type, travel dates, player and staff numbers, catering, transfers and budget help us prepare a useful first response.']
+    ],
+    faq: [
+      ['What information is needed for an offer?', 'Please share team type, age group, level, dates, participant numbers, required services and your indicative budget.'],
+      ['Can the schedule follow our coaching plan?', 'Your coaching team remains responsible for the sessions. We can coordinate accommodation, pitch slots, transfers and match options around that plan.'],
+      ['How early should we enquire?', 'An early enquiry improves availability around popular travel periods. Flexible dates usually offer more accommodation and pitch options.']
+    ]
+  };
+
+  if (facilities) return de ? {
+    eyebrow: 'Anlage, Hotel und Logistik',
+    lead: 'Ein gutes Trainingslager entsteht nicht durch eine einzelne Leistung, sondern durch kurze Wege und einen verlässlichen Ablauf. Prüft deshalb Gelände, Zimmer, Verpflegung, Platzqualität und Transport gemeinsam statt isoliert.',
+    sections: [
+      ['Die richtige Platzqualität prüfen', 'Beschreibt Flächentyp, gewünschte Nutzung, Beleuchtung, Umkleiden und mögliche Belastung. Verbindliche Informationen sollten vor der Buchung schriftlich bestätigt werden.'],
+      ['Hotel und Trainingsort kombinieren', 'Kurze Wege sparen Tageszeit und reduzieren Transferrisiken. Beachtet außerdem Mahlzeiten, Ruhezeiten und Platz für Teambesprechungen.'],
+      ['Transfers als Tagesablauf planen', 'Flughafentransfer, Platztransporte und Fahrt zu Testspielen sollten zeitlich auf Einheiten, Mahlzeiten und Vereinsabende abgestimmt sein.'],
+      ['Verpflegung abstimmen', 'Nennt Ernährungsanforderungen, Essenszeiten, Allergien und Teamgröße. Die Verfügbarkeit einzelner Optionen wird je nach Hotel bestätigt.'],
+      ['Regeneration einplanen', 'Gym, Pool oder physikalische Angebote können ergänzend geplant werden. Die konkrete Verfügbarkeit hängt von Hotel und Leistungsniveau ab.'],
+      ['Angebote vergleichen', 'Vergleicht nicht nur den Gesamtpreis, sondern auch enthaltene Leistungen, Abreisezeiten, Umbuchungsbedingungen und Zusatzkosten.']
+    ],
+    faq: [
+      ['Sind bestimmte Plätze oder Hotels garantiert?', 'Verfügbarkeit und konkrete Bezeichnungen werden erst nach Terminanfrage und schriftlicher Bestätigung verbindlich.'],
+      ['Was gehört in einen guten Wochenablauf?', 'Erwartete Transferzeiten, Mahlzeiten, Platzzeiten, Regeneration und Testspiele sollten alle vorab in einem Tagesplan sichtbar sein.'],
+      ['Welche Zusatzkosten können entstehen?', 'Prüft lokale Transfers, Mietausrüstung, zusätzliche Platznutzung, Schiedsrichter, Spielgebühren und mögliche Gebühren für Programmänderungen.']
+    ]
+  } : {
+    eyebrow: 'Facilities, hotel and logistics',
+    lead: 'A good training camp is not defined by one facility alone. Accommodation, pitch quality, catering and transfer times need to fit a reliable daily schedule.',
+    sections: [
+      ['Check pitch conditions', 'Specify surface type, intended use, lighting, changing rooms and workload. Confirm final details in writing before booking.'],
+      ['Combine hotel and pitch location', 'Short distances save team time and reduce transfer risk. Also consider meal times, rest periods and space for team meetings.'],
+      ['Plan transfers as a daily schedule', 'Airport transport, local transfers and journeys to test matches should match training units, meals and group activities.'],
+      ['Confirm catering arrangements', 'Share dietary requirements, preferred meal times, allergies and squad size. Individual options remain subject to hotel confirmation.'],
+      ['Schedule recovery', 'Gym access, pool use or physiotherapy can be added where needed. Availability depends on the selected accommodation and package.'],
+      ['Compare offers consistently', 'Look beyond the headline price and check included services, cancellation terms, arrival and departure times and likely extras.']
+    ],
+    faq: [
+      ['Are specific hotels or pitches guaranteed?', 'Availability and names should only be treated as confirmed after the dates and final package are agreed in writing.'],
+      ['What belongs in a daily plan?', 'Include travel times, meals, pitch slots, recovery and match arrangements so the team has a predictable routine.'],
+      ['Which extras may affect the final price?', 'Potential extras include local transport, equipment rental, additional pitch use, referees, match fees and changes to the programme.']
+    ]
+  };
+
+  return de ? {
+    eyebrow: 'Planung für Vereine',
+    lead: 'Eine erfolgreiche Fußballreise beginnt mit klaren Zielen und einer belastbaren Planung. Mit einer vollständigen Anfrage lassen sich Kosten, Termine, Leistungen und Abläufe früher miteinander vergleichen.',
+    sections: [
+      ['Ziele für die Woche festlegen', 'Legt fest, ob Fitness, taktische Vorbereitung, Spielpraxis oder Teambuilding im Vordergrund steht. Daraus ergeben sich Belastung und Tagesstruktur.'],
+      ['Daten und Teilnehmer erfassen', 'Reisedaten, Spielerzahl, Staff, Altersklasse, Leistungsniveau und Zimmerbedarf bilden die Grundlage für ein individuelles Angebot.'],
+      ['Leistungen priorisieren', 'Entscheidet zwischen Hotel, Verpflegung, Plätzen, Transfers, Testspielen und Zusatzleistungen und trennt Pflichtleistungen von optionalen Wünschen.'],
+      ['Zeitraum und Flexibilität prüfen', 'Schulferien, Liga-Programme und beliebte Trainingsphasen beeinflussen Verfügbarkeit. Ein alternativer Zeitraum kann die Auswahl verbessern.'],
+      ['Angebot und Bedingungen prüfen', 'Achtet auf enthaltene Leistungen, Zahlungsplan, Stornobedingungen, Zimmerbelegung und mögliche Zusatzkosten.'],
+      ['Interne Abstimmung dokumentieren', 'Eine gemeinsame Checkliste für Verein, Trainer und Begleitpersonal reduziert Missverständnisse und vorbereitetes Material spart vor Ort Zeit.']
+    ],
+    faq: [
+      ['Welche Informationen sind für die erste Anfrage wichtig?', 'Teamtyp, Spielerzahl, Alter oder Niveau, Zeitraum, Leistungsumfang, Budget und besondere Anforderungen reichen für eine erste Einschätzung.'],
+      ['Ist die Anfrage verbindlich?', 'Eine erste Anfrage ist grundsätzlich unverbindlich. Verbindliche Leistungen, Preise und Stornobedingungen sollten erst in der schriftlichen Bestätigung festgelegt werden.'],
+      ['Wie bereiten wir die Abreise vor?', 'Koordinieren Sie Ausweise, Reiseunterlagen, Trainingsausrüstung, Zimmerlisten, Mahlzeiten und Zuständigkeiten frühzeitig mit Ihrem Verein.']
+    ]
+  } : {
+    eyebrow: 'Planning for football clubs',
+    lead: 'A successful football camp starts with clear goals and a dependable plan. A complete enquiry makes it easier to compare dates, costs, services and the daily schedule.',
+    sections: [
+      ['Set the objectives for the week', 'Decide whether fitness, tactical preparation, match play or team cohesion is the priority. The answer determines workload and daily structure.'],
+      ['Collect travel and participant data', 'Dates, player and staff numbers, age group, playing level and room requirements provide the basis for an individual offer.'],
+      ['Prioritise required services', 'Choose between accommodation, catering, pitches, transfers, test matches and extras, and distinguish essential services from optional wishes.'],
+      ['Check dates and flexibility', 'School holidays, league schedules and popular training periods affect availability. A second date range can increase the choice of hotels and pitches.'],
+      ['Review offer terms', 'Check included services, payment stages, cancellation terms, room allocation and any likely additional costs.'],
+      ['Document internal decisions', 'A shared checklist for the club, coaches and accompanying staff reduces misunderstandings and helps the trip run smoothly.']
+    ],
+    faq: [
+      ['What information belongs in the first enquiry?', 'Please include team type, player and staff numbers, level or age group, dates, required services, budget and special requirements.'],
+      ['Is the enquiry binding?', 'A first enquiry is generally non-binding. Confirmed prices, services and cancellation terms should be stated in the written offer.'],
+      ['How should we prepare departure?', 'Coordinate travel documents, training equipment, room lists, meal requirements and responsible staff well before departure.']
+    ]
+  };
+}
+
+function enrichContentPage(html, lang, slug, prefix) {
+  const legal = /^(imprint|privacy-policy|cookie-policy)$/.test(slug);
+  const contact = /^(contact|request-offer)$/.test(slug);
+  if (legal || contact) return html;
+  const copy = contentTopic(lang, slug);
+  const de = lang === 'de';
+  const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  const h1 = h1Match ? h1Match[1] : (de ? 'Fußball-Trainingslager in Antalya' : 'Football training camp in Antalya');
+  const introMatch = html.match(/<section class="page-hero">[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/i);
+  const intro = introMatch ? introMatch[1] : copy.lead;
+  const home = de ? 'Startseite' : 'Home';
+  const inquiry = de ? 'Angebot anfragen' : 'Request an offer';
+  const faqTitle = de ? 'Häufige Fragen zur Planung' : 'Frequently asked planning questions';
+  const breadcrumb = de ? 'Übersicht' : 'Overview';
+  const cards = copy.sections.map(([title, text]) => `<article class="card"><h2>${title}</h2><p>${text}</p></article>`).join('');
+  const faqItems = copy.faq.map(([question, answer]) => `<article class="card"><h2>${question}</h2><p>${answer}</p></article>`).join('');
+  const main = `<main id="main"><section class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="${breadcrumb}"><a href="${prefix}/">${home}</a><span aria-hidden="true">/</span><span>${stripTags(h1)}</span></nav><h1>${h1}</h1><p>${intro}</p><a class="button" href="${prefix}/#anfrage">${inquiry}</a></div></section><div class="page-main"><div class="wrap"><section class="content-intro"><p>${copy.lead}</p></section><div class="grid">${cards}</div><section class="content-faq" aria-labelledby="faq-${slug}"><h2 id="faq-${slug}">${faqTitle}</h2><div class="grid">${faqItems}</div></section><div class="cta"><h2>${de ? 'Vereinsdaten für ein konkretes Angebot zusammenstellen' : 'Prepare the club details for a concrete offer'}</h2><p>${de ? 'Teilt uns Teamtyp, Zeitraum, Teilnehmerzahl, gewünschte Leistungen und besondere Anforderungen mit.' : 'Share your team type, dates, participant numbers, required services and special requirements.'}</p><a class="button" href="${prefix}/#anfrage">${inquiry}</a></div></div></div></main>`;
+  html = html.replace(/<main id="main"[\s\S]*?<\/main>/i, main);
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: copy.faq.map(([question, answer]) => ({
+      '@type': 'Question',
+      name: stripTags(question),
+      acceptedAnswer: { '@type': 'Answer', text: stripTags(answer) }
+    }))
+  };
+  html = html.replace('</head>', `<script type="application/ld+json">${escapeJson(faqLd)}</script></head>`);
+  return html;
+}
+
 async function buildContentPages() {
   const pages = await listContentPages();
   for (const page of pages) {
@@ -211,12 +351,40 @@ async function buildContentPages() {
     const lang = /<html lang="de"/.test(html) ? 'de' : 'en';
     const dePath = `/${page.slug}/`;
     const enPath = `/en/${page.slug}/`;
+    html = enrichContentPage(html, lang, page.slug, page.prefix);
     html = html
       .replace(/<!-- site-header -->[\s\S]*?<!-- \/site-header -->/, pageHeader(lang, page.prefix, dePath, enPath))
       .replace(/<!-- site-footer -->[\s\S]*?<!-- \/site-footer -->/, pageFooter(lang, page.prefix));
     await writeFile(page.file, html);
   }
   console.log(`updated ${pages.length} content pages`);
+}
+
+/* ---------- static SEO files ---------- */
+
+async function buildStaticSeo() {
+  await writeFile(path.join(root, 'site-config.js'), `window.SITE_CONFIG=${JSON.stringify({
+    siteUrl: SITE_URL,
+    ga4MeasurementId: '',
+    googleSiteVerification: '',
+    whatsappNumber: ''
+  })};`);
+  await writeFile(path.join(root, 'robots.txt'), `User-agent: *
+Allow: /
+Sitemap: ${SITE_URL}/sitemap.xml
+`);
+  const pages = await listContentPages();
+  const routes = ['/', ...pages.filter((page) => page.prefix === '').map((page) => `/${page.slug}/`)];
+  routes.push('/en/');
+  for (const page of pages.filter((page) => page.prefix === '/en')) routes.push(`/en/${page.slug}/`);
+  const unique = [...new Set(routes)];
+  const urls = unique.map((route) => `  <url><loc>${SITE_URL}${route}</loc><lastmod>2026-11-19</lastmod><changefreq>weekly</changefreq><priority>${route === '/' || route === '/en/' ? '1.0' : '0.8'}</priority></url>`).join('\n');
+  await writeFile(path.join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`);
+  console.log('built static SEO files');
 }
 
 /* ---------- 404 ---------- */
@@ -263,4 +431,5 @@ ${pageFooter('de', '')}
 
 await buildHome();
 await buildContentPages();
+await buildStaticSeo();
 await build404();

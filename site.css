@@ -505,6 +505,10 @@ a.card:hover, .card.is-interactive:hover { transform: translateY(-4px); box-shad
 .page-main .cta .button { background: #fff; color: var(--brand-strong); box-shadow: none; }
 .page-main .cta .button:hover { background: var(--accent); color: var(--ink); }
 @media (max-width: 600px) { .page-main .cta { padding: 28px 24px; } .page-main .cta .button { width: 100%; } }
+.content-intro { max-width: 760px; margin-bottom: 32px; padding: 20px 24px; border-left: 4px solid var(--accent); background: var(--surface); }
+.content-intro p { font-size: 17px; }
+.content-faq { margin-top: 64px; }
+.content-faq > h2 { margin-bottom: 24px; font-size: clamp(28px, 3.5vw, 38px); }
 /* Legacy content-page button class */
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; background: var(--brand); color: #fff; font-weight: 650; font-size: 15px; text-decoration: none; transition: background .2s; }
 .button:hover { background: var(--brand-strong); }
