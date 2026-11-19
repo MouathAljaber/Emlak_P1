@@ -12,7 +12,7 @@ function SectionHead({ label, title, text, center }) {
 }
 
 export function Header({ t, lang, setLang }) {
-  const links = [['about', t.nav.about], ['why', t.nav.why], ['services', t.nav.services], ['process', t.nav.process], ['emlak', t.nav.emlak], ['faq', t.nav.faq]];
+  const links = [['about', t.nav.about], ['why', t.nav.why], ['services', t.nav.services], ['process', t.nav.process], ['faq', t.nav.faq]];
   return (
     <header className="top">
       <div className="wrap">
@@ -42,7 +42,7 @@ export function Hero({ t, lang }) {
       {/* TODO: replace the stock photo with a licensed photo from an Antalya training camp. */}
       <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=2000&q=75" alt="" fetchpriority="high" />
       <div className="wrap">
-        <a className="badge" href="#emlak"><Icon name="shield" size={18} />{t.hero.badge}</a>
+        <span className="badge"><Icon name="shield" size={18} />{t.hero.badge}</span>
         <h1>{before}<em>{highlight}</em>{after}</h1>
         <p className="lead">{t.hero.lead}</p>
         <div className="ctas">
@@ -141,29 +141,6 @@ export function Process({ t }) {
             </li>
           ))}
         </ol>
-      </div>
-    </section>
-  );
-}
-
-export function Emlak({ t }) {
-  return (
-    <section className="block" id="emlak">
-      <div className="wrap">
-        <div className="emlak-box">
-          <div className="emlak-logo">
-            <img src={LINKS.emlakLogo} alt="Emlak AG" width="200" height="46" loading="lazy" />
-          </div>
-          <div>
-            <span className="label">{t.emlak.label}</span>
-            <h2>{t.emlak.title}</h2>
-            <p>{t.emlak.text}</p>
-            <ul className="checks">
-              {t.emlak.points.map((point) => <li key={point}><Icon name="check" size={20} />{point}</li>)}
-            </ul>
-            <a className="btn btn-primary" href={LINKS.emlak} target="_blank" rel="noopener noreferrer">{t.emlak.link} <Icon name="external" size={17} /></a>
-          </div>
-        </div>
       </div>
     </section>
   );

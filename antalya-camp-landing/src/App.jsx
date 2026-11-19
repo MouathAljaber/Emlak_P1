@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { content } from './content.js';
-import { Header, Hero, About, WhyUs, Services, Process, Emlak, Faq, Closing, Footer } from './components/Sections.jsx';
+import { Header, Hero, About, WhyUs, Services, Process, Faq, Closing, Footer } from './components/Sections.jsx';
 
 const STORAGE_KEY = 'antalya-camp-lang';
 
@@ -37,7 +37,6 @@ export default function App() {
         <WhyUs t={t} />
         <Services t={t} />
         <Process t={t} />
-        <Emlak t={t} />
         <Faq t={t} />
         <Closing t={t} lang={lang} />
       </main>

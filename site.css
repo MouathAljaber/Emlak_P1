@@ -435,8 +435,6 @@ a.card:hover, .card.is-interactive:hover { transform: translateY(-4px); box-shad
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-top: 28px; font-size: 14px; }
 .footer-bottom a { color: rgba(255, 255, 255, .7); text-decoration: none; }
 .footer-bottom a:hover { color: #fff; }
-.emlak { display: inline-flex; align-items: center; gap: 12px; }
-.emlak img { height: 26px; width: auto; }
 @media (max-width: 960px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-grid > :first-child { grid-column: 1 / -1; } }
 @media (max-width: 520px) { .footer-grid { grid-template-columns: 1fr; } .site-footer { padding-top: 60px; } }
 

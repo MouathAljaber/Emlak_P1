@@ -48,7 +48,6 @@ button { font: inherit; }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(8, 20, 14, .94) 15%, rgba(8, 20, 14, .55)); }
 .badge { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; padding: 7px 14px; border-radius: 999px; background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .2); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; }
 .badge svg { color: var(--accent); }
-.badge:hover { background: rgba(255, 255, 255, .16); }
 .hero h1 { max-width: 15ch; font-size: clamp(40px, 6.5vw, 68px); font-weight: 800; }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero .lead { max-width: 54ch; margin: 22px 0 34px; font-size: 20px; color: rgba(255, 255, 255, .84); }
@@ -63,7 +62,7 @@ button { font: inherit; }
 .label { display: inline-block; margin-bottom: 12px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); }
 .head { max-width: 660px; margin-bottom: 48px; }
 .head.center { margin-left: auto; margin-right: auto; text-align: center; }
-.head h2, .emlak-box h2 { font-size: clamp(30px, 4vw, 42px); }
+.head h2 { font-size: clamp(30px, 4vw, 42px); }
 .head p { margin-top: 14px; }
 .sub { font-size: 20px; margin-bottom: 16px; }
 .split { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: start; }
@@ -100,15 +99,6 @@ button { font: inherit; }
 .day h4 { font-size: 17px; margin-bottom: 4px; }
 .day p { font-size: 15px; }
 
-/* Emlak AG */
-.emlak-box { display: grid; grid-template-columns: .8fr 1.4fr; gap: 56px; align-items: center; padding: 56px; border-radius: 28px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(15, 28, 21, .25); }
-.emlak-logo { display: grid; place-items: center; min-height: 220px; padding: 32px; border-radius: 22px; background: var(--tint); }
-.emlak-logo img { width: 100%; max-width: 240px; height: auto; }
-.emlak-box > div > p { margin: 14px 0 22px; }
-.checks { display: grid; gap: 10px; margin-bottom: 28px; }
-.checks li { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; font-size: 16.5px; }
-.checks svg { flex-shrink: 0; margin-top: 3px; color: var(--brand); }
-
 /* FAQ */
 .faq { display: grid; gap: 10px; }
 .faq details { border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
@@ -137,9 +127,7 @@ footer a:hover { color: #fff; }
   .g4 { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 900px) {
-  .split, .emlak-box { grid-template-columns: 1fr; gap: 32px; }
-  .emlak-box { padding: 36px 28px; }
-  .emlak-logo { min-height: 140px; }
+  .split { grid-template-columns: 1fr; gap: 32px; }
   .g3, .week { grid-template-columns: 1fr 1fr; }
   .teams li { grid-template-columns: 1fr; gap: 2px; }
 }
