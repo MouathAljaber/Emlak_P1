@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <title>Enquiries | Trainingslager Antalya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
   <style>
-    :root{--ink:#172019;--muted:#607064;--line:#e1e8e1;--green:#163b2a;--gold:#b78326;--bg:#f4f7f2}
-    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif}
+    :root{--ink:#0f1c15;--muted:#5a6760;--line:rgba(15,28,21,.1);--green:#1f6247;--gold:#e3a92f;--bg:#fafaf7}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 'Plus Jakarta Sans',system-ui,sans-serif}
     .shell{max-width:1280px;margin:0 auto;padding:32px 20px 56px}h1{font-size:clamp(30px,5vw,52px);margin:0}
     .muted{color:var(--muted)}.toolbar,.stats{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:24px 0}
-    input,button,select{font:inherit;padding:10px 12px;border:1px solid #cbd6cc;border-radius:7px;background:#fff}
-    button{background:var(--gold);color:#fff;border:0;cursor:pointer;font-weight:700}.stats{display:grid;grid-template-columns:repeat(3,minmax(120px,1fr))}
-    .stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:15px}.stat strong{display:block;font-size:26px;color:var(--green)}
-    .table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:12px}
-    table{border-collapse:collapse;width:100%;min-width:850px}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:var(--green);color:#fff}
+    input,button,select{font:inherit;padding:10px 14px;border:1px solid rgba(15,28,21,.18);border-radius:10px;background:#fff;min-height:42px}input:focus,select:focus{outline:0;border-color:var(--green);box-shadow:0 0 0 4px rgba(31,98,71,.14)}
+    button{background:var(--green);color:#fff;border:0;cursor:pointer;font-weight:700;border-radius:999px;padding:10px 20px}button:hover{background:#154733}button:disabled{opacity:.5;cursor:default}.stats{display:grid;grid-template-columns:repeat(3,minmax(120px,1fr))}
+    .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}.stat strong{display:block;font-size:26px;color:var(--green)}
+    .table-wrap{overflow:auto;background:#fff;border:1px solid var(--line);border-radius:16px}
+    table{border-collapse:collapse;width:100%;min-width:850px}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f1f4ef;color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
     .error{color:#a42626}.success{color:#18733d}.empty{text-align:center;padding:30px}
     @media(max-width:600px){.shell{padding:24px 14px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:span 2}}
   </style>
@@ -26,14 +29,6 @@
   <p id="message" class="muted" role="status"></p><div class="stats"><div class="stat"><span class="muted">Total</span><strong id="total">—</strong></div><div class="stat"><span class="muted">New</span><strong id="newCount">—</strong></div><div class="stat"><span class="muted">Contacted/closed</span><strong id="doneCount">—</strong></div></div>
   <div class="table-wrap"><table><thead><tr><th>Date</th><th>Club/contact</th><th>Trip</th><th>Services</th><th>Status</th></tr></thead><tbody id="rows"><tr><td class="empty" colspan="5">Enter your key and load enquiries.</td></tr></tbody></table></div>
 </main>
-<script>
-const key=document.querySelector('#key'),search=document.querySelector('#search'),filter=document.querySelector('#statusFilter'),rows=document.querySelector('#rows'),message=document.querySelector('#message'),total=document.querySelector('#total'),newCount=document.querySelector('#newCount'),doneCount=document.querySelector('#doneCount'),refresh=document.querySelector('#refresh');let enquiries=[];
-const esc=(value)=>String(value??'-').replace(/[&<>"']/g,(char)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]));
-function render(){const query=search.value.trim().toLowerCase(),status=filter.value;const visible=enquiries.filter((item)=>{const hay=[item.club_name,item.contact_person,item.email].join(' ').toLowerCase();return(!query||hay.includes(query))&&(!status||item.status===status)});rows.innerHTML=visible.length?visible.map((item)=>`<tr><td>${esc(new Date(item.created_at).toLocaleString())}</td><td><strong>${esc(item.club_name)}</strong><br>${esc(item.contact_person)}<br><a href="mailto:${esc(item.email)}">${esc(item.email)}</a><br>${esc(item.phone)}</td><td>${esc(item.dates)}<br>${esc(item.nights)} nights<br>${esc(item.players)} players / ${esc(item.staff)} staff</td><td>${esc((item.services||[]).join(', '))}</td><td><select data-id="${item.id}">${['new','contacted','closed'].map((status)=>`<option ${status===item.status?'selected':''}>${status}</option>`).join('')}</select></td></tr>`).join(''):'<tr><td class="empty" colspan="5">No matching enquiries.</td></tr>';rows.querySelectorAll('select').forEach((select)=>select.addEventListener('change',()=>updateStatus(select)));}
-function updateStats(){total.textContent=enquiries.length;newCount.textContent=enquiries.filter((item)=>item.status==='new').length;doneCount.textContent=enquiries.filter((item)=>item.status!=='new').length}
-async function load(){message.textContent='Loading…';const response=await fetch('/api/admin/enquiries',{headers:{'x-admin-key':key.value}});const data=await response.json();if(!response.ok){message.className='error';message.textContent=data.error||'Unable to load enquiries';return}enquiries=data;search.disabled=filter.disabled=refresh.disabled=false;updateStats();render();message.className='success';message.textContent=`Loaded ${data.length} enquiries.`}
-async function updateStatus(select){const response=await fetch('/api/admin/enquiries/'+encodeURIComponent(select.dataset.id),{method:'PATCH',headers:{'Content-Type':'application/json','x-admin-key':key.value},body:JSON.stringify({status:select.value})});if(!response.ok){message.className='error';message.textContent='Unable to update enquiry status.';return}const item=enquiries.find((entry)=>String(entry.id)===select.dataset.id);if(item)item.status=select.value;updateStats();message.className='success';message.textContent='Status updated.'}
-document.querySelector('#load').addEventListener('click',load);refresh.addEventListener('click',load);search.addEventListener('input',render);filter.addEventListener('change',render);key.addEventListener('keydown',(event)=>{if(event.key==='Enter')load()});
-</script>
+<script src="/admin.js" defer></script>
 </body>
 </html>
