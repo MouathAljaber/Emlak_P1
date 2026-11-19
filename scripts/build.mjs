@@ -26,7 +26,7 @@ const UI = {
     references: 'Referenzen', imprint: 'Impressum', privacy: 'Datenschutz', cookies: 'Cookies', legal: 'Rechtliches',
     youth: 'Jugendteams', amateur: 'Amateurvereine', senior: 'Seniorenteams', academies: 'Akademien', pro: 'Profiteams',
     tagline: 'Trainingslager für Fußballvereine und -teams in Antalya, Türkei.',
-    sister: 'Sucht ihr ein Familien- oder Jugendcamp statt Vereinstraining?', product: 'Antalya Camp ist ein Produkt der Emlak AG',
+    sister: 'Sucht ihr ein Familien- oder Jugendcamp statt Vereinstraining?',
     rights: 'Alle Rechte vorbehalten.', brandName: 'Trainingslager Antalya',
     notFoundTitle: 'Seite nicht gefunden', notFoundText: 'Die gewünschte Seite ist nicht verfügbar oder wurde verschoben. Hier geht es weiter:'
   },
@@ -36,7 +36,7 @@ const UI = {
     references: 'References', imprint: 'Imprint', privacy: 'Privacy policy', cookies: 'Cookies', legal: 'Legal',
     youth: 'Youth teams', amateur: 'Amateur clubs', senior: 'Senior teams', academies: 'Academies', pro: 'Professional teams',
     tagline: 'Football training camps for clubs and teams in Antalya, Turkey.',
-    sister: 'Looking for a family or youth camp instead of club training?', product: 'Antalya Camp is a product of Emlak AG',
+    sister: 'Looking for a family or youth camp instead of club training?',
     rights: 'All rights reserved.', brandName: 'Training Camp Antalya',
     notFoundTitle: 'Page not found', notFoundText: 'The page you are looking for does not exist or has moved. Continue here:'
   }
@@ -94,7 +94,6 @@ function pageFooter(lang, prefix) {
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> ${ui.brandName}. ${ui.rights}</span>
-      <a class="emlak" href="https://emlak-ag.de/" target="_blank" rel="noopener noreferrer"><img src="https://emlak-ag.de/wp-content/uploads/2016/11/logo121.png" alt="Emlak AG" width="112" height="26" loading="lazy">${ui.product}</a>
     </div>
   </div>
 </footer>
@@ -135,7 +134,7 @@ async function buildHome() {
     const jsonLd = {
       '@context': 'https://schema.org',
       '@graph': [
-        { '@type': 'Organization', '@id': `${SITE_URL}/#org`, name: 'Antalya Camp', url: `${SITE_URL}/`, logo: `${SITE_URL}/favicon.svg`, parentOrganization: { '@type': 'Organization', name: 'Emlak AG', url: 'https://emlak-ag.de/' } },
+        { '@type': 'Organization', '@id': `${SITE_URL}/#org`, name: 'Antalya Camp', url: `${SITE_URL}/`, logo: `${SITE_URL}/favicon.svg` },
         { '@type': 'Service', name: 'Antalya Camp', url: canonical, description: dict['meta.description'], serviceType: lang === 'de' ? 'Fußball-Trainingslager' : 'Football training camp', areaServed: ['DE', 'AT', 'CH'], provider: { '@id': `${SITE_URL}/#org` }, inLanguage: lang },
         { '@type': 'FAQPage', inLanguage: lang, mainEntity: [1, 2, 3, 4].map((n) => ({ '@type': 'Question', name: stripTags(dict[`faq.${n}.q`]), acceptedAnswer: { '@type': 'Answer', text: stripTags(dict[`faq.${n}.a`]) } })) }
       ]
