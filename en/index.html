@@ -1,752 +1,365 @@
 <!DOCTYPE html>
+<!-- Generated from src/home.template.html by `npm run build`. Edit the template or src/*.json, not this file. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title data-i18n="meta.title">Trainingslager Antalya — Fußball-Trainingslager für Vereine</title>
+<title>Training Camp Antalya — Football Training Camps for Clubs</title>
 <meta name="description" content="Football training camps in Antalya for youth, amateur, academy and professional teams. Hotels, pitches, matches and transfers from one partner.">
 <meta name="robots" content="index,follow">
 <meta name="author" content="Antalya Camp">
+<meta name="theme-color" content="#0c1d15">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://trainingslager-antalya.de/en/">
 <meta property="og:title" content="Football training camps in Antalya for clubs">
 <meta property="og:description" content="Professional football training camps in Antalya with accommodation, pitches, test matches and support.">
 <meta property="og:locale" content="en_GB">
-<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="de_DE">
 <meta property="og:site_name" content="Trainingslager Antalya">
-<meta property="og:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;w=1600&amp;q=85">
+<meta property="og:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=1600">
 <meta property="og:image:alt" content="Football training on a modern pitch">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Football training camps in Antalya for clubs">
 <meta name="twitter:description" content="Professional football training camps in Antalya with accommodation, pitches, test matches and support.">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;w=1600&amp;q=85">
-<meta name="theme-color" content="#2F6D4F">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=1600">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://trainingslager-antalya.de/en/">
 <link rel="alternate" hreflang="de" href="https://trainingslager-antalya.de/">
 <link rel="alternate" hreflang="en" href="https://trainingslager-antalya.de/en/">
 <link rel="alternate" hreflang="x-default" href="https://trainingslager-antalya.de/">
-<link rel="sitemap" type="application/xml" href="/sitemap.xml">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Antalya Camp",
-  "url": "https://trainingslager-antalya.de/",
-  "parentOrganization": {
-    "@type": "Organization",
-    "name": "Emlak AG",
-    "url": "https://emlak-ag.de/"
-  }
-}
-</script>
-<!-- TODO: Add FAQPage entries for the six placeholder questions only after verified answers are visible. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Antalya Camp",
-  "url": "https://trainingslager-antalya.de/",
-  "description": "Professionelle Fußball-Trainingslager in Antalya für Vereine, Akademien und Profiteams.",
-  "serviceType": "Fußball-Trainingslager",
-  "areaServed": ["DE", "AT", "CH"],
-  "publisher": {
-    "@type": "Organization",
-    "name": "Emlak",
-    "url": "https://emlak-ag.de/",
-    "description": "Digital product studio behind focused travel and sports experiences."
-  },
-  "brand": {
-    "@type": "Brand",
-    "name": "Antalya Camp"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {"@type":"Question","name":"Wie schnell bekommen wir ein Angebot?","acceptedAnswer":{"@type":"Answer","text":"In der Regel innerhalb von 24 Stunden nach eurer Anfrage."}},
-    {"@type":"Question","name":"Für welche Teams eignet sich ein Trainingslager in Antalya?","acceptedAnswer":{"@type":"Answer","text":"Für Jugendteams, Amateurvereine, Seniorenteams, Akademien und Profimannschaften."}},
-    {"@type":"Question","name":"Können Sie Testspiele organisieren?","acceptedAnswer":{"@type":"Answer","text":"Ja. Wir organisieren passende lokale Gegner, Plätze und die zeitliche Abstimmung."}}
-  ]
-}
-</script>
-<script src="/site-config.js"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function(){ window.dataLayer.push(arguments); };
-  window.enableAnalytics = function() {
-    var id = window.SITE_CONFIG && window.SITE_CONFIG.ga4MeasurementId;
-    if (!id || window.analyticsLoaded) return;
-    window.analyticsLoaded = true;
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
-    document.head.appendChild(script);
-    window.gtag('js', new Date());
-    window.gtag('config', id, { anonymize_ip: true });
-  };
-  if (window.SITE_CONFIG && window.SITE_CONFIG.googleSiteVerification) {
-    var verification = document.createElement('meta');
-    verification.name = 'google-site-verification';
-    verification.content = window.SITE_CONFIG.googleSiteVerification;
-    document.head.appendChild(verification);
-  }
-</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #FFFFFF;
-    --bg-elevated: #F6F6F3;
-    --bg-elevated-2: #ECEBE6;
-    --line: rgba(15,20,15,0.11);
-    --text: #12171D;
-    --text-muted: #5B6570;
-    --text-faint: #99A1AB;
-    --accent: #2F6D4F;
-    --accent-strong: #215039;
-    --accent-ink: #FFFFFF;
-    --pitch: #D39F26;
-    --pitch-soft: rgba(232,185,79,0.18);
-    --radius-s: 4px;
-    --radius-m: 10px;
-    --maxw: 1180px;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px)); }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
-  img, svg { max-width: 100%; display: block; }
-  h1, h2, h3 {
-    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    margin: 0;
-    color: var(--text);
-  }
-  p { margin: 0; color: var(--text-muted); }
-  a { color: inherit; }
-  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
-  section { padding: 76px 0; border-bottom: 1px solid var(--line); }
-  @media (max-width: 720px) { section { padding: 64px 0; } .wrap { padding: 0 20px; } }
-
-  /* ---------- header ---------- */
-  header {
-    position: sticky; top: 0; z-index: 50;
-    padding-top: env(safe-area-inset-top, 0px);
-    background: rgba(255,255,255,0.86);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; gap: 20px; }
-  .brand { display: flex; align-items: center; gap: 9px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 21px; letter-spacing: .03em; color: var(--text); text-decoration: none; }
-  .brand span { color: var(--accent); }
-  .brand-mark { flex-shrink: 0; display: block; filter: drop-shadow(0 0 2px rgba(156,107,26,0.25)); }
-  .medallion-wrap { display: flex; justify-content: center; margin-bottom: 24px; }
-  .medallion-wrap svg { overflow: visible; }
-  .medallion-glow { animation: medallionPulse 3.6s ease-in-out infinite; transform-origin: 50% 38%; }
-  @keyframes medallionPulse {
-    0%, 100% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 0.95; transform: scale(1.1); }
-  }
-  @media (prefers-reduced-motion: reduce) { .medallion-glow { animation: none; } }
-  .nav-links { display: flex; gap: 34px; list-style: none; margin: 0; padding: 0; font-size: 15px; flex: 1; justify-content: center; }
-  .nav-links a { text-decoration: none; color: var(--text-muted); transition: color .15s; }
-  .nav-links a:hover { color: var(--text); }
-  .skip-link { position: fixed; top: 8px; left: 8px; z-index: 200; padding: 10px 14px; background: var(--accent-strong); color: #fff; transform: translateY(-160%); transition: transform .2s ease; }
-  .skip-link:focus { transform: none; }
-  .mobile-menu-toggle { display: none; min-width: 44px; min-height: 44px; padding: 8px; border: 1px solid var(--line); border-radius: var(--radius-s); background: var(--bg); color: var(--text); cursor: pointer; }
-  .mobile-menu-toggle svg { display: block; width: 22px; height: 22px; }
-  .mobile-menu-panel { display: none; }
-  .nav-right { display: flex; align-items: center; gap: 14px; }
-  .lang-toggle { display: flex; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; font-size: 12.5px; font-weight: 600; }
-  .lang-toggle button { background: none; border: none; color: var(--text-faint); padding: 7px 12px; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: .02em; }
-  .lang-toggle button.active { background: var(--accent); color: var(--accent-ink); }
-  .nav-cta {
-    background: var(--accent); color: var(--accent-ink); border: none;
-    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14.5px;
-    padding: 11px 20px; border-radius: var(--radius-s); cursor: pointer; text-decoration: none; white-space: nowrap;
-  }
-  .nav-cta:hover { background: var(--accent-strong); }
-  @media (max-width: 860px) {
-    .nav-links { display: none; }
-    .mobile-menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
-  }
-  @media (max-width: 560px) {
-    .nav-cta { display: none; }
-  }
-
-  /* ---------- hero ---------- */
-  .hero { border-bottom: 1px solid var(--line); padding: 72px 0 64px; position: relative; overflow: hidden; }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background:
-      repeating-linear-gradient(90deg, transparent 0 118px, var(--line) 118px 119px);
-    opacity: .5; mask-image: linear-gradient(to bottom, black, transparent 85%);
-  }
-  .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: end; position: relative; }
-  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 36px; } }
-  .eyebrow-row { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
-  .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-  .eyebrow { font-size: 14px; color: var(--accent-strong); font-weight: 500; }
-  h1.headline { font-size: clamp(40px, 6vw, 72px); line-height: 0.98; color: var(--text); }
-  h1.headline em { font-style: normal; color: var(--accent); }
-  .hero-sub { margin-top: 22px; font-size: 18px; max-width: 46ch; color: var(--text-muted); }
-  .hero-ctas { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--accent); color: var(--accent-ink); border: none; text-decoration: none;
-    font-weight: 600; font-size: 15.5px; padding: 15px 26px; border-radius: var(--radius-s); cursor: pointer;
-  }
-  .btn-primary:hover { background: var(--accent-strong); }
-  .btn-ghost {
-    background: transparent; color: var(--text); border: 1px solid var(--line); text-decoration: none;
-    font-weight: 500; font-size: 15.5px; padding: 15px 26px; border-radius: var(--radius-s); cursor: pointer;
-  }
-  .btn-ghost:hover { border-color: var(--text-muted); }
-  .hero-panel {
-    background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius-m);
-    padding: 26px; display: flex; flex-direction: column; gap: 20px;
-  }
-  .hero-stat { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
-  .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
-  .hero-stat .num { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; color: var(--text); font-weight: 600; }
-  .hero-stat .label { font-size: 13.5px; color: var(--text-muted); text-align: right; max-width: 18ch; }
-
-  /* ---------- section heads ---------- */
-  .section-head { max-width: 640px; margin-bottom: 52px; }
-  .section-head .tag { font-size: 13.5px; color: var(--accent-strong); font-weight: 500; margin-bottom: 10px; display: block; }
-  .section-head h2 { font-size: clamp(30px, 4vw, 44px); color: var(--text); }
-  .section-head p { margin-top: 14px; font-size: 16.5px; }
-
-  /* ---------- team categories ---------- */
-  .roster { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-m); overflow: hidden; }
-  @media (max-width: 980px) { .roster { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 560px) { .roster { grid-template-columns: 1fr; } }
-  .roster-card { background: var(--bg-elevated); padding: 26px 22px; display: flex; flex-direction: column; gap: 10px; min-height: 200px; }
-  .roster-pos { font-size: 12px; letter-spacing: .04em; color: var(--pitch); background: var(--pitch-soft); width: fit-content; padding: 3px 9px; border-radius: 20px; font-weight: 500; }
-  .roster-card h3 { font-size: 24px; color: var(--text); margin-top: 4px; }
-  .roster-card p { font-size: 14px; margin-top: auto; }
-
-  /* ---------- services ---------- */
-  .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-m); overflow: hidden; }
-  @media (max-width: 860px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-  .service-card { background: var(--bg-elevated); padding: 28px 24px; }
-  .service-icon { width: 34px; height: 34px; margin-bottom: 18px; color: var(--accent); }
-  .service-card h3 { font-size: 20px; color: var(--text); margin-bottom: 8px; }
-  .service-card p { font-size: 14.5px; }
-  .facility-grid, .proof-grid, .guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .facility-card, .proof-card, .guide-card { background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 26px; }
-  .facility-card h3, .proof-card h3, .guide-card h3 { font-size: 22px; color: var(--text); margin-bottom: 10px; }
-  .facility-card p, .proof-card p, .guide-card p { font-size: 14.5px; }
-  .proof-card strong { display: block; color: var(--accent-strong); font-size: 14px; margin-bottom: 8px; }
-  .guide-card a { display: inline-block; margin-top: 18px; color: var(--accent-strong); font-size: 14px; font-weight: 600; text-decoration: none; }
-  @media (max-width: 760px) { .facility-grid, .proof-grid, .guide-grid { grid-template-columns: 1fr; } }
-
-  /* ---------- how it works ---------- */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
-  @media (max-width: 780px) { .steps { grid-template-columns: 1fr; gap: 30px; } }
-  .step { position: relative; padding-left: 54px; }
-  .step-num {
-    position: absolute; left: 0; top: -2px; width: 38px; height: 38px; border-radius: 50%;
-    border: 1px solid var(--accent); color: var(--accent-strong); display: flex; align-items: center; justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 600;
-  }
-  .step h3 { font-size: 21px; color: var(--text); margin-bottom: 8px; }
-  .step p { font-size: 15px; }
-  .step-promise { margin-top: 48px; background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 22px 26px; display: flex; align-items: center; gap: 16px; }
-  .step-promise strong { color: var(--accent-strong); font-weight: 600; }
-
-  /* ---------- form ---------- */
-  .form-shell { background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius-m); overflow: hidden; }
-  .form-progress { display: flex; border-bottom: 1px solid var(--line); }
-  .form-progress .fp-item { flex: 1; padding: 18px 14px; text-align: center; font-size: 13px; color: var(--text-faint); border-right: 1px solid var(--line); transition: color .2s, background .2s; }
-  .form-progress .fp-item:last-child { border-right: none; }
-  .form-progress .fp-item .fp-n { display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; color: var(--text-faint); margin-bottom: 2px; }
-  .form-progress .fp-item.active { color: var(--text); background: var(--bg-elevated-2); }
-  .form-progress .fp-item.active .fp-n { color: var(--accent); }
-  .form-progress .fp-item.done .fp-n { color: var(--pitch); }
-  @media (max-width: 700px) { .form-progress .fp-item span.fp-label { display: none; } }
-
-  .form-body { padding: 44px; }
-  @media (max-width: 700px) { .form-body { padding: 28px 22px; } }
-  .form-step { display: none; }
-  .form-step.active { display: block; animation: fadein .25s ease; }
-  @keyframes fadein { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-  .form-step h3 { font-size: 26px; color: var(--text); margin-bottom: 6px; }
-  .form-step > p.step-intro { font-size: 15px; margin-bottom: 30px; }
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
-  @media (max-width: 560px) { .field-row { grid-template-columns: 1fr; } }
-  .field { display: flex; flex-direction: column; gap: 7px; }
-  .field label { font-size: 13.5px; color: var(--text-muted); }
-  .field input, .field select, .field textarea {
-    background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-s); color: var(--text);
-    font-family: 'Inter', sans-serif; font-size: 15px; padding: 12px 14px; outline: none;
-  }
-  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--accent); }
-  .field textarea { resize: vertical; min-height: 90px; }
-
-  .chip-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-  .chip { padding: 10px 16px; border: 1px solid var(--line); border-radius: 20px; font-size: 14px; cursor: pointer; user-select: none; color: var(--text-muted); transition: all .15s; }
-  .chip:hover { border-color: var(--text-muted); color: var(--text); }
-  .chip.selected { background: var(--pitch-soft); border-color: var(--pitch); color: var(--pitch); font-weight: 600; }
-
-  .form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 38px; }
-  .gdpr-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 26px; font-size: 13.5px; color: var(--text-muted); }
-  .gdpr-row input { margin-top: 3px; accent-color: var(--accent); }
-  .gdpr-row a { color: var(--accent-strong); text-decoration: underline; }
-
-  .success-panel { text-align: center; padding: 30px 0; }
-  .success-panel .check { width: 56px; height: 56px; border-radius: 50%; background: var(--pitch-soft); border: 1px solid var(--pitch); color: var(--pitch); display: flex; align-items: center; justify-content: center; margin: 0 auto 22px; }
-  .success-panel h3 { font-size: 26px; color: var(--text); margin-bottom: 10px; }
-  .success-panel p { max-width: 42ch; margin: 0 auto; }
-
-  /* ---------- faq ---------- */
-  .faq-item { border-bottom: 1px solid var(--line); }
-  .faq-item:first-child { border-top: 1px solid var(--line); }
-  .faq-q { width: 100%; text-align: left; background: none; border: none; color: var(--text); font-family: 'Inter', sans-serif; font-size: 17px; font-weight: 500; padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-  .faq-q .plus { font-size: 22px; color: var(--accent); flex-shrink: 0; transition: transform .2s; }
-  .faq-item.open .plus { transform: rotate(45deg); }
-  .faq-a { max-height: 0; overflow: hidden; transition: max-height .25s ease; }
-  .faq-item.open .faq-a { max-height: 260px; }
-  .faq-a p { padding: 0 0 22px; font-size: 15px; max-width: 70ch; }
-
-  /* ---------- footer ---------- */
-  footer { padding: 56px 0 40px; }
-  .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 36px; margin-bottom: 36px; }
-  .footer-sister { background: var(--bg-elevated); border: 1px solid var(--line); border-radius: var(--radius-m); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-  .footer-sister p { font-size: 14.5px; }
-  .footer-sister a { color: var(--accent-strong); text-decoration: none; font-weight: 500; font-size: 14.5px; }
-  .footer-states { padding: 28px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .footer-states h3 { font-size: 16px; color: var(--text); margin-bottom: 16px; }
-  .state-links { display: flex; flex-wrap: wrap; gap: 10px 24px; }
-  .state-links a { color: var(--text-muted); font-size: 14px; text-decoration: none; }
-  .state-links a:hover { color: var(--accent-strong); }
-  .emlak-signature { display: flex; align-items: center; gap: 14px; padding: 26px 0; color: var(--text-muted); font-size: 13px; }
-  .emlak-signature a { color: inherit; text-decoration: none; }
-  .emlak-logo { width: 118px; height: auto; }
-  .emlak-mark { display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg-elevated); color: var(--accent-strong); font-weight: 700; letter-spacing: -.02em; }
-  .emlak-mark span { color: var(--text); }
-  .footer-legal { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; font-size: 13.5px; color: var(--text-faint); padding-top: 26px; border-top: 1px solid var(--line); }
-  .footer-legal a { color: var(--text-faint); text-decoration: none; margin-left: 18px; }
-  .footer-legal a:hover { color: var(--text-muted); }
-  .cookie-banner { position: fixed; z-index: 100; left: 20px; right: 20px; bottom: 20px; max-width: 720px; margin: auto; padding: 18px 20px; background: var(--text); color: #fff; border-radius: var(--radius-m); box-shadow: 0 12px 30px rgba(0,0,0,.18); display: flex; align-items: center; gap: 18px; justify-content: space-between; }
-  .cookie-banner[hidden] { display: none; }
-  .cookie-banner p { color: rgba(255,255,255,.82); font-size: 13px; }
-  .cookie-actions { display: flex; gap: 8px; flex-shrink: 0; }
-  .cookie-actions button { padding: 9px 14px; border: 1px solid rgba(255,255,255,.4); border-radius: 4px; background: transparent; color: #fff; cursor: pointer; }
-  .cookie-actions .accept { background: var(--pitch); border-color: var(--pitch); color: var(--text); font-weight: 600; }
-  @media (max-width: 620px) { .cookie-banner { display: block; } .cookie-actions { margin-top: 12px; } }
-</style>
-<link rel="stylesheet" href="/motion.css">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://trainingslager-antalya.de/#org","name":"Antalya Camp","url":"https://trainingslager-antalya.de/","logo":"https://trainingslager-antalya.de/favicon.svg","parentOrganization":{"@type":"Organization","name":"Emlak AG","url":"https://emlak-ag.de/"}},{"@type":"Service","name":"Antalya Camp","url":"https://trainingslager-antalya.de/en/","description":"Football training camps in Antalya for youth, amateur, academy and professional teams. Hotels, pitches, matches and transfers from one partner.","serviceType":"Football training camp","areaServed":["DE","AT","CH"],"provider":{"@id":"https://trainingslager-antalya.de/#org"},"inLanguage":"en"},{"@type":"FAQPage","inLanguage":"en","mainEntity":[{"@type":"Question","name":"How fast will we get an offer?","acceptedAnswer":{"@type":"Answer","text":"Usually within 24 hours of your request. For more complex requests we may first follow up with a quick question."}},{"@type":"Question","name":"What team sizes are training camps suitable for?","acceptedAnswer":{"@type":"Answer","text":"From small youth squads to full professional squads with staff — the infrastructure is matched to your group size."}},{"@type":"Question","name":"Can you also organise test matches?","acceptedAnswer":{"@type":"Answer","text":"Yes, we arrange suitable local opponents matched to your level and schedule."}},{"@type":"Question","name":"What happens to the data from the form?","acceptedAnswer":{"@type":"Answer","text":"Your details are used solely to process the request and stored in compliance with GDPR. See the privacy policy for details."}}]}]}</script>
+<script src="/site-config.js"></script>
+<script src="/site.js" defer></script>
+<script src="/home.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <nav class="wrap nav">
-    <a href="#" class="brand">
-      <svg class="brand-mark" width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-        <circle cx="20" cy="20" r="17" fill="#2F6D4F"/>
-        <path d="M9 15a13 13 0 0 1 22 0" stroke="#E8B94F" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="m20 13 4 3v5l-4 3-4-3v-5l4-3Z" fill="#fff"/>
-        <path d="m16 16-4 2m12-2 4 2m-8 6v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
-      ANTALYA<span>CAMP</span>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/en/" aria-label="Antalya Camp">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#1f6247"/><path d="M8.5 15a13.5 13.5 0 0 1 23 0" stroke="#e3a92f" stroke-width="2.6" stroke-linecap="round"/><path d="m20 13 4.2 3.1v5.2L20 24.4l-4.2-3.1v-5.2L20 13Z" fill="#fff"/><path d="m15.8 16.6-4.3 2m12.7-2 4.3 2M20 24.4v5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span>Antalya<b>Camp</b></span>
     </a>
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="mobileMenuPanel" aria-label="Menü öffnen">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-    </button>
-    <ul class="nav-links">
-      <li><a href="#leistungen" data-i18n="nav.leistungen">Leistungen</a></li>
-      <li><a href="#anlagen" data-i18n="nav.anlagen">Anlagen &amp; Hotels</a></li>
-      <li><a href="#teams" data-i18n="nav.teams">Teamkategorien</a></li>
-      <li><a href="#ablauf" data-i18n="nav.ablauf">Ablauf</a></li>
-      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-      <li><a href="/about-us/" data-i18n="nav.about">Über uns</a></li>
-    </ul>
-    <div class="nav-right">
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" id="langDe" class="active">DE</button>
-        <button type="button" id="langEn">EN</button>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#leistungen">Services</a>
+      <a href="#anlagen">Facilities &amp; hotels</a>
+      <a href="#ablauf">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="/en/about-us/">About us</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Choose language">
+        <a href="/" hreflang="de" lang="de" >DE</a>
+        <a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a>
       </div>
-      <a href="#anfrage" class="nav-cta" data-i18n="nav.cta">Angebot anfragen</a>
+      <a class="btn btn-primary btn-sm" href="#anfrage">Request an offer</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-label-close="Close menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
-  </nav>
-  <div class="mobile-menu-panel" id="mobileMenuPanel" hidden>
-    <ul class="mobile-menu-links">
-      <li><a href="#leistungen" data-i18n="nav.leistungen">Leistungen</a></li>
-      <li><a href="#anlagen" data-i18n="nav.anlagen">Anlagen &amp; Hotels</a></li>
-      <li><a href="#teams" data-i18n="nav.teams">Teamkategorien</a></li>
-      <li><a href="#ablauf" data-i18n="nav.ablauf">Ablauf</a></li>
-      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-      <li><a href="/about-us/" data-i18n="nav.about">Über uns</a></li>
-    </ul>
-    <div class="mobile-menu-actions">
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" id="mobileLangDe" class="active">DE</button>
-        <button type="button" id="mobileLangEn">EN</button>
+  </div>
+  <div class="mobile-nav" id="mobile-nav" hidden>
+    <div class="wrap">
+      <ul>
+        <li><a href="#leistungen">Services</a></li>
+        <li><a href="#anlagen">Facilities &amp; hotels</a></li>
+        <li><a href="#ablauf">Process</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/en/about-us/">About us</a></li>
+      </ul>
+      <div class="mobile-nav-actions">
+        <div class="lang-switch" role="group" aria-label="Choose language">
+          <a href="/" hreflang="de" lang="de" >DE</a>
+          <a href="/en/" hreflang="en" lang="en" aria-current="true">EN</a>
+        </div>
+        <a class="btn btn-primary btn-sm" href="#anfrage">Request an offer</a>
       </div>
-      <a href="#anfrage" class="nav-cta" data-i18n="nav.cta">Angebot anfragen</a>
     </div>
   </div>
 </header>
 
 <main id="main">
+
+<!-- TODO: replace the stock photo with a licensed photo from an Antalya training camp. -->
 <section class="hero">
-  <!-- TODO: replace with a licensed real Antalya training-camp photo. -->
-  <div class="hero-media" aria-hidden="true">
-    <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" width="1600" height="900" fetchpriority="high" alt="">
-  </div>
+  <img class="hero-bg" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=2000" srcset="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=900 900w, https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=1400 1400w, https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=2000 2000w" sizes="100vw" width="2000" height="1333" fetchpriority="high" alt="">
   <div class="wrap hero-grid">
-    <div>
-      <div class="eyebrow-row"><span class="eyebrow-dot"></span><span class="eyebrow" data-i18n="hero.eyebrow">Trainingslager für Vereine &amp; Teams</span></div>
-      <h1 class="headline" data-i18n-html="hero.headline">Euer nächstes<br>Trainingslager in <em>Antalya</em></h1>
-      <p class="hero-sub" data-i18n="hero.sub">Professionelle Fußball-Trainingslager für Jugend-, Amateur- und Profiteams — Plätze, Unterkunft, Testspiele und Betreuung aus einer Hand. Ihr sagt uns, was ihr braucht, wir machen euch ein individuelles Angebot.</p>
+    <div class="hero-copy">
+      <span class="hero-badge"><span class="dot" aria-hidden="true"></span>Training camps for clubs &amp; teams</span>
+      <h1>Your next<br>training camp in <em>Antalya</em></h1>
+      <p class="hero-sub">Professional football training camps for youth, amateur and professional teams — pitches, accommodation, test matches and on-site support, all from one partner. Tell us what you need, we'll put together a tailored offer.</p>
       <div class="hero-ctas">
-        <a href="#anfrage" class="btn-primary" data-i18n="hero.cta1">Jetzt Angebot anfragen</a>
-        <a href="#ablauf" class="btn-ghost" data-i18n="hero.cta2">So läuft's ab</a>
+        <a href="#anfrage" class="btn btn-accent">Request an offer now <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="#ablauf" class="btn btn-light">See how it works</a>
       </div>
-      <ul class="hero-trust" aria-label="Vertrauensvorteile">
-        <li><span aria-hidden="true">✓</span><span data-i18n="hero.trust1">Unverbindliches Angebot</span></li>
-        <li><span aria-hidden="true">✓</span><span data-i18n="hero.trust2">Antwort in 24 Stunden</span></li>
-        <li><span aria-hidden="true">✓</span><span data-i18n="hero.trust3">Ein Ansprechpartner für alles</span></li>
+      <ul class="hero-trust" aria-label="Your benefits">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Non-binding offer</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Reply within 24 hours</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>One partner for everything</li>
       </ul>
     </div>
-    <div class="hero-panel">
-      <div class="medallion-wrap">
-        <svg width="86" height="86" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-          <circle cx="50" cy="50" r="42" fill="#2F6D4F"/>
-          <path d="M19 38a37 37 0 0 1 62 0" stroke="#E8B94F" stroke-width="5" stroke-linecap="round"/>
-          <path d="m50 33 12 9v15l-12 9-12-9V42l12-9Z" fill="#fff"/>
-          <path d="m38 42-11 5m35-5 11 5M50 66v15" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="hero-stat"><span class="num">5</span><span class="label" data-i18n="hero.stat1">Teamkategorien — von Jugend bis Profi</span></div>
-      <div class="hero-stat"><span class="num">24h</span><span class="label" data-i18n="hero.stat2">Antwortzeit auf eure Anfrage</span></div>
-      <div class="hero-stat"><span class="num">1</span><span class="label" data-i18n="hero.stat3">Ansprechpartner für Plätze, Hotel &amp; Testspiele</span></div>
-    </div>
+    <aside class="hero-card" aria-label="Antalya Camp in numbers">
+      <div class="hero-stat"><span class="num">5</span><span class="label">Team categories — from youth to professional</span></div>
+      <div class="hero-stat"><span class="num">24h</span><span class="label">Response time on your request</span></div>
+      <div class="hero-stat"><span class="num">1</span><span class="label">Single point of contact for pitches, hotel &amp; test matches</span></div>
+    </aside>
   </div>
 </section>
 
-<section id="teams">
+<section class="section section-tint" id="leistungen">
   <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="teams.tag">Für wen</span>
-      <h2 data-i18n="teams.h2">Für jede Mannschaftsstufe die passende Umgebung</h2>
-      <p data-i18n="teams.p">Egal ob Nachwuchsleistungszentrum oder Herrenmannschaft — wir stellen das Trainingslager auf euer Niveau und eure Ziele ab.</p>
+    <div class="section-head-row">
+      <div class="section-head" data-reveal>
+        <span class="eyebrow">Services</span>
+        <h2>Everything a training camp needs</h2>
+        <p>We coordinate pitches, accommodation and test matches — you focus on training.</p>
+      </div>
+      <a class="text-link" href="/en/services/">Services <span aria-hidden="true">→</span></a>
     </div>
-    <div class="roster">
-      <div class="roster-card" data-team-value="Jugendteam" data-team-href="/youth-teams/" role="button" tabindex="0">
-        <span class="roster-pos">U9–U19</span>
-        <h3 data-i18n="roster.1.title">Jugendteams</h3>
-        <p data-i18n="roster.1.desc">Trainingsumfang, Betreuung und Unterkunft abgestimmt auf Nachwuchsmannschaften.</p>
-        <a class="roster-more" href="/youth-teams/" data-i18n="roster.more">Mehr erfahren →</a>
-      </div>
-      <div class="roster-card" data-team-value="Amateurverein" data-team-href="/amateur-clubs/" role="button" tabindex="0">
-        <span class="roster-pos" data-i18n="roster.2.pos">Freizeit</span>
-        <h3 data-i18n="roster.2.title">Amateurvereine</h3>
-        <p data-i18n="roster.2.desc">Teambuilding und Vorbereitung im Kreis- und Verbandsfußball, planbar und fair kalkuliert.</p>
-        <a class="roster-more" href="/amateur-clubs/" data-i18n="roster.more">Mehr erfahren →</a>
-      </div>
-      <div class="roster-card" data-team-value="Seniorenteam" data-team-href="/senior-teams/" role="button" tabindex="0">
-        <span class="roster-pos" data-i18n="roster.3.pos">Herren</span>
-        <h3 data-i18n="roster.3.title">Seniorenteams</h3>
-        <p data-i18n="roster.3.desc">Saisonvorbereitung mit vollem Trainingsumfang, Testspielen und Regenerationsmöglichkeiten.</p>
-        <a class="roster-more" href="/senior-teams/" data-i18n="roster.more">Mehr erfahren →</a>
-      </div>
-      <div class="roster-card" data-team-value="Akademie" data-team-href="/football-academies/" role="button" tabindex="0">
-        <span class="roster-pos">NLZ</span>
-        <h3 data-i18n="roster.4.title">Akademien</h3>
-        <p data-i18n="roster.4.desc">Strukturierte Trainingswochen für Nachwuchsleistungszentren, inklusive Sichtungsspielen.</p>
-        <a class="roster-more" href="/football-academies/" data-i18n="roster.more">Mehr erfahren →</a>
-      </div>
-      <div class="roster-card" data-team-value="Profiteam" data-team-href="/professional-teams/" role="button" tabindex="0">
-        <span class="roster-pos" data-i18n="roster.5.pos">Profi</span>
-        <h3 data-i18n="roster.5.title">Profiteams</h3>
-        <p data-i18n="roster.5.desc">Vollprofessionelle Infrastruktur, Diskretion und medizinische Betreuung nach Bedarf.</p>
-        <a class="roster-more" href="/professional-teams/" data-i18n="roster.more">Mehr erfahren →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="leistungen">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="leistungen.tag">Leistungen</span>
-      <h2 data-i18n="leistungen.h2">Alles, was ein Trainingslager braucht</h2>
-      <p data-i18n="leistungen.p">Wir koordinieren Plätze, Unterkunft und Testspiele — ihr konzentriert euch auf das Training.</p>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 4v6M16 4v6"/></svg>
-        <h3 data-i18n="service.1.title">Unterkunft &amp; Hotels</h3>
-        <p data-i18n="service.1.desc">Abgestimmte Hotels mit kurzen Wegen zu den Trainingsplätzen, je nach Budget und Standard.</p>
-      </div>
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
-        <h3 data-i18n="service.2.title">Trainingsplätze</h3>
-        <p data-i18n="service.2.desc">Rasen- und Kunstrasenplätze in Trainingslagerqualität, inklusive Platzbuchung.</p>
-      </div>
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.5 6.5L21 10l-5 4.5 1.5 7L12 18l-5.5 3.5L8 14.5 3 10l6.5-1.5z"/></svg>
-        <h3 data-i18n="service.3.title">Testspiele</h3>
-        <p data-i18n="service.3.desc">Spielpartner passend zu eurem Niveau — wir organisieren die Gegner vor Ort.</p>
-      </div>
-      <div class="service-card">
-        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-        <h3 data-i18n="service.4.title">Transfer &amp; Logistik</h3>
-        <p data-i18n="service.4.desc">Flughafentransfer und lokale Mobilität zwischen Hotel, Plätzen und Testspielen.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="anlagen">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="anlagen.tag">Anlagen &amp; Hotels</span>
-      <h2 data-i18n="anlagen.h2">Kurze Wege. Klare Abläufe. Beste Bedingungen.</h2>
-      <p data-i18n="anlagen.p">Wir wählen Unterkunft und Trainingsumgebung passend zu eurem Team, eurem Budget und eurem Vorbereitungsziel.</p>
-    </div>
-    <div class="facility-grid">
-      <article class="facility-card">
-        <h3 data-i18n="anlagen.1.title">Hotels für Teams</h3>
-        <p data-i18n="anlagen.1.text">Zimmeraufteilung, Voll- oder Halbpension und Besprechungsräume werden vorab auf eure Gruppe abgestimmt.</p>
+    <div class="card-grid cols-4">
+      <article class="card" data-reveal>
+        <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21v-6h6v6M3 21h18M8 10h.01M12 10h.01M16 10h.01"/></svg></span>
+        <h3>Accommodation &amp; hotels</h3>
+        <p>Matched hotels close to the training pitches, based on budget and standard.</p>
       </article>
-      <article class="facility-card">
-        <h3 data-i18n="anlagen.2.title">Plätze in Trainingsqualität</h3>
-        <p data-i18n="anlagen.2.text">Rasen- und Kunstrasenplätze mit planbaren Slots, damit jede Einheit konzentriert und pünktlich stattfinden kann.</p>
+      <article class="card" data-reveal>
+        <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M12 5v14"/><circle cx="12" cy="12" r="3"/><path d="M2 9h3v6H2M22 9h-3v6h3"/></svg></span>
+        <h3>Training pitches</h3>
+        <p>Grass and artificial pitches at training-camp quality, including pitch booking.</p>
       </article>
-      <article class="facility-card">
-        <h3 data-i18n="anlagen.3.title">Regeneration &amp; Medizin</h3>
-        <p data-i18n="anlagen.3.text">Gym, Recovery-Angebote und medizinische Betreuung können je nach Leistungsniveau und Bedarf ergänzt werden.</p>
+      <article class="card" data-reveal>
+        <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></span>
+        <h3>Test matches</h3>
+        <p>Opponents matched to your level — we arrange them locally.</p>
+      </article>
+      <article class="card" data-reveal>
+        <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2Z"/></svg></span>
+        <h3>Transfer &amp; logistics</h3>
+        <p>Airport transfer and local transport between hotel, pitches and test matches.</p>
       </article>
     </div>
   </div>
 </section>
 
-<section id="beispielwoche">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="week.tag">Eine Beispielwoche</span>
-      <h2 data-i18n="week.h2">Struktur, die auf dem Platz ankommt</h2>
-      <p data-i18n="week.p">Der genaue Ablauf richtet sich nach eurem Team. Diese Orientierung zeigt, wie Training, Regeneration und Spieltage zusammenspielen können.</p>
+<section class="section" id="anlagen">
+  <div class="wrap split">
+    <div class="split-media" data-reveal>
+      <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&amp;fit=crop&amp;w=1100&amp;q=75" width="1100" height="1210" loading="lazy" decoding="async" alt="Well-kept football pitch with goals in a stadium">
+      <div class="media-note">
+        <span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <div><strong>Antalya, Turkey</strong><span>Hotel, pitches and transfers from one partner</span></div>
+      </div>
     </div>
-    <div class="week-timeline">
-      <article><strong>01</strong><h3 data-i18n="week.1.title">Anreise</h3><p data-i18n="week.1.text">Ankommen, Zimmer beziehen und gemeinsam den Ablauf abstimmen.</p></article>
-      <article><strong>02</strong><h3 data-i18n="week.2.title">Training</h3><p data-i18n="week.2.text">Erste Einheiten mit Fokus auf Belastungssteuerung und Teamrhythmus.</p></article>
-      <article><strong>03</strong><h3 data-i18n="week.3.title">Training &amp; Recovery</h3><p data-i18n="week.3.text">Zwei Einheiten und Zeit für Regeneration nach euren Zielen.</p></article>
-      <article><strong>04</strong><h3 data-i18n="week.4.title">Testspiel</h3><p data-i18n="week.4.text">Ein geplanter Spieltag mit passender Intensität und Nachbereitung.</p></article>
-      <article><strong>05</strong><h3 data-i18n="week.5.title">Abreise</h3><p data-i18n="week.5.text">Letzte Einheit, Check-out und organisierte Rückreise.</p></article>
-    </div>
-  </div>
-</section>
-
-<section id="testspiele">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="matches.tag">Testspiele</span>
-      <h2 data-i18n="matches.h2">Der richtige Gegner für eure Vorbereitung</h2>
-      <p data-i18n="matches.p">Testspiele geben eurem Trainingslager einen sportlichen Abschluss. Wir suchen passende Gegner und koordinieren Termin, Platz und Ablauf.</p>
-    </div>
-    <div class="proof-grid">
-      <article class="proof-card"><strong data-i18n="matches.1.label">01 · Niveau</strong><h3 data-i18n="matches.1.title">Passend statt beliebig</h3><p data-i18n="matches.1.text">Wir berücksichtigen Altersklasse, Spielniveau, Trainingsziel und gewünschte Intensität.</p></article>
-      <article class="proof-card"><strong data-i18n="matches.2.label">02 · Organisation</strong><h3 data-i18n="matches.2.title">Alles aus einer Hand</h3><p data-i18n="matches.2.text">Spielpartner, Schiedsrichter, Platz und Transfer werden in euren Ablauf integriert.</p></article>
-      <article class="proof-card"><strong data-i18n="matches.3.label">03 · Ergebnis</strong><h3 data-i18n="matches.3.title">Mehr als ein Freundschaftsspiel</h3><p data-i18n="matches.3.text">Ihr bekommt eine realistische Standortbestimmung und wertvolle Minuten unter Wettkampfbedingungen.</p></article>
+    <div data-reveal>
+      <span class="eyebrow">Facilities &amp; hotels</span>
+      <div class="section-head" style="margin-bottom:0"><h2>Short routes. Clear schedules. Better conditions.</h2><p>We match accommodation and training environment to your team, budget and preparation goals.</p></div>
+      <ul class="feature-list">
+        <li><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4M12 4v6M2 18h20"/></svg></span><div><h3>Team-friendly hotels</h3><p>Rooming, full or half board and meeting rooms are aligned to your group in advance.</p></div></li>
+        <li><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m12 7 4 3-1.5 4.5h-5L8 10z"/><path d="M12 2v5M16 10l5-1.5M14.5 14.5l3 4.5M9.5 14.5l-3 4.5M8 10 3 8.5"/></svg></span><div><h3>Training-quality pitches</h3><p>Grass and artificial pitches with planned slots so every session stays focused and on time.</p></div></li>
+        <li><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/><path d="M3.2 12h5.3l1.5-3 2.5 6 1.5-3h6.8"/></svg></span><div><h3>Recovery &amp; medical support</h3><p>Gym, recovery options and medical support can be added based on level and requirements.</p></div></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="referenzen">
+<section class="section section-tint" id="beispielwoche">
   <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="why.tag">Warum Antalya Camp</span>
-      <h2 data-i18n="why.h2">Ein Ansprechpartner für die ganze Reise</h2>
-      <p data-i18n="why.p">Von der ersten Anfrage bis zur Abreise bleibt die Organisation übersichtlich, persönlich und auf euren Trainingsalltag ausgerichtet.</p>
+    <div class="section-head center" data-reveal>
+      <span class="eyebrow">A sample week</span>
+      <h2>A structure that works on the pitch</h2>
+      <p>The exact schedule depends on your team. This outline shows how training, recovery and match days can work together.</p>
     </div>
-    <div class="proof-grid">
-      <article class="proof-card"><strong data-i18n="why.1.label">Für Trainer</strong><h3 data-i18n="why.1.title">Mehr Zeit für das Team</h3><p data-i18n="why.1.text">Wir nehmen euch Hotel-, Platz- und Transferkoordination ab, damit ihr euch auf die Einheiten konzentriert.</p></article>
-      <article class="proof-card"><strong data-i18n="why.2.label">Für Vorstände</strong><h3 data-i18n="why.2.title">Planbar kalkuliert</h3><p data-i18n="why.2.text">Ihr erhaltet ein transparentes, individuelles Angebot mit Leistungen, Zeitplan und Ansprechpartner.</p></article>
-      <article class="proof-card"><strong data-i18n="why.3.label">Für Teams</strong><h3 data-i18n="why.3.title">Eine Woche mit Struktur</h3><p data-i18n="why.3.text">Training, Regeneration, Testspiele und gemeinsame Zeit werden zu einem stimmigen Camp-Plan verbunden.</p></article>
+    <ol class="timeline" data-reveal>
+      <li><span class="day"><span class="visually-hidden">Day </span>01</span><div><h3>Arrival</h3><p>Arrive, settle in and align the schedule with the group.</p></div></li>
+      <li><span class="day"><span class="visually-hidden">Day </span>02</span><div><h3>Training</h3><p>First sessions focused on load management and team rhythm.</p></div></li>
+      <li><span class="day"><span class="visually-hidden">Day </span>03</span><div><h3>Training &amp; recovery</h3><p>Two sessions and recovery time built around your goals.</p></div></li>
+      <li><span class="day"><span class="visually-hidden">Day </span>04</span><div><h3>Test match</h3><p>A planned match day with suitable intensity and follow-up.</p></div></li>
+      <li><span class="day"><span class="visually-hidden">Day </span>05</span><div><h3>Departure</h3><p>Final session, check-out and organised return journey.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section-night" id="testspiele">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Test matches</span>
+      <h2>The right opponent for your preparation</h2>
+      <p>Test matches give your camp a sporting finish. We look for suitable opponents and coordinate time, pitch and schedule.</p>
+    </div>
+    <div class="num-grid">
+      <article class="num-card" data-reveal><span class="num-label">01 · Level</span><h3>Matched, not random</h3><p>We consider age group, playing level, training goals and desired intensity.</p></article>
+      <article class="num-card" data-reveal><span class="num-label">02 · Organisation</span><h3>One coordinated plan</h3><p>Opponent, referee, pitch and transfer are integrated into your schedule.</p></article>
+      <article class="num-card" data-reveal><span class="num-label">03 · Outcome</span><h3>More than a friendly</h3><p>You get a useful benchmark and competitive minutes under controlled conditions.</p></article>
     </div>
   </div>
 </section>
 
-<section id="ansprechpartner">
+<section class="section" id="referenzen">
   <div class="wrap">
-    <div class="contact-card">
-      <div class="contact-avatar" aria-hidden="true">AC</div>
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Why Antalya Camp</span>
+      <h2>One partner for the full journey</h2>
+      <p>From first enquiry to departure, organisation stays clear, personal and aligned with your training routine.</p>
+    </div>
+    <div class="card-grid cols-3">
+      <article class="card audience-card" data-reveal><span class="pill">For coaches</span><h3>More time for the team</h3><p>We take hotel, pitch and transfer coordination off your desk so you can focus on the sessions.</p></article>
+      <article class="card audience-card" data-reveal><span class="pill">For boards</span><h3>Planned with clarity</h3><p>You receive a transparent, tailored proposal with services, schedule and contact person.</p></article>
+      <article class="card audience-card" data-reveal><span class="pill">For teams</span><h3>A week with structure</h3><p>Training, recovery, test matches and team time are connected into one practical camp plan.</p></article>
+    </div>
+    <!-- TODO: replace the initials with a real photo, name and role of the contact person once approved. -->
+    <div class="contact-band" id="ansprechpartner" style="margin-top:56px" data-reveal>
+      <div class="avatar" aria-hidden="true">AC</div>
       <div>
-        <span class="tag" data-i18n="contactCard.tag">Euer Ansprechpartner</span>
-        <h2 data-i18n="contactCard.h2">Persönlich erreichbar, wenn es zählt.</h2>
-        <p data-i18n="contactCard.text">We support your team personally from the first enquiry through to departure and keep every step clear and organised.</p>
-        <div class="contact-actions">
-          <a class="btn-primary" href="#anfrage" data-i18n="contactCard.cta">Angebot anfragen</a>
-        </div>
+        <span class="eyebrow">Your point of contact</span>
+        <h2>Personal support when it matters.</h2>
+        <p>We support your team personally from the first enquiry through to departure and keep every step clear and organised.</p>
       </div>
+      <a class="btn btn-accent" href="#anfrage">Request an offer <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
 
-<section id="ratgeber">
+<section class="section section-tint" id="ablauf">
   <div class="wrap">
-    <div class="section-head">
-      <span class="tag">Guides for clubs</span>
-      <h2>Prepare your training camp with confidence</h2>
-      <p>Practical guidance for coaches, team managers and club decision-makers planning a football training camp in Antalya.</p>
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Process</span>
+      <h2>From first contact to a confirmed training camp</h2>
     </div>
-    <div class="guide-grid">
-      <article class="guide-card"><h3>Plan a training camp</h3><p>What we need for a suitable proposal: squad size, dates, goals and desired services.</p><a href="#anfrage">Start planning →</a></article>
-      <article class="guide-card"><h3>Choose the right time</h3><p>Antalya is especially suited to winter preparation and season breaks. We help with dates, workload and schedule.</p><a href="#anfrage">Ask about dates →</a></article>
-      <article class="guide-card"><h3>Keep costs clear</h3><p>Hotel standard, nights, pitch bookings, matches and transfers shape the total price. You receive an individual proposal.</p><a href="#anfrage">Estimate costs →</a></article>
+    <ol class="steps">
+      <li class="step" data-reveal><span class="step-num" aria-hidden="true">1</span><h3>Request</h3><p>You send us the key details on your team, timeframe and desired services via the form.</p></li>
+      <li class="step" data-reveal><span class="step-num" aria-hidden="true">2</span><h3>Offer</h3><p>We put together a tailored offer — accommodation, pitches, test matches, transfer.</p></li>
+      <li class="step" data-reveal><span class="step-num" aria-hidden="true">3</span><h3>Confirmation</h3><p>Once you approve, we take care of the full organisation on site.</p></li>
+    </ol>
+    <div class="promise" data-reveal>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      <p><strong>Response within 24 hours.</strong> Every request is personally reviewed and answered by our team.</p>
     </div>
   </div>
 </section>
 
-<section id="ablauf">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="ablauf.tag">Ablauf</span>
-      <h2 data-i18n="ablauf.h2">Vom Kontakt zum bestätigten Trainingslager</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3 data-i18n="ablauf.1.title">Request</h3>
-        <p data-i18n="ablauf.1.desc">Send us the key details about your team, dates and desired services through the form.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3 data-i18n="ablauf.2.title">Proposal</h3>
-        <p data-i18n="ablauf.2.desc">We prepare an individual proposal covering accommodation, pitches, test matches and transfers.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3 data-i18n="ablauf.3.title">Confirmation</h3>
-        <p data-i18n="ablauf.3.desc">After your approval, we take care of the complete organisation on site.</p>
-      </div>
-    </div>
-    <div class="step-promise">
-      <p data-i18n-html="ablauf.promise"><strong>Antwort innerhalb von 24 Stunden.</strong> Jede Anfrage wird persönlich von unserem Team geprüft und beantwortet.</p>
-    </div>
-  </div>
-</section>
-
-<section id="anfrage">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="anfrage.tag">Angebot anfragen</span>
-      <h2 data-i18n="anfrage.h2">Erzählt uns von eurem Team</h2>
-      <p data-i18n="anfrage.p">Fünf kurze Schritte — am Ende habt ihr eine unverbindliche Anfrage abgeschickt, wir melden uns mit einem individuellen Angebot.</p>
+<section class="section" id="anfrage">
+  <div class="wrap form-layout">
+    <div class="form-aside" data-reveal>
+      <span class="eyebrow">Request an offer</span>
+      <div class="section-head" style="margin-bottom:0"><h2>Tell us about your team</h2><p>Five short steps — at the end you'll have sent a non-binding request, and we'll get back to you with a tailored offer.</p></div>
+      <ul class="checklist">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg>Free and non-binding</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg>Reply within 24 hours</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg>One dedicated contact</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12 2.5 2.5L16 9"/></svg>Takes about 3 minutes</li>
+      </ul>
     </div>
 
-    <div class="form-shell">
-      <div class="form-progress" id="fp">
-        <div class="fp-item active" data-step="1"><span class="fp-n">01</span><span class="fp-label" data-i18n="fp.1">Verein</span></div>
-        <div class="fp-item" data-step="2"><span class="fp-n">02</span><span class="fp-label" data-i18n="fp.2">Gruppe</span></div>
-        <div class="fp-item" data-step="3"><span class="fp-n">03</span><span class="fp-label" data-i18n="fp.3">Reise</span></div>
-        <div class="fp-item" data-step="4"><span class="fp-n">04</span><span class="fp-label" data-i18n="fp.4">Leistungen</span></div>
-        <div class="fp-item" data-step="5"><span class="fp-n">05</span><span class="fp-label" data-i18n="fp.5">Absenden</span></div>
-      </div>
-      <p class="form-progress-text" id="formProgressText" aria-live="polite">Schritt 1 von 5</p>
+    <div class="form-card">
+      <ol class="stepper" aria-hidden="true">
+        <li class="active"><span class="bar"></span><span class="label">Club</span></li>
+        <li><span class="bar"></span><span class="label">Group</span></li>
+        <li><span class="bar"></span><span class="label">Trip</span></li>
+        <li><span class="bar"></span><span class="label">Services</span></li>
+        <li><span class="bar"></span><span class="label">Submit</span></li>
+      </ol>
+      <p class="form-progress-text" id="formProgressText" aria-live="polite"></p>
 
       <div class="form-body">
-        <form id="offerForm">
+        <form id="offerForm" novalidate>
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
 
-          <div class="form-step active" data-step="1">
-            <h3 data-i18n="step1.title">Euer Verein</h3>
-            <p class="step-intro" data-i18n="step1.intro">Damit wir euch richtig zuordnen können.</p>
+          <fieldset class="form-step" data-step="1" style="border:0;padding:0;margin:0">
+            <h3>Your club</h3>
+            <p class="step-intro">So we can match you with the right setup.</p>
             <div class="field-row">
-              <div class="field"><label for="clubName" data-i18n="step1.clubName">Vereinsname</label><input id="clubName" name="clubName" autocomplete="organization" type="text" required></div>
-              <div class="field"><label for="country" data-i18n="step1.country">Land</label><input id="country" name="country" autocomplete="country-name" type="text" required></div>
+              <div class="field"><label for="clubName">Club name<span class="req" aria-hidden="true">*</span></label><input id="clubName" name="clubName" autocomplete="organization" type="text" maxlength="500" required></div>
+              <div class="field"><label for="country">Country<span class="req" aria-hidden="true">*</span></label><input id="country" name="country" autocomplete="country-name" type="text" maxlength="100" required></div>
             </div>
             <div class="field-row">
-              <div class="field"><label for="teamType" data-i18n="step1.teamType">Teamkategorie</label>
-                <select id="teamType">
-                  <option data-i18n="opt.jugend">Jugendteam</option><option data-i18n="opt.amateur">Amateurverein</option><option data-i18n="opt.senior">Seniorenteam</option><option data-i18n="opt.akademie">Akademie</option><option data-i18n="opt.profi">Profiteam</option>
+              <div class="field"><label for="teamType">Team category<span class="req" aria-hidden="true">*</span></label>
+                <select id="teamType" name="teamType" required>
+                  <option value="Jugendteam">Youth team</option>
+                  <option value="Amateurverein">Amateur club</option>
+                  <option value="Seniorenteam">Senior team</option>
+                  <option value="Akademie">Academy</option>
+                  <option value="Profiteam">Professional team</option>
                 </select>
               </div>
-              <div class="field"><label for="contactPerson" data-i18n="step1.contact">Ansprechpartner (Name, Funktion)</label><input id="contactPerson" name="contactPerson" autocomplete="name" type="text" required></div>
+              <div class="field"><label for="contactPerson">Contact person (name, role)<span class="req" aria-hidden="true">*</span></label><input id="contactPerson" name="contactPerson" autocomplete="name" type="text" maxlength="200" required></div>
             </div>
             <div class="field-row">
-              <div class="field"><label for="email" data-i18n="step1.email">E-Mail</label><input id="email" name="email" autocomplete="email" inputmode="email" type="email" required></div>
-              <div class="field"><label for="phone" data-i18n="step1.phone">Telefon</label><input id="phone" name="phone" autocomplete="tel" inputmode="tel" type="tel" required></div>
+              <div class="field"><label for="email">Email<span class="req" aria-hidden="true">*</span></label><input id="email" name="email" autocomplete="email" inputmode="email" type="email" maxlength="320" required></div>
+              <div class="field"><label for="phone">Phone<span class="req" aria-hidden="true">*</span></label><input id="phone" name="phone" autocomplete="tel" inputmode="tel" type="tel" maxlength="60" required></div>
             </div>
-          </div>
+          </fieldset>
 
-          <div class="form-step" data-step="2">
-            <h3 data-i18n="step2.title">Eure Gruppe</h3>
-            <p class="step-intro" data-i18n="step2.intro">Die Größe und das Niveau der Gruppe.</p>
+          <fieldset class="form-step" data-step="2" hidden style="border:0;padding:0;margin:0">
+            <h3>Your group</h3>
+            <p class="step-intro">The size and level of the group.</p>
             <div class="field-row">
-              <div class="field"><label for="players" data-i18n="step2.players">Anzahl Spieler</label><input id="players" name="players" inputmode="numeric" type="number" min="1"></div>
-              <div class="field"><label for="staff" data-i18n="step2.staff">Anzahl Betreuer/Staff</label><input id="staff" name="staff" inputmode="numeric" type="number" min="0"></div>
+              <div class="field"><label for="players">Number of players</label><input id="players" name="players" inputmode="numeric" type="number" min="1" max="10000" step="1"></div>
+              <div class="field"><label for="staff">Number of staff</label><input id="staff" name="staff" inputmode="numeric" type="number" min="0" max="10000" step="1"></div>
             </div>
             <div class="field-row">
-              <div class="field"><label for="ageGroup" data-i18n="step2.ageGroup">Altersgruppe</label><input id="ageGroup" name="ageGroup" type="text" data-i18n-ph="step2.ageGroup.ph" placeholder="z. B. U17"></div>
-              <div class="field"><label for="level" data-i18n="step2.level">Spielniveau</label><input id="level" name="level" type="text" data-i18n-ph="step2.level.ph" placeholder="z. B. Verbandsliga"></div>
+              <div class="field"><label for="ageGroup">Age group</label><input id="ageGroup" name="ageGroup" type="text" maxlength="100" placeholder="e.g. U17"></div>
+              <div class="field"><label for="level">Playing level</label><input id="level" name="level" type="text" maxlength="150" placeholder="e.g. regional league"></div>
             </div>
-          </div>
+          </fieldset>
 
-          <div class="form-step" data-step="3">
-            <h3 data-i18n="step3.title">Eure Reise</h3>
-            <p class="step-intro" data-i18n="step3.intro">Grober Zeitraum reicht — Details klären wir im Angebot.</p>
+          <fieldset class="form-step" data-step="3" hidden style="border:0;padding:0;margin:0">
+            <h3>Your trip</h3>
+            <p class="step-intro">A rough timeframe is enough — we'll sort out details in the offer.</p>
             <div class="field-row">
-              <div class="field"><label for="dates" data-i18n="step3.dates">Gewünschter Zeitraum</label><input id="dates" name="dates" type="text" data-i18n-ph="step3.dates.ph" placeholder="flexibel oder fix, z. B. Feb 2027"></div>
-              <div class="field"><label for="nights" data-i18n="step3.nights">Anzahl Nächte</label><input id="nights" name="nights" inputmode="numeric" type="number" min="1"></div>
+              <div class="field"><label for="dates">Desired period</label><input id="dates" name="dates" type="text" maxlength="200" placeholder="flexible or fixed, e.g. Feb 2027"></div>
+              <div class="field"><label for="nights">Number of nights</label><input id="nights" name="nights" inputmode="numeric" type="number" min="1" max="365" step="1"></div>
             </div>
-            <div class="field"><label for="budget" data-i18n="step3.budget">Budgetrahmen (optional)</label><input id="budget" name="budget" type="text" data-i18n-ph="step3.budget.ph" placeholder="pro Person oder gesamt"></div>
-          </div>
+            <div class="field"><label for="budget">Budget range (optional)</label><input id="budget" name="budget" type="text" maxlength="200" placeholder="per person or total"></div>
+          </fieldset>
 
-          <div class="form-step" data-step="4">
-            <h3 data-i18n="step4.title">Gewünschte Leistungen</h3>
-            <p class="step-intro" data-i18n="step4.intro">Mehrfachauswahl möglich.</p>
-            <div class="chip-group" id="serviceChips">
-              <div class="chip" data-service="Hotel &amp; Zimmer" data-i18n="chip.1" role="checkbox" aria-checked="false" tabindex="0">Hotel &amp; Zimmer</div>
-              <div class="chip" data-service="Verpflegung" data-i18n="chip.2" role="checkbox" aria-checked="false" tabindex="0">Verpflegung</div>
-              <div class="chip" data-service="Trainingsplätze" data-i18n="chip.3" role="checkbox" aria-checked="false" tabindex="0">Trainingsplätze</div>
-              <div class="chip" data-service="Gym &amp; Regeneration" data-i18n="chip.4" role="checkbox" aria-checked="false" tabindex="0">Gym &amp; Regeneration</div>
-              <div class="chip" data-service="Testspiele" data-i18n="chip.5" role="checkbox" aria-checked="false" tabindex="0">Testspiele</div>
-              <div class="chip" data-service="Flughafentransfer" data-i18n="chip.6" role="checkbox" aria-checked="false" tabindex="0">Flughafentransfer</div>
-              <div class="chip" data-service="Lokaler Transport" data-i18n="chip.7" role="checkbox" aria-checked="false" tabindex="0">Lokaler Transport</div>
+          <fieldset class="form-step" data-step="4" hidden style="border:0;padding:0;margin:0">
+            <h3>Desired services</h3>
+            <p class="step-intro">Multiple selection possible.</p>
+            <div class="chip-group" role="group" aria-label="Desired services">
+              <label class="chip"><input type="checkbox" name="services" value="Hotel &amp; Zimmer"><span>Hotel &amp; rooms</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Verpflegung"><span>Meals</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Trainingsplätze"><span>Training pitches</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Gym &amp; Regeneration"><span>Gym &amp; recovery</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Testspiele"><span>Test matches</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Flughafentransfer"><span>Airport transfer</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Lokaler Transport"><span>Local transport</span></label>
             </div>
-            <div class="field" style="margin-top:22px;"><label for="extras" data-i18n="step4.extras">Sonstige Wünsche</label><textarea id="extras" name="extras" data-i18n-ph="step4.extras.ph" placeholder="z. B. besondere Ernährung, medizinische Betreuung..."></textarea></div>
-          </div>
+            <div class="field" style="margin-top:22px"><label for="extras">Other requests</label><textarea id="extras" name="extras" maxlength="2000" placeholder="e.g. special diet, medical support..."></textarea></div>
+          </fieldset>
 
-          <div class="form-step" data-step="5">
-            <h3 data-i18n="step5.title">Fast geschafft</h3>
-            <p class="step-intro" data-i18n="step5.intro">Noch eine kurze Nachricht an uns, dann könnt ihr absenden.</p>
+          <fieldset class="form-step" data-step="5" hidden style="border:0;padding:0;margin:0">
+            <h3>Almost done</h3>
+            <p class="step-intro">One more short message, then you can submit.</p>
             <div class="form-summary" id="formSummary" aria-live="polite"></div>
-            <div class="field"><label for="message" data-i18n="step5.message">Nachricht</label><textarea id="message" name="message" data-i18n-ph="step5.message.ph" placeholder="Gibt es sonst noch etwas, das wir wissen sollten?"></textarea></div>
-            <div class="gdpr-row" style="margin-top:22px;">
-              <input type="checkbox" id="gdpr" required>
-              <label for="gdpr" data-i18n-html="step5.gdpr">Ich stimme zu, dass meine Angaben zur Bearbeitung dieser Anfrage gespeichert werden. Mehr dazu in der <a href="#">Datenschutzerklärung</a>.</label>
+            <div class="field"><label for="message">Message</label><textarea id="message" name="message" maxlength="2000" placeholder="Anything else we should know?"></textarea></div>
+            <div class="field">
+              <div class="consent">
+                <input type="checkbox" id="gdpr" name="consent" required>
+                <label for="gdpr">I agree that my details will be stored to process this request. More in the <a href="/en/privacy-policy/">privacy policy</a>.</label>
+              </div>
             </div>
+          </fieldset>
+
+          <div class="success-panel" id="successPanel" role="status" hidden>
+            <div class="check"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <h3>Request sent</h3>
+            <p>Thanks! We'll get back to you within 24 hours with a tailored offer for your training camp.</p>
+            <p class="success-ref" id="successRef" hidden></p>
           </div>
 
-          <div class="success-panel" id="successPanel" style="display:none;">
-            <div class="check">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-            </div>
-            <h3 data-i18n="success.title">Anfrage gesendet</h3>
-            <p data-i18n="success.text">Danke! Wir melden uns innerhalb von 24 Stunden mit einem individuellen Angebot für euer Trainingslager.</p>
-          </div>
-
-          <p id="formError" role="alert" style="display:none; color:#9b2c2c; margin-top:18px;"></p>
+          <p class="form-error" id="formError" role="alert" hidden></p>
           <div class="form-nav" id="formNav">
-            <button type="button" class="btn-ghost" id="prevBtn" style="visibility:hidden;" data-i18n="btn.back">Zurück</button>
-            <button type="button" class="btn-primary" id="nextBtn" data-i18n="btn.next">Weiter</button>
+            <button type="button" class="btn btn-ghost" id="prevBtn" hidden>← Back</button>
+            <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
           </div>
         </form>
       </div>
@@ -754,635 +367,96 @@
   </div>
 </section>
 
-<section id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="faq.tag">FAQ</span>
-      <h2 data-i18n="faq.h2">Häufige Fragen</h2>
+<section class="section section-tint" id="faq">
+  <div class="wrap faq-layout">
+    <div data-reveal>
+      <span class="eyebrow">FAQ</span>
+      <div class="section-head" style="margin-bottom:28px"><h2>Frequently asked questions</h2><p>The key answers up front. Your question is not listed? Just get in touch.</p></div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a class="btn btn-ghost" href="/en/faq/">See all questions</a>
+        <a class="btn btn-primary" href="/en/contact/">Contact us</a>
+      </div>
     </div>
-    <div id="faqList">
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span data-i18n="faq.1.q">Wie schnell bekommen wir ein Angebot?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p data-i18n="faq.1.a">In der Regel innerhalb von 24 Stunden nach eurer Anfrage. Bei komplexeren Anfragen melden wir uns zunächst kurz für Rückfragen.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span data-i18n="faq.2.q">Für welche Teamgrößen eignet sich ein Trainingslager?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p data-i18n="faq.2.a">Von kleinen Jugendkadern bis zu kompletten Profikadern mit Staff — die Infrastruktur wird passend zur Gruppengröße ausgewählt.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span data-i18n="faq.3.q">Könnt ihr auch Testspiele organisieren?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p data-i18n="faq.3.a">Ja, wir vermitteln passende Testspielgegner vor Ort entsprechend eurem Niveau und Terminwunsch.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span data-i18n="faq.4.q">Was passiert mit unseren Daten aus dem Formular?</span><span class="plus">+</span></button>
-        <div class="faq-a"><p data-i18n="faq.4.a">Eure Angaben werden ausschließlich zur Bearbeitung der Anfrage verwendet und DSGVO-konform gespeichert. Details in der Datenschutzerklärung.</p></div>
-      </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.5.q">Was kostet ein Trainingslager?</span><span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="faq.5.a">[[TODO: Antwort zu Preisen nach Freigabe ergänzen.]]</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.6.q">Wie organisieren wir die Flüge?</span><span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="faq.6.a">[[TODO: Verbindliche Information zu Flugoptionen ergänzen.]]</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.7.q">Welche Versicherung brauchen wir?</span><span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="faq.7.a">[[TODO: Versicherungsinformationen nach rechtlicher Prüfung ergänzen.]]</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.8.q">Gibt es Verpflegung für Jugendteams?</span><span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="faq.8.a">[[TODO: Verpflegungsdetails für Jugendteams ergänzen.]]</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.9.q">Wie sind Sicherheit und Betreuung geregelt?</span><span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="faq.9.a">[[TODO: Geprüfte Angaben zu Sicherheit und Betreuung ergänzen.]]</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span data-i18n="faq.10.q">Wie funktioniert eine Stornierung?</span><span class="plus">+</span></button>
-          <div class="faq-a"><p data-i18n="faq.10.a">[[TODO: Stornierungsbedingungen nach Freigabe ergänzen.]]</p></div>
-        </div>
+    <div class="faq-list" data-reveal>
+      <details class="faq-item" open><summary>How fast will we get an offer?<span class="plus" aria-hidden="true"></span></summary><div class="faq-a"><p>Usually within 24 hours of your request. For more complex requests we may first follow up with a quick question.</p></div></details>
+      <details class="faq-item"><summary>What team sizes are training camps suitable for?<span class="plus" aria-hidden="true"></span></summary><div class="faq-a"><p>From small youth squads to full professional squads with staff — the infrastructure is matched to your group size.</p></div></details>
+      <details class="faq-item"><summary>Can you also organise test matches?<span class="plus" aria-hidden="true"></span></summary><div class="faq-a"><p>Yes, we arrange suitable local opponents matched to your level and schedule.</p></div></details>
+      <details class="faq-item"><summary>What happens to the data from the form?<span class="plus" aria-hidden="true"></span></summary><div class="faq-a"><p>Your details are used solely to process the request and stored in compliance with GDPR. See the privacy policy for details.</p></div></details>
+      <!-- TODO: add questions on prices, flights, insurance, catering, safety and cancellation once the answers are approved (then also add them to the FAQPage JSON-LD in scripts/build.mjs). -->
     </div>
   </div>
 </section>
 
-<section id="explore">
+<section class="section" id="ratgeber">
   <div class="wrap">
-    <div class="section-head">
-      <span class="tag" data-i18n="explore.tag">Explore Antalya Camp</span>
-      <h2 data-i18n="explore.h2">Everything you need before booking</h2>
-      <p data-i18n="explore.p">Explore our complete information pages for teams, clubs, planning, services and legal details.</p>
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Guides for clubs</span>
+      <h2>Prepare your training camp with confidence</h2>
+      <p>Practical guidance for coaches, team managers and club decision-makers planning a football training camp in Antalya.</p>
     </div>
-    <div class="proof-grid">
-      <article class="proof-card"><strong data-i18n="explore.about.label">ABOUT</strong><h3 data-i18n="explore.about.title">Who we are</h3><p data-i18n="explore.about.text">Learn about Antalya Camp, our B2B focus and how Emlak supports the product.</p><a href="/en/about-us/" data-i18n="explore.about.link">About us →</a></article>
-      <article class="proof-card"><strong data-i18n="explore.faq.label">ANSWERS</strong><h3 data-i18n="explore.faq.title">Questions first</h3><p data-i18n="explore.faq.text">Find practical answers about team types, services, timing, data and the enquiry process.</p><a href="/en/faq/" data-i18n="explore.faq.link">Read the FAQ →</a></article>
-      <article class="proof-card"><strong data-i18n="explore.plan.label">PLANNING</strong><h3 data-i18n="explore.plan.title">Plan with confidence</h3><p data-i18n="explore.plan.text">Use our guides for dates, costs, services, preparation and team requirements.</p><a href="/en/plan-football-camp/" data-i18n="explore.plan.link">Open the planning guide →</a></article>
-      <article class="proof-card"><strong data-i18n="explore.contact.label">CONTACT</strong><h3 data-i18n="explore.contact.title">Start your request</h3><p data-i18n="explore.contact.text">Send your club details, dates and preferred services through the five-step form.</p><a href="/en/request-offer/" data-i18n="explore.contact.link">Request an offer →</a></article>
-      <article class="proof-card"><strong data-i18n="explore.legal.label">LEGAL</strong><h3 data-i18n="explore.legal.title">Privacy and cookies</h3><p data-i18n="explore.legal.text">Read how enquiries, optional analytics and necessary website storage are handled.</p><a href="/en/privacy-policy/" data-i18n="explore.legal.link">View privacy information →</a></article>
-      <article class="proof-card"><strong data-i18n="explore.company.label">COMPANY</strong><h3 data-i18n="explore.company.title">Contact the team</h3><p data-i18n="explore.company.text">Have a question that is not covered? We are ready to discuss your camp requirements.</p><a href="/en/contact/" data-i18n="explore.company.link">Contact us →</a></article>
-      <article class="proof-card"><strong data-i18n="explore.german.label">GERMAN</strong><h3 data-i18n="explore.german.title">Training camp Antalya</h3><p data-i18n="explore.german.text">The German overview page for clubs, squads and football teams.</p><a href="/" data-i18n="explore.german.link">Open German page →</a></article>
-      <article class="proof-card"><strong data-i18n="explore.checklist.label">CHECKLIST</strong><h3 data-i18n="explore.checklist.title">Preparation made easy</h3><p data-i18n="explore.checklist.text">Team details, travel dates, sporting goals and services in one checklist.</p><a href="/en/trainingslager-checkliste/" data-i18n="explore.checklist.link">Open checklist →</a></article>
+    <div class="card-grid cols-3">
+      <a class="card link-card" href="/en/plan-football-camp/" data-reveal><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><h3>Plan a training camp</h3><p>What we need for a suitable proposal: squad size, dates, goals and desired services.</p><span class="go">Open the planning guide →</span></a>
+      <a class="card link-card" href="/en/best-time-training-camp/" data-reveal><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span><h3>Choose the right time</h3><p>Antalya is especially suited to winter preparation and season breaks. We help with dates, workload and schedule.</p><span class="go">See the best dates →</span></a>
+      <a class="card link-card" href="/en/training-camp-costs/" data-reveal><span class="icon-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></span><h3>Keep costs clear</h3><p>Hotel standard, nights, pitch bookings, matches and transfers shape the total price. You receive an individual proposal.</p><span class="go">Read about costs →</span></a>
     </div>
   </div>
 </section>
+
+<section class="section section-tint" id="explore">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Explore Antalya Camp</span>
+      <h2>Everything you need before booking</h2>
+      <p>Explore our complete information pages for teams, clubs, planning, services and legal details.</p>
+    </div>
+    <div class="card-grid cols-4">
+      <a class="card link-card" href="/en/about-us/"><span class="kicker">ABOUT</span><h3>Who we are</h3><p>Learn about Antalya Camp, our B2B focus and how Emlak supports the product.</p><span class="go">About us →</span></a>
+      <a class="card link-card" href="/en/faq/"><span class="kicker">ANSWERS</span><h3>Questions first</h3><p>Find practical answers about team types, services, timing, data and the enquiry process.</p><span class="go">Read the FAQ →</span></a>
+      <a class="card link-card" href="/en/plan-football-camp/"><span class="kicker">PLANNING</span><h3>Plan with confidence</h3><p>Use our guides for dates, costs, services, preparation and team requirements.</p><span class="go">Open the planning guide →</span></a>
+      <a class="card link-card" href="/en/request-offer/"><span class="kicker">CONTACT</span><h3>Start your request</h3><p>Send your club details, dates and preferred services through the five-step form.</p><span class="go">Request an offer →</span></a>
+      <a class="card link-card" href="/en/privacy-policy/"><span class="kicker">LEGAL</span><h3>Privacy and cookies</h3><p>Read how enquiries, optional analytics and necessary website storage are handled.</p><span class="go">View privacy information →</span></a>
+      <a class="card link-card" href="/en/contact/"><span class="kicker">COMPANY</span><h3>Contact the team</h3><p>Have a question that is not covered? We are ready to discuss your camp requirements.</p><span class="go">Contact us →</span></a>
+      <a class="card link-card" href="/trainingslager-antalya/"><span class="kicker">GERMAN</span><h3>Training camp Antalya</h3><p>The German overview page for clubs, squads and football teams.</p><span class="go">Open German page →</span></a>
+      <a class="card link-card" href="/trainingslager-checkliste/"><span class="kicker">CHECKLIST</span><h3>Preparation made easy</h3><p>Team details, travel dates, sporting goals and services in one checklist.</p><span class="go">Open checklist →</span></a>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<footer>
+<!-- site-footer -->
+<footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div style="max-width:440px;">
-        <a href="#" class="brand" style="margin-bottom:14px; display:inline-flex;">
-          <svg class="brand-mark" width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-          <circle cx="20" cy="20" r="17" fill="#2F6D4F"/>
-          <path d="M9 15a13 13 0 0 1 22 0" stroke="#E8B94F" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="m20 13 4 3v5l-4 3-4-3v-5l4-3Z" fill="#fff"/>
-          <path d="m16 16-4 2m12-2 4 2m-8 6v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          ANTALYA<span>CAMP</span>
-        </a>
-        <p style="margin-top:14px; font-size:14.5px;" data-i18n="footer.tagline">Trainingslager für Fußballvereine und -teams in Antalya, Türkei.</p>
-        <p style="margin-top:12px; font-size:12px; color:var(--text-faint);">A product by <strong>Emlak</strong></p>
+      <div>
+        <a class="brand" href="/en/" aria-label="Antalya Camp"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#1f6247"/><path d="M8.5 15a13.5 13.5 0 0 1 23 0" stroke="#e3a92f" stroke-width="2.6" stroke-linecap="round"/><path d="m20 13 4.2 3.1v5.2L20 24.4l-4.2-3.1v-5.2L20 13Z" fill="#fff"/><path d="m15.8 16.6-4.3 2m12.7-2 4.3 2M20 24.4v5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg><span>Antalya<b>Camp</b></span></a>
+        <p>Football training camps for clubs and teams in Antalya, Turkey.</p>
+        <div class="footer-sister"><span>Looking for a family or youth camp instead of club training?</span><a href="https://fussballcamp-antalya.de" target="_blank" rel="noopener">fussballcamp-antalya.de →</a></div>
       </div>
-      <div class="footer-sister">
-        <p data-i18n="footer.sister">Sucht ihr ein Familien- oder Jugendcamp statt Vereinstraining?</p>
-        <a href="https://fussballcamp-antalya.de" target="_blank" rel="noopener">fussballcamp-antalya.de →</a>
-      </div>
+      <div class="footer-col"><h4>Antalya Camp</h4><ul><li><a href="/en/about-us/">About us</a></li><li><a href="/en/services/">Services</a></li><li><a href="/en/how-it-works/">How it works</a></li><li><a href="/en/references/">References</a></li><li><a href="/en/faq/">FAQ</a></li><li><a href="/en/contact/">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="/en/imprint/">Imprint</a></li><li><a href="/en/privacy-policy/">Privacy policy</a></li><li><a href="/en/cookie-policy/">Cookies</a></li></ul></div>
     </div>
-    <div class="footer-states">
-      <h3 data-i18n="footer.statesTitle">Trainingslager nach Teamart</h3>
-      <nav class="state-links" aria-label="Teamarten">
-        <a href="/youth-teams/">Jugendteams</a>
-        <a href="/amateur-clubs/">Amateurvereine</a>
-        <a href="/senior-teams/">Seniorenteams</a>
-        <a href="/football-academies/">Akademien</a>
-        <a href="/professional-teams/">Profiteams</a>
-        <a href="/en/services/">Services</a>
-      </nav>
-    </div>
-    <div class="emlak-signature">
-      <a href="https://emlak-ag.de/" target="_blank" rel="noopener noreferrer" aria-label="Emlak AG official website">
-        <img class="emlak-logo" src="https://emlak-ag.de/wp-content/uploads/2016/11/logo121.png" alt="Emlak AG">
-      </a>
-      <span data-i18n="footer.emlakProduct">AntalyaCamp ist ein Produkt der Emlak AG</span>
-    </div>
-    <div class="footer-legal">
-      <span data-i18n="footer.copyright">© 2026 Trainingslager Antalya</span>
-      <span>
-        <a href="/en/imprint/" data-i18n="footer.impressum">Legal notice</a>
-        <a href="/en/privacy-policy/" data-i18n="footer.datenschutz">Privacy policy</a>
-        <a href="/cookie-policy/">Cookies</a>
-        <a href="/contact/">Kontakt</a>
-      </span>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Training Camp Antalya. All rights reserved.</span>
+      <a class="emlak" href="https://emlak-ag.de/" target="_blank" rel="noopener noreferrer"><img src="https://emlak-ag.de/wp-content/uploads/2016/11/logo121.png" alt="Emlak AG" width="112" height="26" loading="lazy">Antalya Camp is a product of Emlak AG</a>
     </div>
   </div>
 </footer>
+<!-- /site-footer -->
 
 <aside class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie settings" hidden>
-  <p>Wir verwenden optionale Analyse-Cookies, um die Website zu verbessern. Sie entscheiden selbst.</p>
+  <p>We use optional analytics cookies to improve this website. The choice is yours. <a href="/en/cookie-policy/">Learn more</a></p>
   <div class="cookie-actions">
-    <button type="button" id="cookieReject">Nur notwendige</button>
-    <button type="button" class="accept" id="cookieAccept">Analyse erlauben</button>
+    <button type="button" class="btn btn-ghost" data-consent="denied">Necessary only</button>
+    <button type="button" class="btn btn-accent" data-consent="granted">Allow analytics</button>
   </div>
 </aside>
 
-<!-- TODO: replace the WhatsApp placeholder with the verified business number. -->
-<aside class="mobile-cta" id="mobileCta" hidden>
-  <a href="#anfrage" class="btn-primary" data-i18n="sticky.cta">Angebot anfragen</a>
-  <a href="https://wa.me/[[WHATSAPP_NUMMER]]" class="mobile-whatsapp" data-i18n="sticky.whatsapp">WhatsApp</a>
+<aside class="mobile-cta" id="mobileCta" aria-hidden="true">
+  <a href="#anfrage" class="btn btn-primary" tabindex="-1">Request an offer</a>
+  <a href="#" class="btn btn-whatsapp" tabindex="-1" hidden rel="noopener" target="_blank">WhatsApp</a>
 </aside>
 
-<script>
-  const consentKey = 'antalya-camp-analytics-consent';
-  const cookieBanner = document.getElementById('cookieBanner');
-  const savedConsent = localStorage.getItem(consentKey);
-  if (savedConsent === 'granted') window.enableAnalytics();
-  if (!savedConsent) cookieBanner.hidden = false;
-  document.getElementById('cookieAccept').addEventListener('click', () => {
-    localStorage.setItem(consentKey, 'granted');
-    cookieBanner.hidden = true;
-    window.enableAnalytics();
-    window.dispatchEvent(new Event('resize'));
-  });
-  document.getElementById('cookieReject').addEventListener('click', () => {
-    localStorage.setItem(consentKey, 'denied');
-    cookieBanner.hidden = true;
-    window.dispatchEvent(new Event('resize'));
-  });
-
-  var dict = {
-    de: {
-      "meta.title": "Trainingslager Antalya — Fußball-Trainingslager für Vereine",
-      "nav.leistungen": "Leistungen", "nav.anlagen": "Anlagen &amp; Hotels", "nav.teams": "Teamkategorien", "nav.ablauf": "Ablauf", "nav.faq": "FAQ", "nav.about": "Über uns", "nav.cta": "Angebot anfragen",
-      "hero.eyebrow": "Trainingslager für Vereine &amp; Teams",
-      "hero.headline": "Euer nächstes<br>Trainingslager in <em>Antalya</em>",
-      "hero.sub": "Professionelle Fußball-Trainingslager für Jugend-, Amateur- und Profiteams — Plätze, Unterkunft, Testspiele und Betreuung aus einer Hand. Ihr sagt uns, was ihr braucht, wir machen euch ein individuelles Angebot.",
-      "hero.cta1": "Jetzt Angebot anfragen", "hero.cta2": "So läuft's ab", "sticky.cta": "Angebot anfragen", "sticky.whatsapp": "WhatsApp",
-      "hero.trust1": "Unverbindliches Angebot", "hero.trust2": "Antwort in 24 Stunden", "hero.trust3": "Ein Ansprechpartner für alles",
-      "hero.stat1": "Teamkategorien — von Jugend bis Profi", "hero.stat2": "Antwortzeit auf eure Anfrage", "hero.stat3": "Ansprechpartner für Plätze, Hotel &amp; Testspiele",
-      "teams.tag": "Für wen", "teams.h2": "Für jede Mannschaftsstufe die passende Umgebung",
-      "teams.p": "Egal ob Nachwuchsleistungszentrum oder Herrenmannschaft — wir stellen das Trainingslager auf euer Niveau und eure Ziele ab.",
-      "roster.1.title": "Jugendteams", "roster.1.desc": "Trainingsumfang, Betreuung und Unterkunft abgestimmt auf Nachwuchsmannschaften.",
-      "roster.2.pos": "Freizeit", "roster.2.title": "Amateurvereine", "roster.2.desc": "Teambuilding und Vorbereitung im Kreis- und Verbandsfußball, planbar und fair kalkuliert.",
-      "roster.3.pos": "Herren", "roster.3.title": "Seniorenteams", "roster.3.desc": "Saisonvorbereitung mit vollem Trainingsumfang, Testspielen und Regenerationsmöglichkeiten.",
-      "roster.4.title": "Akademien", "roster.4.desc": "Strukturierte Trainingswochen für Nachwuchsleistungszentren, inklusive Sichtungsspielen.",
-      "roster.5.pos": "Profi", "roster.5.title": "Profiteams", "roster.5.desc": "Vollprofessionelle Infrastruktur, Diskretion und medizinische Betreuung nach Bedarf.",
-      "roster.more": "Mehr erfahren →",
-      "leistungen.tag": "Leistungen", "leistungen.h2": "Alles, was ein Trainingslager braucht",
-      "leistungen.p": "Wir koordinieren Plätze, Unterkunft und Testspiele — ihr konzentriert euch auf das Training.",
-      "service.1.title": "Unterkunft &amp; Hotels", "service.1.desc": "Abgestimmte Hotels mit kurzen Wegen zu den Trainingsplätzen, je nach Budget und Standard.",
-      "service.2.title": "Trainingsplätze", "service.2.desc": "Rasen- und Kunstrasenplätze in Trainingslagerqualität, inklusive Platzbuchung.",
-      "service.3.title": "Testspiele", "service.3.desc": "Spielpartner passend zu eurem Niveau — wir organisieren die Gegner vor Ort.",
-      "service.4.title": "Transfer &amp; Logistik", "service.4.desc": "Flughafentransfer und lokale Mobilität zwischen Hotel, Plätzen und Testspielen.",
-      "anlagen.tag": "Anlagen &amp; Hotels", "anlagen.h2": "Kurze Wege. Klare Abläufe. Beste Bedingungen.", "anlagen.p": "Wir wählen Unterkunft und Trainingsumgebung passend zu eurem Team, eurem Budget und eurem Vorbereitungsziel.",
-      "anlagen.1.title": "Hotels für Teams", "anlagen.1.text": "Zimmeraufteilung, Voll- oder Halbpension und Besprechungsräume werden vorab auf eure Gruppe abgestimmt.",
-      "anlagen.2.title": "Plätze in Trainingsqualität", "anlagen.2.text": "Rasen- und Kunstrasenplätze mit planbaren Slots, damit jede Einheit konzentriert und pünktlich stattfinden kann.",
-      "anlagen.3.title": "Regeneration &amp; Medizin", "anlagen.3.text": "Gym, Recovery-Angebote und medizinische Betreuung können je nach Leistungsniveau und Bedarf ergänzt werden.",
-      "matches.tag": "Testspiele", "matches.h2": "Der richtige Gegner für eure Vorbereitung", "matches.p": "Testspiele geben eurem Trainingslager einen sportlichen Abschluss. Wir suchen passende Gegner und koordinieren Termin, Platz und Ablauf.",
-      "matches.1.label": "01 · Niveau", "matches.1.title": "Passend statt beliebig", "matches.1.text": "Wir berücksichtigen Altersklasse, Spielniveau, Trainingsziel und gewünschte Intensität.",
-      "matches.2.label": "02 · Organisation", "matches.2.title": "Alles aus einer Hand", "matches.2.text": "Spielpartner, Schiedsrichter, Platz und Transfer werden in euren Ablauf integriert.",
-      "matches.3.label": "03 · Ergebnis", "matches.3.title": "Mehr als ein Freundschaftsspiel", "matches.3.text": "Ihr bekommt eine realistische Standortbestimmung und wertvolle Minuten unter Wettkampfbedingungen.",
-      "why.tag": "Warum Antalya Camp", "why.h2": "Ein Ansprechpartner für die ganze Reise", "why.p": "Von der ersten Anfrage bis zur Abreise bleibt die Organisation übersichtlich, persönlich und auf euren Trainingsalltag ausgerichtet.",
-      "why.1.label": "Für Trainer", "why.1.title": "Mehr Zeit für das Team", "why.1.text": "Wir nehmen euch Hotel-, Platz- und Transferkoordination ab, damit ihr euch auf die Einheiten konzentriert.",
-      "why.2.label": "Für Vorstände", "why.2.title": "Planbar kalkuliert", "why.2.text": "Ihr erhaltet ein transparentes, individuelles Angebot mit Leistungen, Zeitplan und Ansprechpartner.",
-      "why.3.label": "Für Teams", "why.3.title": "Eine Woche mit Struktur", "why.3.text": "Training, Regeneration, Testspiele und gemeinsame Zeit werden zu einem stimmigen Camp-Plan verbunden.",
-      "explore.tag": "Antalya Camp entdecken", "explore.h2": "Alles Wichtige vor der Buchung", "explore.p": "Entdeckt unsere Informationsseiten zu Teams, Vereinen, Planung, Leistungen und rechtlichen Hinweisen.",
-      "explore.about.label": "ÜBER UNS", "explore.about.title": "Wer wir sind", "explore.about.text": "Lernt Antalya Camp, unseren B2B-Fokus und die Rolle von Emlak kennen.", "explore.about.link": "Über uns →",
-      "explore.faq.label": "ANTWORTEN", "explore.faq.title": "Fragen zuerst", "explore.faq.text": "Praktische Antworten zu Teamarten, Leistungen, Zeitplanung, Daten und Anfrageprozess.", "explore.faq.link": "FAQ lesen →",
-      "explore.plan.label": "PLANUNG", "explore.plan.title": "Sicher planen", "explore.plan.text": "Unsere Leitfäden helfen bei Zeitraum, Kosten, Leistungen, Vorbereitung und Teamanforderungen.", "explore.plan.link": "Planungsleitfaden öffnen →",
-      "explore.contact.label": "KONTAKT", "explore.contact.title": "Anfrage starten", "explore.contact.text": "Sendet Vereinsdaten, Termine und gewünschte Leistungen über das Formular.", "explore.contact.link": "Angebot anfragen →",
-      "explore.legal.label": "RECHTLICHES", "explore.legal.title": "Datenschutz &amp; Cookies", "explore.legal.text": "Lest, wie Anfragen, optionale Analyse und notwendiger Speicher behandelt werden.", "explore.legal.link": "Datenschutz ansehen →",
-      "explore.company.label": "UNTERNEHMEN", "explore.company.title": "Team kontaktieren", "explore.company.text": "Frage offen? Wir besprechen gern eure Anforderungen an das Trainingslager.", "explore.company.link": "Kontakt →",
-      "explore.german.label": "DEUTSCH", "explore.german.title": "Trainingslager Antalya", "explore.german.text": "Die deutsche Übersichtsseite für Vereine, Mannschaften und Fußballclubs.", "explore.german.link": "Zur deutschen Seite →",
-      "explore.checklist.label": "CHECKLISTE", "explore.checklist.title": "Vorbereitung leicht gemacht", "explore.checklist.text": "Teamdaten, Reisetermine, sportliche Ziele und Leistungen in einer Checkliste.", "explore.checklist.link": "Checkliste öffnen →",
-      "week.tag": "Eine Beispielwoche", "week.h2": "Struktur, die auf dem Platz ankommt", "week.p": "Der genaue Ablauf richtet sich nach eurem Team. Diese Orientierung zeigt, wie Training, Regeneration und Spieltage zusammenspielen können.",
-      "week.1.title": "Anreise", "week.1.text": "Ankommen, Zimmer beziehen und gemeinsam den Ablauf abstimmen.",
-      "week.2.title": "Training", "week.2.text": "Erste Einheiten mit Fokus auf Belastungssteuerung und Teamrhythmus.",
-      "week.3.title": "Training &amp; Recovery", "week.3.text": "Zwei Einheiten und Zeit für Regeneration nach euren Zielen.",
-      "week.4.title": "Testspiel", "week.4.text": "Ein geplanter Spieltag mit passender Intensität und Nachbereitung.",
-      "week.5.title": "Abreise", "week.5.text": "Letzte Einheit, Check-out und organisierte Rückreise.",
-      "contactCard.tag": "Euer Ansprechpartner", "contactCard.h2": "Persönlich erreichbar, wenn es zählt.", "contactCard.text": "Hier ergänzen wir nach Freigabe den echten Ansprechpartner, die verfügbaren Sprachen und die direkten Kontaktdaten.",
-      "contactCard.placeholder": "[[NAME]] · [[FUNKTION]] · DE / EN / TR", "contactCard.cta": "Angebot anfragen", "contactCard.email": "E-Mail schreiben",
-      "ablauf.tag": "Ablauf", "ablauf.h2": "Vom Kontakt zum bestätigten Trainingslager",
-      "ablauf.1.title": "Anfrage", "ablauf.1.desc": "Ihr schickt uns Eckdaten zu Team, Zeitraum und gewünschten Leistungen über das Formular.",
-      "ablauf.2.title": "Angebot", "ablauf.2.desc": "Wir stellen ein individuelles Angebot zusammen — Unterkunft, Plätze, Testspiele, Transfer.",
-      "ablauf.3.title": "Bestätigung", "ablauf.3.desc": "Nach eurer Freigabe kümmern wir uns um die komplette Organisation vor Ort.",
-      "ablauf.promise": "<strong>Antwort innerhalb von 24 Stunden.</strong> Jede Anfrage wird persönlich von unserem Team geprüft und beantwortet.",
-      "anfrage.tag": "Angebot anfragen", "anfrage.h2": "Erzählt uns von eurem Team",
-      "anfrage.p": "Fünf kurze Schritte — am Ende habt ihr eine unverbindliche Anfrage abgeschickt, wir melden uns mit einem individuellen Angebot.",
-      "fp.1": "Verein", "fp.2": "Gruppe", "fp.3": "Reise", "fp.4": "Leistungen", "fp.5": "Absenden",
-      "step1.title": "Euer Verein", "step1.intro": "Damit wir euch richtig zuordnen können.",
-      "step1.clubName": "Vereinsname", "step1.country": "Land", "step1.teamType": "Teamkategorie",
-      "step1.contact": "Ansprechpartner (Name, Funktion)", "step1.email": "E-Mail", "step1.phone": "Telefon",
-      "opt.jugend": "Jugendteam", "opt.amateur": "Amateurverein", "opt.senior": "Seniorenteam", "opt.akademie": "Akademie", "opt.profi": "Profiteam",
-      "step2.title": "Eure Gruppe", "step2.intro": "Die Größe und das Niveau der Gruppe.",
-      "step2.players": "Anzahl Spieler", "step2.staff": "Anzahl Betreuer/Staff",
-      "step2.ageGroup": "Altersgruppe", "step2.ageGroup.ph": "z. B. U17",
-      "step2.level": "Spielniveau", "step2.level.ph": "z. B. Verbandsliga",
-      "step3.title": "Eure Reise", "step3.intro": "Grober Zeitraum reicht — Details klären wir im Angebot.",
-      "step3.dates": "Gewünschter Zeitraum", "step3.dates.ph": "flexibel oder fix, z. B. Feb 2027",
-      "step3.nights": "Anzahl Nächte", "step3.budget": "Budgetrahmen (optional)", "step3.budget.ph": "pro Person oder gesamt",
-      "step4.title": "Gewünschte Leistungen", "step4.intro": "Mehrfachauswahl möglich.",
-      "chip.1": "Hotel &amp; Zimmer", "chip.2": "Verpflegung", "chip.3": "Trainingsplätze", "chip.4": "Gym &amp; Regeneration",
-      "chip.5": "Testspiele", "chip.6": "Flughafentransfer", "chip.7": "Lokaler Transport",
-      "step4.extras": "Sonstige Wünsche", "step4.extras.ph": "z. B. besondere Ernährung, medizinische Betreuung...",
-      "step5.title": "Fast geschafft", "step5.intro": "Noch eine kurze Nachricht an uns, dann könnt ihr absenden.",
-      "summary.title": "Eure Angaben", "summary.club": "Verein", "summary.team": "Team", "summary.group": "Gruppe", "summary.trip": "Reise", "summary.services": "Leistungen", "summary.players": "Spieler", "summary.staff": "Staff", "summary.nights": "Nächte",
-      "step5.message": "Nachricht", "step5.message.ph": "Gibt es sonst noch etwas, das wir wissen sollten?",
-      "step5.gdpr": "Ich stimme zu, dass meine Angaben zur Bearbeitung dieser Anfrage gespeichert werden. Mehr dazu in der <a href=\"#\">Datenschutzerklärung</a>.",
-      "success.title": "Anfrage gesendet", "success.text": "Danke! Wir melden uns innerhalb von 24 Stunden mit einem individuellen Angebot für euer Trainingslager.",
-      "btn.back": "Zurück", "btn.next": "Weiter", "btn.submit": "Anfrage absenden",
-      "faq.tag": "FAQ", "faq.h2": "Häufige Fragen",
-      "faq.1.q": "Wie schnell bekommen wir ein Angebot?", "faq.1.a": "In der Regel innerhalb von 24 Stunden nach eurer Anfrage. Bei komplexeren Anfragen melden wir uns zunächst kurz für Rückfragen.",
-      "faq.2.q": "Für welche Teamgrößen eignet sich ein Trainingslager?", "faq.2.a": "Von kleinen Jugendkadern bis zu kompletten Profikadern mit Staff — die Infrastruktur wird passend zur Gruppengröße ausgewählt.",
-      "faq.3.q": "Könnt ihr auch Testspiele organisieren?", "faq.3.a": "Ja, wir vermitteln passende Testspielgegner vor Ort entsprechend eurem Niveau und Terminwunsch.",
-      "faq.4.q": "Was passiert mit unseren Daten aus dem Formular?", "faq.4.a": "Eure Angaben werden ausschließlich zur Bearbeitung der Anfrage verwendet und DSGVO-konform gespeichert. Details in der Datenschutzerklärung.",
-      "faq.5.q": "Was kostet ein Trainingslager?", "faq.5.a": "[[TODO: Antwort zu Preisen nach Freigabe ergänzen.]]",
-      "faq.6.q": "Wie organisieren wir die Flüge?", "faq.6.a": "[[TODO: Verbindliche Information zu Flugoptionen ergänzen.]]",
-      "faq.7.q": "Welche Versicherung brauchen wir?", "faq.7.a": "[[TODO: Versicherungsinformationen nach rechtlicher Prüfung ergänzen.]]",
-      "faq.8.q": "Gibt es Verpflegung für Jugendteams?", "faq.8.a": "[[TODO: Verpflegungsdetails für Jugendteams ergänzen.]]",
-      "faq.9.q": "Wie sind Sicherheit und Betreuung geregelt?", "faq.9.a": "[[TODO: Geprüfte Angaben zu Sicherheit und Betreuung ergänzen.]]",
-      "faq.10.q": "Wie funktioniert eine Stornierung?", "faq.10.a": "[[TODO: Stornierungsbedingungen nach Freigabe ergänzen.]]",
-      "errors.required": "Bitte füllt dieses Feld aus.", "errors.email": "Bitte gebt eine gültige E-Mail-Adresse ein.", "errors.number": "Bitte gebt eine gültige Zahl ein.",
-      "footer.tagline": "Trainingslager für Fußballvereine und -teams in Antalya, Türkei.",
-      "footer.statesTitle": "Trainingslager nach Teamart", "footer.emlakProduct": "AntalyaCamp ist ein Produkt der Emlak AG",
-      "footer.sister": "Sucht ihr ein Familien- oder Jugendcamp statt Vereinstraining?",
-      "footer.copyright": "© 2026 Trainingslager Antalya", "footer.impressum": "Impressum", "footer.datenschutz": "Datenschutz"
-    },
-    en: {
-      "meta.title": "Training Camp Antalya — Football Training Camps for Clubs",
-      "nav.leistungen": "Services", "nav.anlagen": "Facilities &amp; hotels", "nav.teams": "Team Categories", "nav.ablauf": "Process", "nav.faq": "FAQ", "nav.about": "About us", "nav.cta": "Request an offer",
-      "hero.eyebrow": "Training camps for clubs &amp; teams",
-      "hero.headline": "Your next<br>training camp in <em>Antalya</em>",
-      "hero.sub": "Professional football training camps for youth, amateur and professional teams — pitches, accommodation, test matches and on-site support, all from one partner. Tell us what you need, we'll put together a tailored offer.",
-      "hero.cta1": "Request an offer now", "hero.cta2": "See how it works", "sticky.cta": "Request an offer", "sticky.whatsapp": "WhatsApp",
-      "hero.trust1": "Non-binding offer", "hero.trust2": "Reply within 24 hours", "hero.trust3": "One partner for everything",
-      "hero.stat1": "Team categories — from youth to professional", "hero.stat2": "Response time on your request", "hero.stat3": "Single point of contact for pitches, hotel &amp; test matches",
-      "teams.tag": "Who it's for", "teams.h2": "The right setup for every level of team",
-      "teams.p": "Whether it's a youth academy or a men's first team — we tailor the training camp to your level and goals.",
-      "roster.1.title": "Youth teams", "roster.1.desc": "Training load, supervision and accommodation matched to youth squads.",
-      "roster.2.pos": "Recreational", "roster.2.title": "Amateur clubs", "roster.2.desc": "Team building and preparation for local and regional league football, planned and fairly priced.",
-      "roster.3.pos": "Senior", "roster.3.title": "Senior teams", "roster.3.desc": "Full pre-season training load, test matches and recovery options.",
-      "roster.4.title": "Academies", "roster.4.desc": "Structured training weeks for youth academies, including scouting matches.",
-      "roster.5.pos": "Professional", "roster.5.title": "Professional teams", "roster.5.desc": "Fully professional infrastructure, discretion and medical support as needed.",
-      "roster.more": "Learn more →",
-      "leistungen.tag": "Services", "leistungen.h2": "Everything a training camp needs",
-      "leistungen.p": "We coordinate pitches, accommodation and test matches — you focus on training.",
-      "service.1.title": "Accommodation &amp; hotels", "service.1.desc": "Matched hotels close to the training pitches, based on budget and standard.",
-      "service.2.title": "Training pitches", "service.2.desc": "Grass and artificial pitches at training-camp quality, including pitch booking.",
-      "service.3.title": "Test matches", "service.3.desc": "Opponents matched to your level — we arrange them locally.",
-      "service.4.title": "Transfer &amp; logistics", "service.4.desc": "Airport transfer and local transport between hotel, pitches and test matches.",
-      "anlagen.tag": "Facilities &amp; hotels", "anlagen.h2": "Short routes. Clear schedules. Better conditions.", "anlagen.p": "We match accommodation and training environment to your team, budget and preparation goals.",
-      "anlagen.1.title": "Team-friendly hotels", "anlagen.1.text": "Rooming, full or half board and meeting rooms are aligned to your group in advance.",
-      "anlagen.2.title": "Training-quality pitches", "anlagen.2.text": "Grass and artificial pitches with planned slots so every session stays focused and on time.",
-      "anlagen.3.title": "Recovery &amp; medical support", "anlagen.3.text": "Gym, recovery options and medical support can be added based on level and requirements.",
-      "matches.tag": "Test matches", "matches.h2": "The right opponent for your preparation", "matches.p": "Test matches give your camp a sporting finish. We look for suitable opponents and coordinate time, pitch and schedule.",
-      "matches.1.label": "01 · Level", "matches.1.title": "Matched, not random", "matches.1.text": "We consider age group, playing level, training goals and desired intensity.",
-      "matches.2.label": "02 · Organisation", "matches.2.title": "One coordinated plan", "matches.2.text": "Opponent, referee, pitch and transfer are integrated into your schedule.",
-      "matches.3.label": "03 · Outcome", "matches.3.title": "More than a friendly", "matches.3.text": "You get a useful benchmark and competitive minutes under controlled conditions.",
-      "why.tag": "Why Antalya Camp", "why.h2": "One partner for the full journey", "why.p": "From first enquiry to departure, organisation stays clear, personal and aligned with your training routine.",
-      "why.1.label": "For coaches", "why.1.title": "More time for the team", "why.1.text": "We take hotel, pitch and transfer coordination off your desk so you can focus on the sessions.",
-      "why.2.label": "For boards", "why.2.title": "Planned with clarity", "why.2.text": "You receive a transparent, tailored proposal with services, schedule and contact person.",
-      "why.3.label": "For teams", "why.3.title": "A week with structure", "why.3.text": "Training, recovery, test matches and team time are connected into one practical camp plan.",
-      "explore.tag": "Explore Antalya Camp", "explore.h2": "Everything you need before booking", "explore.p": "Explore our complete information pages for teams, clubs, planning, services and legal details.",
-      "explore.about.label": "ABOUT", "explore.about.title": "Who we are", "explore.about.text": "Learn about Antalya Camp, our B2B focus and how Emlak supports the product.", "explore.about.link": "About us →",
-      "explore.faq.label": "ANSWERS", "explore.faq.title": "Questions first", "explore.faq.text": "Find practical answers about team types, services, timing, data and the enquiry process.", "explore.faq.link": "Read the FAQ →",
-      "explore.plan.label": "PLANNING", "explore.plan.title": "Plan with confidence", "explore.plan.text": "Use our guides for dates, costs, services, preparation and team requirements.", "explore.plan.link": "Open the planning guide →",
-      "explore.contact.label": "CONTACT", "explore.contact.title": "Start your request", "explore.contact.text": "Send your club details, dates and preferred services through the five-step form.", "explore.contact.link": "Request an offer →",
-      "explore.legal.label": "LEGAL", "explore.legal.title": "Privacy and cookies", "explore.legal.text": "Read how enquiries, optional analytics and necessary website storage are handled.", "explore.legal.link": "View privacy information →",
-      "explore.company.label": "COMPANY", "explore.company.title": "Contact the team", "explore.company.text": "Have a question that is not covered? We are ready to discuss your camp requirements.", "explore.company.link": "Contact us →",
-      "explore.german.label": "GERMAN", "explore.german.title": "Training camp Antalya", "explore.german.text": "The German overview page for clubs, squads and football teams.", "explore.german.link": "Open German page →",
-      "explore.checklist.label": "CHECKLIST", "explore.checklist.title": "Preparation made easy", "explore.checklist.text": "Team details, travel dates, sporting goals and services in one checklist.", "explore.checklist.link": "Open checklist →",
-      "week.tag": "A sample week", "week.h2": "A structure that works on the pitch", "week.p": "The exact schedule depends on your team. This outline shows how training, recovery and match days can work together.",
-      "week.1.title": "Arrival", "week.1.text": "Arrive, settle in and align the schedule with the group.",
-      "week.2.title": "Training", "week.2.text": "First sessions focused on load management and team rhythm.",
-      "week.3.title": "Training &amp; recovery", "week.3.text": "Two sessions and recovery time built around your goals.",
-      "week.4.title": "Test match", "week.4.text": "A planned match day with suitable intensity and follow-up.",
-      "week.5.title": "Departure", "week.5.text": "Final session, check-out and organised return journey.",
-      "contactCard.tag": "Your point of contact", "contactCard.h2": "Personal support when it matters.", "contactCard.text": "Once approved, this section will contain the real contact person, available languages and direct contact details.",
-      "contactCard.placeholder": "[[NAME]] · [[ROLE]] · DE / EN / TR", "contactCard.cta": "Request an offer", "contactCard.email": "Write an email",
-      "ablauf.tag": "Process", "ablauf.h2": "From first contact to a confirmed training camp",
-      "ablauf.1.title": "Request", "ablauf.1.desc": "You send us the key details on your team, timeframe and desired services via the form.",
-      "ablauf.2.title": "Offer", "ablauf.2.desc": "We put together a tailored offer — accommodation, pitches, test matches, transfer.",
-      "ablauf.3.title": "Confirmation", "ablauf.3.desc": "Once you approve, we take care of the full organisation on site.",
-      "ablauf.promise": "<strong>Response within 24 hours.</strong> Every request is personally reviewed and answered by our team.",
-      "anfrage.tag": "Request an offer", "anfrage.h2": "Tell us about your team",
-      "anfrage.p": "Five short steps — at the end you'll have sent a non-binding request, and we'll get back to you with a tailored offer.",
-      "fp.1": "Club", "fp.2": "Group", "fp.3": "Trip", "fp.4": "Services", "fp.5": "Submit",
-      "step1.title": "Your club", "step1.intro": "So we can match you with the right setup.",
-      "step1.clubName": "Club name", "step1.country": "Country", "step1.teamType": "Team category",
-      "step1.contact": "Contact person (name, role)", "step1.email": "Email", "step1.phone": "Phone",
-      "opt.jugend": "Youth team", "opt.amateur": "Amateur club", "opt.senior": "Senior team", "opt.akademie": "Academy", "opt.profi": "Professional team",
-      "step2.title": "Your group", "step2.intro": "The size and level of the group.",
-      "step2.players": "Number of players", "step2.staff": "Number of staff",
-      "step2.ageGroup": "Age group", "step2.ageGroup.ph": "e.g. U17",
-      "step2.level": "Playing level", "step2.level.ph": "e.g. regional league",
-      "step3.title": "Your trip", "step3.intro": "A rough timeframe is enough — we'll sort out details in the offer.",
-      "step3.dates": "Desired period", "step3.dates.ph": "flexible or fixed, e.g. Feb 2027",
-      "step3.nights": "Number of nights", "step3.budget": "Budget range (optional)", "step3.budget.ph": "per person or total",
-      "step4.title": "Desired services", "step4.intro": "Multiple selection possible.",
-      "chip.1": "Hotel &amp; rooms", "chip.2": "Meals", "chip.3": "Training pitches", "chip.4": "Gym &amp; recovery",
-      "chip.5": "Test matches", "chip.6": "Airport transfer", "chip.7": "Local transport",
-      "step4.extras": "Other requests", "step4.extras.ph": "e.g. special diet, medical support...",
-      "step5.title": "Almost done", "step5.intro": "One more short message, then you can submit.",
-      "summary.title": "Your details", "summary.club": "Club", "summary.team": "Team", "summary.group": "Group", "summary.trip": "Trip", "summary.services": "Services", "summary.players": "players", "summary.staff": "staff", "summary.nights": "nights",
-      "step5.message": "Message", "step5.message.ph": "Anything else we should know?",
-      "step5.gdpr": "I agree that my details will be stored to process this request. More in the <a href=\"#\">privacy policy</a>.",
-      "success.title": "Request sent", "success.text": "Thanks! We'll get back to you within 24 hours with a tailored offer for your training camp.",
-      "btn.back": "Back", "btn.next": "Next", "btn.submit": "Submit request",
-      "faq.tag": "FAQ", "faq.h2": "Frequently asked questions",
-      "faq.1.q": "How fast will we get an offer?", "faq.1.a": "Usually within 24 hours of your request. For more complex requests we may first follow up with a quick question.",
-      "faq.2.q": "What team sizes are training camps suitable for?", "faq.2.a": "From small youth squads to full professional squads with staff — the infrastructure is matched to your group size.",
-      "faq.3.q": "Can you also organise test matches?", "faq.3.a": "Yes, we arrange suitable local opponents matched to your level and schedule.",
-      "faq.4.q": "What happens to the data from the form?", "faq.4.a": "Your details are used solely to process the request and stored in compliance with GDPR. See the privacy policy for details.",
-      "faq.5.q": "What does a training camp cost?", "faq.5.a": "[[TODO: Add approved pricing information.]]",
-      "faq.6.q": "How do we organise flights?", "faq.6.a": "[[TODO: Add verified flight information.]]",
-      "faq.7.q": "Which insurance do we need?", "faq.7.a": "[[TODO: Add legally reviewed insurance information.]]",
-      "faq.8.q": "Is catering available for youth teams?", "faq.8.a": "[[TODO: Add catering details for youth teams.]]",
-      "faq.9.q": "How are safety and supervision handled?", "faq.9.a": "[[TODO: Add verified safety and supervision details.]]",
-      "faq.10.q": "How does cancellation work?", "faq.10.a": "[[TODO: Add approved cancellation terms.]]",
-      "errors.required": "Please complete this field.", "errors.email": "Please enter a valid email address.", "errors.number": "Please enter a valid number.",
-      "footer.tagline": "Football training camps for clubs and teams in Antalya, Turkey.",
-      "footer.statesTitle": "Training camps by team type", "footer.emlakProduct": "AntalyaCamp is a product of Emlak AG",
-      "footer.sister": "Looking for a family or youth camp instead of club training?",
-      "footer.copyright": "© 2026 Training Camp Antalya", "footer.impressum": "Legal notice", "footer.datenschutz": "Privacy policy"
-    }
-  };
-
-  var currentLang = 'en';
-
-  function applyLang(lang) {
-    currentLang = lang;
-    var d = dict[lang];
-    document.documentElement.lang = lang;
-    document.title = d["meta.title"];
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n');
-      if (d[key] !== undefined) el.innerHTML = d[key];
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n-html');
-      if (d[key] !== undefined) el.innerHTML = d[key];
-    });
-    document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n-ph');
-      if (d[key] !== undefined) el.setAttribute('placeholder', d[key]);
-    });
-    document.getElementById('langDe').classList.toggle('active', lang === 'de');
-    document.getElementById('langEn').classList.toggle('active', lang === 'en');
-    var mobileLangDe = document.getElementById('mobileLangDe');
-    var mobileLangEn = document.getElementById('mobileLangEn');
-    if (mobileLangDe && mobileLangEn) {
-      mobileLangDe.classList.toggle('active', lang === 'de');
-      mobileLangEn.classList.toggle('active', lang === 'en');
-    }
-    updateNextBtnLabel();
-  }
-
-  document.getElementById('langDe').addEventListener('click', function(){ applyLang('de'); });
-  document.getElementById('langEn').addEventListener('click', function(){ applyLang('en'); });
-  document.getElementById('mobileLangDe').addEventListener('click', function(){ applyLang('de'); });
-  document.getElementById('mobileLangEn').addEventListener('click', function(){ applyLang('en'); });
-
-  // Multi-step form logic
-  const steps = Array.from(document.querySelectorAll('.form-step'));
-  const fpItems = Array.from(document.querySelectorAll('.fp-item'));
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const formNav = document.getElementById('formNav');
-  const successPanel = document.getElementById('successPanel');
-  const form = document.getElementById('offerForm');
-  let current = 1;
-  const total = steps.length;
-
-  function updateNextBtnLabel() {
-    var d = dict[currentLang];
-    nextBtn.textContent = current === total ? d["btn.submit"] : d["btn.next"];
-  }
-
-  function render() {
-    steps.forEach(s => s.classList.toggle('active', Number(s.dataset.step) === current));
-    fpItems.forEach(f => {
-      const n = Number(f.dataset.step);
-      f.classList.toggle('active', n === current);
-      f.classList.toggle('done', n < current);
-    });
-    prevBtn.style.visibility = current === 1 ? 'hidden' : 'visible';
-    var progressText = document.getElementById('formProgressText');
-    if (progressText) progressText.textContent = currentLang === 'de'
-      ? 'Schritt ' + current + ' von ' + total
-      : 'Step ' + current + ' of ' + total;
-    const summary = document.getElementById('formSummary');
-    if (summary && current === total) {
-      const data = collectFormData();
-      summary.innerHTML = '';
-      const heading = document.createElement('strong');
-      heading.textContent = dict[currentLang]['summary.title'];
-      summary.appendChild(heading);
-      [
-        [dict[currentLang]['summary.club'], data.clubName],
-        [dict[currentLang]['summary.team'], data.teamType],
-        [dict[currentLang]['summary.group'], [data.players && `${data.players} ${dict[currentLang]['summary.players']}`, data.staff && `${data.staff} ${dict[currentLang]['summary.staff']}`].filter(Boolean).join(' · ')],
-        [dict[currentLang]['summary.trip'], [data.dates, data.nights && `${data.nights} ${dict[currentLang]['summary.nights']}`].filter(Boolean).join(' · ')],
-        [dict[currentLang]['summary.services'], data.services.join(', ')]
-      ].forEach(([label, value]) => {
-        const row = document.createElement('span');
-        row.textContent = `${label}: ${value || '—'}`;
-        summary.appendChild(row);
-      });
-    }
-    updateNextBtnLabel();
-  }
-
-  function currentStepValid() {
-    const stepEl = steps.find(s => Number(s.dataset.step) === current);
-    const required = stepEl.querySelectorAll('[required]');
-    stepEl.querySelectorAll('.field-error').forEach(error => error.remove());
-    stepEl.querySelectorAll('[aria-invalid="true"]').forEach(field => {
-      field.removeAttribute('aria-invalid');
-      field.classList.remove('invalid');
-    });
-    for (const el of required) {
-      let errorKey = '';
-      if (el.type === 'checkbox' ? !el.checked : !el.value.trim()) errorKey = 'errors.required';
-      else if (el.type === 'email' && !el.validity.valid) errorKey = 'errors.email';
-      else if (el.type === 'number' && !el.validity.valid) errorKey = 'errors.number';
-      if (errorKey) {
-        el.setAttribute('aria-invalid', 'true');
-        el.classList.add('invalid');
-        const error = document.createElement('span');
-        error.className = 'field-error';
-        error.textContent = dict[currentLang][errorKey];
-        el.parentElement.appendChild(error);
-        el.focus();
-        return false;
-      }
-    }
-    return true;
-  }
-
-  function collectFormData() {
-    const value = id => document.getElementById(id).value.trim();
-    return {
-      clubName: value('clubName'),
-      country: value('country'),
-      teamType: document.getElementById('teamType').value,
-      contactPerson: value('contactPerson'),
-      email: value('email'),
-      phone: value('phone'),
-      players: value('players'),
-      staff: value('staff'),
-      ageGroup: value('ageGroup'),
-      level: value('level'),
-      dates: value('dates'),
-      nights: value('nights'),
-      budget: value('budget'),
-      services: Array.from(document.querySelectorAll('#serviceChips .chip.selected')).map(chip => chip.dataset.service),
-      extras: value('extras'),
-      message: value('message'),
-      consent: document.getElementById('gdpr').checked
-    };
-  }
-
-  function saveFormProgress() {
-    try {
-      sessionStorage.setItem('antalya-camp-form', JSON.stringify({
-        ...collectFormData(),
-        current
-      }));
-    } catch (error) {
-      console.warn('Unable to save form progress', error);
-    }
-  }
-
-  function restoreFormProgress() {
-    try {
-      const saved = JSON.parse(sessionStorage.getItem('antalya-camp-form') || 'null');
-      if (!saved) return;
-      Object.entries(saved).forEach(([id, value]) => {
-        const field = document.getElementById(id);
-        if (!field || id === 'current' || id === 'services' || id === 'consent') return;
-        field.value = value ?? '';
-      });
-      if (Array.isArray(saved.services)) {
-        document.querySelectorAll('#serviceChips .chip').forEach(chip => {
-          const selected = saved.services.includes(chip.dataset.service);
-          chip.classList.toggle('selected', selected);
-          chip.setAttribute('aria-checked', String(selected));
-        });
-      }
-      if (saved.consent) document.getElementById('gdpr').checked = true;
-      if (Number.isInteger(saved.current) && saved.current >= 1 && saved.current <= total) current = saved.current;
-    } catch (error) {
-      console.warn('Unable to restore form progress', error);
-    }
-  }
-
-  async function submitEnquiry() {
-    const errorEl = document.getElementById('formError');
-    errorEl.style.display = 'none';
-    nextBtn.disabled = true;
-    nextBtn.textContent = currentLang === 'de' ? 'Wird gesendet...' : 'Sending...';
-    try {
-      const response = await fetch('/api/enquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(collectFormData())
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(result.error || 'Unable to send request');
-      form.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
-      formNav.style.display = 'none';
-      successPanel.style.display = 'block';
-      try { sessionStorage.removeItem('antalya-camp-form'); } catch (error) { console.warn('Unable to clear form progress', error); }
-      if (window.analyticsLoaded) window.gtag('event', 'generate_lead', { event_category: 'enquiry_form' });
-    } catch (error) {
-      errorEl.textContent = currentLang === 'de'
-        ? 'Die Anfrage konnte nicht gesendet werden. Bitte versucht es erneut.'
-        : 'Your request could not be sent. Please try again.';
-      errorEl.style.display = 'block';
-      nextBtn.disabled = false;
-      updateNextBtnLabel();
-    }
-  }
-
-  nextBtn.addEventListener('click', async () => {
-    if (!currentStepValid()) return;
-    if (current < total) {
-      current++;
-      render();
-    } else {
-      await submitEnquiry();
-    }
-  });
-
-  prevBtn.addEventListener('click', () => {
-    if (current > 1) { current--; render(); }
-  });
-
-  restoreFormProgress();
-  render();
-  form.addEventListener('input', event => {
-    if (event.target.matches('[aria-invalid="true"]') && event.target.validity.valid && event.target.value.trim()) {
-      event.target.removeAttribute('aria-invalid');
-      event.target.classList.remove('invalid');
-      const error = event.target.parentElement.querySelector('.field-error');
-      if (error) error.remove();
-    }
-    saveFormProgress();
-  });
-  form.addEventListener('change', saveFormProgress);
-
-  // Service chip toggles
-  document.querySelectorAll('#serviceChips .chip').forEach(chip => {
-    const toggleChip = () => {
-      const selected = !chip.classList.contains('selected');
-      chip.classList.toggle('selected', selected);
-      chip.setAttribute('aria-checked', String(selected));
-      saveFormProgress();
-    };
-    chip.addEventListener('click', toggleChip);
-    chip.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        toggleChip();
-      }
-    });
-  });
-
-  document.querySelectorAll('.roster-card[data-team-value]').forEach(card => {
-    const selectTeam = () => {
-      const teamSelect = document.getElementById('teamType');
-      if (teamSelect) teamSelect.value = card.dataset.teamValue;
-      document.getElementById('anfrage').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    };
-    card.addEventListener('click', event => {
-      if (event.target.closest('a')) return;
-      selectTeam();
-    });
-    card.addEventListener('keydown', event => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        selectTeam();
-      }
-    });
-  });
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.querySelector('.faq-q').addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        item.querySelector('.faq-q').setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-applyLang('en');
-</script>
-
-<script src="/motion.js" defer></script>
+<script type="application/json" id="i18n">{"summary.title":"Your details","summary.club":"Club","summary.team":"Team","summary.group":"Group","summary.trip":"Trip","summary.services":"Services","summary.players":"players","summary.staff":"staff","summary.nights":"nights","btn.back":"Back","btn.next":"Next","btn.submit":"Submit request","errors.required":"Please complete this field.","errors.email":"Please enter a valid email address.","errors.number":"Please enter a valid number.","progress":"Step {current} of {total}","form.sending":"Sending …","form.error":"Your request could not be sent. Please check your connection and try again.","form.required":"Required","form.select":"Please choose","success.ref":"Your reference: #{ref}. A confirmation is on its way to your inbox."}</script>
 </body>
 </html>
