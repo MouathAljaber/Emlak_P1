@@ -175,36 +175,50 @@
 
   function submit() {
     errorEl.hidden = true;
-    nextBtn.disabled = true;
-    nextBtn.textContent = t['form.sending'];
-    fetch('/api/enquiries', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(collect())
-    }).then(function (response) {
-      return response.json().catch(function () { return {}; }).then(function (result) {
-        if (!response.ok) throw new Error(result.error || 'Request failed');
-        return result;
-      });
-    }).then(function (result) {
-      var ref = document.getElementById('successRef');
-      if (ref && result.reference) { ref.textContent = format(t['success.ref'], { ref: result.reference }); ref.hidden = false; }
-      steps.forEach(function (step) { step.hidden = true; });
-      formNav.hidden = true;
-      formNav.style.display = 'none';
-      document.querySelector('.stepper').style.visibility = 'hidden';
-      progressText.textContent = '';
-      successPanel.hidden = false;
-      successPanel.querySelector('h3').setAttribute('tabindex', '-1');
-      successPanel.querySelector('h3').focus();
-      try { sessionStorage.removeItem(storageKey); } catch (e) { /* ignore */ }
-      if (window.analyticsLoaded) window.gtag('event', 'generate_lead', { event_category: 'enquiry_form' });
-    }).catch(function () {
-      errorEl.textContent = t['form.error'];
-      errorEl.hidden = false;
-      nextBtn.disabled = false;
-      render(false);
-    });
+    var data = collect();
+    var lines = [
+      'Antalya Camp - ' + (data.lang === 'en' ? 'Training camp request' : 'Trainingslager-Anfrage'),
+      '',
+      'Club: ' + data.clubName,
+      'Country: ' + data.country,
+      'Team: ' + teamLabel(data.teamType),
+      'Contact: ' + data.contactPerson,
+      'Email: ' + data.email,
+      'Phone: ' + data.phone,
+      'Players: ' + data.players,
+      'Staff: ' + data.staff,
+      'Age group: ' + data.ageGroup,
+      'Level: ' + data.level,
+      'Dates: ' + data.dates,
+      'Nights: ' + data.nights,
+      'Budget: ' + data.budget,
+      'Services: ' + serviceLabels(data.services).join(', '),
+      'Extras: ' + data.extras,
+      'Message: ' + data.message
+    ];
+    var text = lines.join('\n');
+    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var download = document.createElement('a');
+    download.href = url;
+    download.download = 'antalya-camp-request.txt';
+    document.body.appendChild(download);
+    download.click();
+    download.remove();
+    URL.revokeObjectURL(url);
+
+    var ref = document.getElementById('successRef');
+    if (ref) ref.hidden = true;
+    steps.forEach(function (step) { step.hidden = true; });
+    formNav.hidden = true;
+    formNav.style.display = 'none';
+    document.querySelector('.stepper').style.visibility = 'hidden';
+    progressText.textContent = '';
+    successPanel.hidden = false;
+    successPanel.querySelector('h3').setAttribute('tabindex', '-1');
+    successPanel.querySelector('h3').focus();
+    try { sessionStorage.removeItem(storageKey); } catch (e) { /* ignore */ }
+    if (window.analyticsLoaded) window.gtag('event', 'generate_lead', { event_category: 'enquiry_form' });
   }
 
   nextBtn.addEventListener('click', function () {

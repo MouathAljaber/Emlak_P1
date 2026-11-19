@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title>Antalya Camp</title>
-  <circle cx="32" cy="32" r="29" fill="#2f6d4f"/>
-  <path d="M14 24a22 22 0 0 1 36 0" fill="none" stroke="#e8b94f" stroke-width="4" stroke-linecap="round"/>
-  <path d="m32 20 8 6v10l-8 6-8-6V26z" fill="#fff"/>
-  <path d="m24 27-7 3m23-3 7 3m-15 9v9" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-</svg>
