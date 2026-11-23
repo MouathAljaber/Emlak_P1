@@ -8,6 +8,6 @@
     "not_found_handling": "404-page"
   },
   "vars": {
-    "OFFER_TO_EMAIL": "emlak.immobilien@gmail.com"
+    "NOTIFY_EMAIL": "traninigcamps@gmail.com"
   }
 }
