@@ -273,7 +273,7 @@
       btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
     });
   }
-  Array.prototype.forEach.call(document.querySelectorAll('.climate, .steps'), function (el) {
+  Array.prototype.forEach.call(document.querySelectorAll('.climate, .camp-steps'), function (el) {
     if (reduceMotion || !('IntersectionObserver' in window)) { el.classList.add('is-visible'); return; }
     var o = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { el.classList.add('is-visible'); o.disconnect(); } }, { threshold: 0.25 });
     o.observe(el);

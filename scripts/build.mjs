@@ -391,7 +391,7 @@ function enrichContentPage(html, lang, slug, prefix) {
   const stepsList = lang === 'de'
     ? [['Anfrage senden', 'Teamtyp, Zeitraum, Teilnehmer und Wünsche angeben.'], ['Erste Einschätzung', 'Wir melden uns in der Regel innerhalb von 24 Stunden.'], ['Angebot prüfen', 'Leistungen, Preise und Bedingungen schriftlich erhalten.'], ['Reise vorbereiten', 'Details abstimmen und Camp durchführen.']]
     : [['Send enquiry', 'Share team type, dates, participants and wishes.'], ['First assessment', 'We usually reply within 24 hours.'], ['Review the offer', 'Receive services, prices and terms in writing.'], ['Prepare the trip', 'Agree details and run the camp.']];
-  const steps = `<section class="steps"><h2>${ui.steps}</h2><ol>${stepsList.map(([t, d], i) => `<li style="--i:${i}"><span class="step-dot">${i + 1}</span><div><h3>${t}</h3><p>${d}</p></div></li>`).join('')}</ol></section>`;
+  const steps = `<section class="camp-steps"><h2>${ui.steps}</h2><ol>${stepsList.map(([t, d], i) => `<li style="--i:${i}"><span class="step-dot">${i + 1}</span><div><h3>${t}</h3><p>${d}</p></div></li>`).join('')}</ol></section>`;
 
   // related links
   const mine = `${prefix}/${slug}/`;
