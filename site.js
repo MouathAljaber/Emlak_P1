@@ -218,6 +218,41 @@
     counters.forEach(function (el) { co.observe(el); });
   }
 
+
+  /* ---------- homepage show-off motion ---------- */
+  var heroTitle = document.querySelector('.hero h1');
+  if (heroTitle && !reduceMotion) {
+    var wi = 0;
+    (function split(node) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
+        if (child.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          child.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var s = document.createElement('span');
+            s.className = 'w'; s.textContent = part; s.style.animationDelay = (0.15 + wi++ * 0.07) + 's';
+            frag.appendChild(s);
+          });
+          node.replaceChild(frag, child);
+        } else if (child.nodeType === 1) { split(child); }
+      });
+    }(heroTitle));
+  }
+  // Cursor spotlight on cards.
+  document.addEventListener('pointermove', function (e) {
+    var card = e.target.closest && e.target.closest('.card');
+    if (!card) return;
+    var r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }, { passive: true });
+  Array.prototype.forEach.call(document.querySelectorAll('.section-head'), function (el) {
+    if (reduceMotion || !('IntersectionObserver' in window)) { el.classList.add('is-visible'); return; }
+    var o = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { el.classList.add('is-visible'); o.disconnect(); } }, { threshold: 0.4 });
+    o.observe(el);
+  });
+
   /* ---------- footer year ---------- */
   Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function (el) {
     el.textContent = String(new Date().getFullYear());

@@ -6,7 +6,7 @@
  *  - Generates 404.html
  * Run with: npm run build
  */
-import { readFile, writeFile, readdir, stat } from 'node:fs/promises';
+import { readFile, writeFile, readdir, stat, access } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -140,7 +140,15 @@ async function buildHome() {
       ]
     };
     const clientKeys = Object.keys(dict).filter((key) => /^(summary\.|btn\.|errors\.|progress$|form\.|success\.ref$)/.test(key));
+    let heroVideo = '';
+    try {
+      await access(path.join(root, 'media/hero.mp4'));
+      heroVideo = '<video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="/media/hero.mp4" type="video/mp4"></video>';
+    } catch { /* no video supplied */ }
+    const marqueeItems = [dict['marquee.1'], dict['marquee.2'], dict['marquee.3'], dict['marquee.4'], dict['marquee.5'], dict['marquee.6']];
+    const marquee = marqueeItems.map((x) => `<span>${x}</span>`).join('');
     const vars = {
+      heroVideo, marquee,
       lang, prefix, canonical, siteUrl: SITE_URL, heroImage: HERO_IMAGE,
       deCurrent: lang === 'de' ? 'aria-current="true"' : '',
       enCurrent: lang === 'en' ? 'aria-current="true"' : '',

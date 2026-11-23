@@ -289,5 +289,11 @@
  "footer.services": "Services",
  "footer.rights": "All rights reserved.",
  "success.ref": "Your request has been sent.",
- "errors.send": "Your request could not be sent. Please try again or email us directly."
+ "errors.send": "Your request could not be sent. Please try again or email us directly.",
+ "marquee.1": "Youth teams",
+ "marquee.2": "Amateur clubs",
+ "marquee.3": "Senior teams",
+ "marquee.4": "Academies",
+ "marquee.5": "Professional teams",
+ "marquee.6": "Test matches"
 }

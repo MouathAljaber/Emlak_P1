@@ -289,5 +289,11 @@
  "footer.services": "Leistungen",
  "footer.rights": "Alle Rechte vorbehalten.",
  "success.ref": "Eure Anfrage wurde gesendet.",
- "errors.send": "Die Anfrage konnte nicht gesendet werden. Bitte versucht es erneut oder schreibt uns direkt per E-Mail."
+ "errors.send": "Die Anfrage konnte nicht gesendet werden. Bitte versucht es erneut oder schreibt uns direkt per E-Mail.",
+ "marquee.1": "Jugendteams",
+ "marquee.2": "Amateurvereine",
+ "marquee.3": "Seniorenteams",
+ "marquee.4": "Akademien",
+ "marquee.5": "Profiteams",
+ "marquee.6": "Testspiele"
 }
