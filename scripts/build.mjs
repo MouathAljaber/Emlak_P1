@@ -6,9 +6,10 @@
  *  - Generates 404.html
  * Run with: npm run build
  */
-import { readFile, writeFile, readdir, stat, access } from 'node:fs/promises';
+import { readFile, writeFile, readdir, stat, access, mkdir } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { GUIDES, CLIMATE, EXTRA_FAQ } from './guides.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE_URL = (process.env.PUBLIC_SITE_URL || 'https://trainingslager-antalya.de').replace(/\/+$/, '');
@@ -27,7 +28,7 @@ const UI = {
     youth: 'Jugendteams', amateur: 'Amateurvereine', senior: 'Seniorenteams', academies: 'Akademien', pro: 'Profiteams',
     tagline: 'Trainingslager für Fußballvereine und -teams in Antalya, Türkei.',
     sister: 'Sucht ihr ein Familien- oder Jugendcamp statt Vereinstraining?',
-    rights: 'Alle Rechte vorbehalten.', brandName: 'Trainingslager Antalya',
+    guides: 'Ratgeber', related: 'Weiterführende Seiten', climateTitle: 'Antalya im Jahresverlauf', steps: 'So läuft eure Anfrage ab', facts: 'Auf einen Blick', moreFaq: 'Weitere Fragen und Antworten', updated: 'Stand', rights: 'Alle Rechte vorbehalten.', brandName: 'Trainingslager Antalya',
     notFoundTitle: 'Seite nicht gefunden', notFoundText: 'Die gewünschte Seite ist nicht verfügbar oder wurde verschoben. Hier geht es weiter:'
   },
   en: {
@@ -37,9 +38,34 @@ const UI = {
     youth: 'Youth teams', amateur: 'Amateur clubs', senior: 'Senior teams', academies: 'Academies', pro: 'Professional teams',
     tagline: 'Football training camps for clubs and teams in Antalya, Turkey.',
     sister: 'Looking for a family or youth camp instead of club training?',
-    rights: 'All rights reserved.', brandName: 'Training Camp Antalya',
+    guides: 'Guides', related: 'Related pages', climateTitle: 'Antalya through the year', steps: 'How your enquiry works', facts: 'At a glance', moreFaq: 'More questions and answers', updated: 'Updated', rights: 'All rights reserved.', brandName: 'Training Camp Antalya',
     notFoundTitle: 'Page not found', notFoundText: 'The page you are looking for does not exist or has moved. Continue here:'
   }
+};
+
+
+/* ---------- illustrations (inline SVG, animated with SMIL/CSS) ---------- */
+
+const SHORT = { belek: ['Trainingslager Belek', 'Belek camp'], spain: ['Türkei oder Spanien?', 'Turkey or Spain?'], climate: ['Klima & Reisezeit', 'Climate & timing'], nutrition: ['Ernährung', 'Nutrition'], schedule: ['Tagesablauf', 'Daily schedule'], safety: ['Reiseunterlagen', 'Travel documents'] };
+
+const ART = {
+  stadium: `<svg viewBox="0 0 420 320" class="art" role="img" aria-label="Football pitch under floodlights"><defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f8a63"/><stop offset="1" stop-color="#1f6247"/></linearGradient><radialGradient id="gL" cx=".5" cy="0" r="1"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".85"/><stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/></radialGradient></defs>
+<g class="art-lights"><path d="M62 40 20 250h150z" fill="url(#gL)"/><path d="M358 40l42 210H250z" fill="url(#gL)"/></g>
+<rect x="55" y="34" width="14" height="190" rx="3" fill="#0c1d15"/><rect x="351" y="34" width="14" height="190" rx="3" fill="#0c1d15"/>
+<rect x="40" y="22" width="44" height="16" rx="4" fill="#e3a92f"/><rect x="336" y="22" width="44" height="16" rx="4" fill="#e3a92f"/>
+<path d="M30 250h360l26 50H4z" fill="url(#gA)"/>
+<g fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="2" class="art-lines"><path d="M30 250h360l26 50H4z" pathLength="1"/><path d="M210 250v50" pathLength="1"/><ellipse cx="210" cy="275" rx="38" ry="12" pathLength="1"/></g>
+<g class="art-ball"><ellipse cx="210" cy="292" rx="12" ry="3" fill="#0c1d15" opacity=".25"/><g><circle cx="210" cy="270" r="11" fill="#fff" stroke="#0c1d15" stroke-width="1.6"/><path d="m210 263 5 4-2 6h-6l-2-6z" fill="#0c1d15"/><animateTransform attributeName="transform" type="translate" values="0 0;0 -70;0 0" keyTimes="0;.5;1" dur="2.4s" repeatCount="indefinite" calcMode="spline" keySplines=".33 0 .67 1;.33 0 .67 1"/></g></g></svg>`,
+  route: `<svg viewBox="0 0 420 320" class="art" role="img" aria-label="Flight route to Antalya"><defs><linearGradient id="gS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a9bd0" stop-opacity=".35"/><stop offset="1" stop-color="#1f6247" stop-opacity=".35"/></linearGradient></defs>
+<circle cx="330" cy="70" r="34" fill="#e3a92f" class="art-sun"/><g class="art-rays" stroke="#e3a92f" stroke-width="3" stroke-linecap="round"><path d="M330 16v14M330 110v14M276 70h14M370 70h14M292 32l10 10M358 98l10 10M368 32l-10 10M302 98l-10 10"/></g>
+<path d="M0 250c60-14 110 10 170-4s120-22 250 6v68H0z" fill="url(#gS)"/><path d="M0 268c70-12 120 8 180-4s120-14 240 4" fill="none" stroke="#3a9bd0" stroke-opacity=".6" stroke-width="2" class="art-wave"/>
+<path id="flight" d="M40 230C110 90 250 70 360 190" fill="none" stroke="#1f6247" stroke-width="3" stroke-dasharray="3 9" stroke-linecap="round" class="art-path"/>
+<g class="art-pin"><circle cx="40" cy="230" r="8" fill="#1f6247"/><circle cx="40" cy="230" r="16" fill="none" stroke="#1f6247" stroke-opacity=".5"/><path d="M360 160c-14 0-22 10-22 22 0 16 22 38 22 38s22-22 22-38c0-12-8-22-22-22z" fill="#e3a92f"/><circle cx="360" cy="182" r="8" fill="#fff"/></g>
+<g><path d="M-16 0 4-4l14-20h6l-6 18 12-1 4-8h4l-2 12 2 12h-4l-4-8-12-1 6 18h-6L4 4z" transform="scale(1.1)" fill="#0c1d15"/><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#flight"/></animateMotion></g></svg>`,
+  tactical: `<svg viewBox="0 0 420 320" class="art" role="img" aria-label="Tactical board"><rect x="20" y="20" width="380" height="280" rx="14" fill="#1f6247"/><g fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2" class="art-lines"><rect x="36" y="36" width="348" height="248" rx="6" pathLength="1"/><path d="M210 36v248" pathLength="1"/><circle cx="210" cy="160" r="40" pathLength="1"/><rect x="36" y="100" width="56" height="120" pathLength="1"/><rect x="328" y="100" width="56" height="120" pathLength="1"/></g>
+<path id="pass" d="M80 160 140 90 220 190 300 110 350 160" fill="none" stroke="#e3a92f" stroke-width="3" stroke-dasharray="4 8" stroke-linecap="round" class="art-path"/>
+<g class="art-players"><circle cx="80" cy="160" r="9" fill="#fff"/><circle cx="140" cy="90" r="9" fill="#fff"/><circle cx="220" cy="190" r="9" fill="#fff"/><circle cx="300" cy="110" r="9" fill="#fff"/><circle cx="350" cy="160" r="9" fill="#e3a92f"/><circle cx="180" cy="120" r="8" fill="#0c1d15"/><circle cx="260" cy="150" r="8" fill="#0c1d15"/></g>
+<g><circle r="7" fill="#fff" stroke="#0c1d15" stroke-width="1.6"/><animateMotion dur="4.8s" repeatCount="indefinite"><mpath href="#pass"/></animateMotion></g></svg>`
 };
 
 /* ---------- shared layout ---------- */
@@ -90,6 +116,7 @@ function pageFooter(lang, prefix) {
         <div class="footer-sister"><span>${ui.sister}</span><a href="https://fussballcamp-antalya.de" target="_blank" rel="noopener">fussballcamp-antalya.de →</a></div>
       </div>
       ${col('Antalya Camp', [[`${prefix}/about-us/`, ui.about], [`${prefix}/services/`, ui.services], [`${prefix}/how-it-works/`, ui.howItWorks], [`${prefix}/references/`, ui.references], [`${prefix}/faq/`, ui.faq], [`${prefix}/contact/`, ui.contact]])}
+      ${col(ui.guides, GUIDES.map((g) => [`${prefix}/${g[lang].slug}/`, SHORT[g.id][lang === 'de' ? 0 : 1]]))}
       ${col(ui.legal, [[`${prefix}/imprint/`, ui.imprint], [`${prefix}/privacy-policy/`, ui.privacy], [`${prefix}/cookie-policy/`, ui.cookies]])}
     </div>
     <div class="footer-bottom">
@@ -327,20 +354,54 @@ function enrichContentPage(html, lang, slug, prefix) {
   const de = lang === 'de';
   const h1Match = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
   const h1 = h1Match ? h1Match[1] : (de ? 'Fußball-Trainingslager in Antalya' : 'Football training camp in Antalya');
-  const introMatch = html.match(/<section class="page-hero">[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/i);
+  const introMatch = html.match(/<section class="page-hero[^"]*">[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/i);
   const intro = introMatch ? introMatch[1] : copy.lead;
   const home = de ? 'Startseite' : 'Home';
   const inquiry = de ? 'Angebot anfragen' : 'Request an offer';
   const faqTitle = de ? 'Häufige Fragen zur Planung' : 'Frequently asked planning questions';
   const breadcrumb = de ? 'Übersicht' : 'Overview';
-  const cards = copy.sections.map(([title, text]) => `<article class="card"><h2>${title}</h2><p>${text}</p></article>`).join('');
-  const faqItems = copy.faq.map(([question, answer]) => `<article class="card"><h2>${question}</h2><p>${answer}</p></article>`).join('');
-  const main = `<main id="main"><section class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="${breadcrumb}"><a href="${prefix}/">${home}</a><span aria-hidden="true">/</span><span>${stripTags(h1)}</span></nav><h1>${h1}</h1><p>${intro}</p><a class="button" href="${prefix}/#anfrage">${inquiry}</a></div></section><div class="page-main"><div class="wrap"><section class="content-intro"><p>${copy.lead}</p></section><div class="grid">${cards}</div><section class="content-faq" aria-labelledby="faq-${slug}"><h2 id="faq-${slug}">${faqTitle}</h2><div class="grid">${faqItems}</div></section><div class="cta"><h2>${de ? 'Vereinsdaten für ein konkretes Angebot zusammenstellen' : 'Prepare the club details for a concrete offer'}</h2><p>${de ? 'Teilt uns Teamtyp, Zeitraum, Teilnehmerzahl, gewünschte Leistungen und besondere Anforderungen mit.' : 'Share your team type, dates, participant numbers, required services and special requirements.'}</p><a class="button" href="${prefix}/#anfrage">${inquiry}</a></div></div></div></main>`;
+  const guide = GUIDES.find((g) => g[lang].slug === slug && g[lang] && (prefix === '/en') === (lang === 'en'));
+  const g = guide ? guide[lang] : null;
+  const ui = UI[lang];
+  const artKey = guide ? guide.art : (/youth|jugend|amateur|senior|academ|akademie|professional|profi|clubs|vereins|team/.test(slug) ? 'tactical' : (/plan|cost|kosten|checkliste|best-time|winter|preseason|europe|turkey|tuerkei|how-it|faq|about|references|services/.test(slug) ? 'route' : 'stadium'));
+  const heroArt = `<div class="hero-art" aria-hidden="false">${ART[artKey]}</div>`;
+  const heroBlock = `<section class="page-hero has-art"><div class="wrap hero-split"><div class="hero-text"><nav class="breadcrumb" aria-label="${breadcrumb}"><a href="${prefix}/">${home}</a><span aria-hidden="true">/</span><span>${stripTags(h1)}</span></nav><h1>${h1}</h1><p>${intro}</p><a class="button" href="${prefix}/#anfrage">${inquiry}</a></div>${heroArt}</div></section>`;
+
+  const sections = guide ? g.sections : copy.sections;
+  const cards = sections.map(([title, text], i) => `<article class="card"><span class="card-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span><h2>${title}</h2><p>${text}</p></article>`).join('');
+
+  // varied extra FAQs (deterministic per slug)
+  const pool = EXTRA_FAQ[lang];
+  let seed = 0; for (const ch of slug) seed = (seed * 31 + ch.charCodeAt(0)) >>> 0;
+  const extraFaq = [0, 1, 2, 3].map((k) => pool[(seed + k * 3) % pool.length]).filter((v, i, arr) => arr.indexOf(v) === i);
+  const baseFaq = guide ? g.faq : copy.faq;
+  const allFaq = [...baseFaq, ...extraFaq.filter((q) => !baseFaq.some((b) => b[0] === q[0]))];
+  const faqItems = allFaq.map(([question, answer]) => `<details class="faq-item"><summary>${question}</summary><p>${answer}</p></details>`).join('');
+
+  const bullets = guide ? `<section class="facts"><h2>${ui.facts}</h2><ul>${g.bullets.map((x) => `<li>${ICON_CHECK_CIRCLE}<span>${x}</span></li>`).join('')}</ul></section>` : '';
+  const climate = (guide && guide.climate) || /best-time|winter|preseason|klima/.test(slug) ? (() => {
+    const c = CLIMATE[lang]; const max = Math.max(...c.high);
+    return `<section class="climate"><h2>${ui.climateTitle}</h2><div class="climate-chart" role="img" aria-label="${c.note}">${c.high.map((v, i) => `<div class="bar" style="--h:${Math.round((v / max) * 100)}%;--i:${i}"><span class="val">${v}°</span><span class="mon">${c.months[i]}</span></div>`).join('')}</div><p class="muted">${c.note}</p></section>`;
+  })() : '';
+  const stepsList = lang === 'de'
+    ? [['Anfrage senden', 'Teamtyp, Zeitraum, Teilnehmer und Wünsche angeben.'], ['Erste Einschätzung', 'Wir melden uns in der Regel innerhalb von 24 Stunden.'], ['Angebot prüfen', 'Leistungen, Preise und Bedingungen schriftlich erhalten.'], ['Reise vorbereiten', 'Details abstimmen und Camp durchführen.']]
+    : [['Send enquiry', 'Share team type, dates, participants and wishes.'], ['First assessment', 'We usually reply within 24 hours.'], ['Review the offer', 'Receive services, prices and terms in writing.'], ['Prepare the trip', 'Agree details and run the camp.']];
+  const steps = `<section class="steps"><h2>${ui.steps}</h2><ol>${stepsList.map(([t, d], i) => `<li style="--i:${i}"><span class="step-dot">${i + 1}</span><div><h3>${t}</h3><p>${d}</p></div></li>`).join('')}</ol></section>`;
+
+  // related links
+  const mine = `${prefix}/${slug}/`;
+  const candidates = Object.entries(PAGE_TITLES[lang] || {}).filter(([href]) => href !== mine && !/imprint|privacy|cookie|impressum|request|contact/.test(href));
+  let rs = seed; const picks = [];
+  while (picks.length < Math.min(6, candidates.length)) { rs = (rs * 1103515245 + 12345) >>> 0; const c = candidates[rs % candidates.length]; if (!picks.includes(c)) picks.push(c); }
+  const related = `<section class="related"><h2>${ui.related}</h2><ul>${picks.map(([href, title]) => `<li><a href="${href}">${stripTags(title)}<span aria-hidden="true">→</span></a></li>`).join('')}</ul></section>`;
+
+  const today = new Date().toISOString().slice(0, 10);
+  const main = `<main id="main">${heroBlock}<div class="page-main"><div class="wrap"><section class="content-intro"><p>${guide ? g.lead : copy.lead}</p></section>${bullets}<div class="grid">${cards}</div>${climate}${steps}<section class="content-faq" aria-labelledby="faq-${slug}"><h2 id="faq-${slug}">${guide ? ui.moreFaq : faqTitle}</h2><div class="faq-list">${faqItems}</div></section>${related}<div class="cta"><h2>${de ? 'Vereinsdaten für ein konkretes Angebot zusammenstellen' : 'Prepare the club details for a concrete offer'}</h2><p>${de ? 'Teilt uns Teamtyp, Zeitraum, Teilnehmerzahl, gewünschte Leistungen und besondere Anforderungen mit.' : 'Share your team type, dates, participant numbers, required services and special requirements.'}</p><a class="button" href="${prefix}/#anfrage">${inquiry}</a></div><p class="updated muted">${ui.updated}: <time datetime="${today}">${today}</time></p></div></div></main>`;
   html = html.replace(/<main id="main"[\s\S]*?<\/main>/i, main);
   const faqLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: copy.faq.map(([question, answer]) => ({
+    mainEntity: allFaq.map(([question, answer]) => ({
       '@type': 'Question',
       name: stripTags(question),
       acceptedAnswer: { '@type': 'Answer', text: stripTags(answer) }
@@ -354,7 +415,7 @@ function enrichContentPage(html, lang, slug, prefix) {
 
 /* ---------- per-page SEO head (idempotent) ---------- */
 
-function seoHead(html, lang, slug, prefix) {
+function seoHead(html, lang, slug, prefix, dePath, enPath) {
   html = html.replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/g, '');
   const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
   const descMatch = html.match(/<meta name="description" content="([^"]*)"/i);
@@ -363,8 +424,8 @@ function seoHead(html, lang, slug, prefix) {
   const desc = descMatch ? descMatch[1] : '';
   const de = lang === 'de';
   const url = `${SITE_URL}${prefix}/${slug}/`;
-  const deUrl = `${SITE_URL}/${slug}/`;
-  const enUrl = `${SITE_URL}/en/${slug}/`;
+  const deUrl = `${SITE_URL}${dePath}`;
+  const enUrl = `${SITE_URL}${enPath}`;
   const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [, title])[1];
   const has = (re) => re.test(html);
   const tags = [];
@@ -389,16 +450,47 @@ function seoHead(html, lang, slug, prefix) {
   return html.replace('</head>', `<!-- seo:start -->${tags.join('')}<!-- seo:end --></head>`);
 }
 
+
+const PAGE_TITLES = { de: {}, en: {} };
+const PAIRS = new Map(); // route -> { de, en }
+for (const g of GUIDES) {
+  const de = `/${g.de.slug}/`, en = `/en/${g.en.slug}/`;
+  PAIRS.set(de, { de, en }); PAIRS.set(en, { de, en });
+}
+function pairFor(prefix, slug) {
+  const route = `${prefix}/${slug}/`;
+  return PAIRS.get(route) || { de: `/${slug}/`, en: `/en/${slug}/` };
+}
+
+async function writeGuideStubs() {
+  for (const g of GUIDES) {
+    for (const lang of ['de', 'en']) {
+      const d = g[lang];
+      const prefix = lang === 'en' ? '/en' : '';
+      const dir = path.join(root, prefix.slice(1), d.slug);
+      await mkdir(dir, { recursive: true });
+      const html = `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${d.title}</title><meta name="description" content="${d.desc}"><link rel="canonical" href="${SITE_URL}${prefix}/${d.slug}/"><meta name="theme-color" content="#0c1d15"><link rel="icon" href="/favicon.svg" type="image/svg+xml">${FONT_LINKS}<link rel="stylesheet" href="/site.css"></head><body><!-- site-header --><!-- /site-header --><main id="main"><section class="page-hero"><div class="wrap"><h1>${d.h1}</h1><p>${d.lead}</p></div></section></main><!-- site-footer --><!-- /site-footer --><script src="/site-config.js"></script><script src="/site.js" defer></script></body></html>`;
+      await writeFile(path.join(dir, 'index.html'), html);
+    }
+  }
+}
+
 async function buildContentPages() {
+  await writeGuideStubs();
   const pages = await listContentPages();
+  for (const page of pages) {
+    const raw = await readFile(page.file, 'utf8');
+    const l = /<html lang="de"/.test(raw) ? 'de' : 'en';
+    const m = raw.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+    if (m) PAGE_TITLES[l][`${page.prefix}/${page.slug}/`] = m[1];
+  }
   for (const page of pages) {
     let html = await readFile(page.file, 'utf8');
     html = upgradeLegacy(html, page.prefix);
     const lang = /<html lang="de"/.test(html) ? 'de' : 'en';
-    const dePath = `/${page.slug}/`;
-    const enPath = `/en/${page.slug}/`;
+    const { de: dePath, en: enPath } = pairFor(page.prefix, page.slug);
     html = enrichContentPage(html, lang, page.slug, page.prefix);
-    html = seoHead(html, lang, page.slug, page.prefix);
+    html = seoHead(html, lang, page.slug, page.prefix, dePath, enPath);
     html = html
       .replace(/<!-- site-header -->[\s\S]*?<!-- \/site-header -->/, pageHeader(lang, page.prefix, dePath, enPath))
       .replace(/<!-- site-footer -->[\s\S]*?<!-- \/site-footer -->/, pageFooter(lang, page.prefix));
@@ -427,8 +519,9 @@ Sitemap: ${SITE_URL}/sitemap.xml
   const unique = [...new Set(routes)];
   const alt = (route) => {
     const isEn = route.startsWith('/en/');
-    const dePath = isEn ? route.replace(/^\/en/, '') || '/' : route;
-    const enPath = isEn ? route : `/en${route}`;
+    const pr = PAIRS.get(route);
+    const dePath = pr ? pr.de : (isEn ? route.replace(/^\/en/, '') || '/' : route);
+    const enPath = pr ? pr.en : (isEn ? route : `/en${route}`);
     if (!unique.includes(dePath) || !unique.includes(enPath)) return '';
     return `<xhtml:link rel="alternate" hreflang="de" href="${SITE_URL}${dePath}"/><xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}${enPath}"/><xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${dePath}"/>`;
   };
