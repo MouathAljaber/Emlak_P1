@@ -305,5 +305,16 @@
  "errors.phone": "Bitte eine gültige Telefonnummer mit Landesvorwahl eingeben, z. B. +49 170 1234567.",
  "errors.club": "Bitte einen gültigen Vereinsnamen eingeben (2–100 Zeichen).",
  "errors.choose": "Bitte eine Option auswählen.",
- "errors.fields": "Bitte prüft die markierten Angaben."
+ "errors.fields": "Bitte prüft die markierten Angaben.",
+ "play.tag": "Der Weg zum Trainingslager",
+ "play.h2": "Vom ersten Kontakt bis zum Anpfiff",
+ "play.p": "Vier Schritte, ein Ansprechpartner: Wir begleiten euch von der Anfrage bis zum ersten Training in Antalya.",
+ "play.1.t": "Anfrage",
+ "play.1.d": "Ihr schickt uns Eckdaten zu Team, Zeitraum und Wünschen.",
+ "play.2.t": "Angebot",
+ "play.2.d": "Wir stellen Hotel, Plätze, Testspiele und Transfers zusammen.",
+ "play.3.t": "Anreise",
+ "play.3.d": "Transfer vom Flughafen und Check-in im Teamhotel.",
+ "play.4.t": "Anpfiff",
+ "play.4.d": "Training, Testspiele und Regeneration nach eurem Plan."
 }

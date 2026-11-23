@@ -16,12 +16,12 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:locale:alternate" content="de_DE">
 <meta property="og:site_name" content="Trainingslager Antalya">
-<meta property="og:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=1600">
+<meta property="og:image" content="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?auto=format&amp;fit=crop&amp;q=75&amp;w=1600">
 <meta property="og:image:alt" content="Football training on a modern pitch">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Football training camps in Antalya for clubs">
 <meta name="twitter:description" content="Professional football training camps in Antalya with accommodation, pitches, test matches and support.">
-<meta name="twitter:image" content="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=1600">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?auto=format&amp;fit=crop&amp;q=75&amp;w=1600">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://trainingslager-antalya.de/en/">
 <link rel="alternate" hreflang="de" href="https://trainingslager-antalya.de/">
@@ -36,6 +36,7 @@
 <script src="/site-config.js"></script>
 <script src="/site.js" defer></script>
 <script src="/home.js" defer></script>
+<script src="/fx.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -88,9 +89,10 @@
 
 <section class="hero">
   
+  <div class="hero-beams" aria-hidden="true"></div><canvas class="hero-fx" aria-hidden="true"></canvas><div class="hero-glow" aria-hidden="true"></div>
   <svg class="hero-pitch" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="60" y="40" width="1080" height="520" rx="6" pathLength="1"/><path d="M600 40v520" pathLength="1"/><circle cx="600" cy="300" r="90" pathLength="1"/><rect x="60" y="170" width="170" height="260" pathLength="1"/><rect x="970" y="170" width="170" height="260" pathLength="1"/></g></svg>
   <span class="hero-orb orb-1" aria-hidden="true"></span><span class="hero-orb orb-2" aria-hidden="true"></span>
-  <img class="hero-bg" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=2000" srcset="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=900 900w, https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=1400 1400w, https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75&amp;w=2000 2000w" sizes="100vw" width="2000" height="1333" fetchpriority="high" alt="">
+  <img class="hero-bg" src="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?auto=format&amp;fit=crop&amp;q=75&amp;w=2000" srcset="https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?auto=format&amp;fit=crop&amp;q=75&amp;w=900 900w, https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?auto=format&amp;fit=crop&amp;q=75&amp;w=1400 1400w, https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?auto=format&amp;fit=crop&amp;q=75&amp;w=2000 2000w" sizes="100vw" width="2000" height="1333" fetchpriority="high" alt="">
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <span class="hero-badge"><span class="dot" aria-hidden="true"></span>Training camps for clubs &amp; teams</span>
@@ -150,6 +152,38 @@
     </div>
   </div>
 </section>
+
+<section class="section playstory" id="spielzug" aria-labelledby="play-h">
+  <div class="playstory-track">
+    <div class="playstory-sticky">
+      <div class="wrap play-grid">
+        <div class="play-copy">
+          <span class="eyebrow">The road to your camp</span>
+          <h2 id="play-h">From first contact to kick-off</h2>
+          <p>Four steps, one contact person: we guide you from the enquiry to your first session in Antalya.</p>
+          <ol class="play-steps">
+            <li class="is-active" data-i="0"><b>Enquiry</b><span>You send us the key details about team, dates and wishes.</span></li>
+            <li data-i="1"><b>Offer</b><span>We put together hotel, pitches, test matches and transfers.</span></li>
+            <li data-i="2"><b>Arrival</b><span>Airport transfer and check-in at the team hotel.</span></li>
+            <li data-i="3"><b>Kick-off</b><span>Training, test matches and recovery to your plan.</span></li>
+          </ol>
+        </div>
+        <div class="play-board" aria-hidden="true">
+          <svg viewBox="0 0 640 420" role="presentation">
+            <rect x="8" y="8" width="624" height="404" rx="22" class="pb-field"/>
+            <g class="pb-lines" fill="none"><rect x="30" y="30" width="580" height="360" rx="6"/><path d="M320 30v360"/><circle cx="320" cy="210" r="56"/><rect x="30" y="130" width="86" height="160"/><rect x="524" y="130" width="86" height="160"/></g>
+            <path id="playPath" class="pb-path-bg" d="M70 330C130 130 200 90 260 150S330 330 400 270S500 110 580 210" fill="none"/>
+            <path id="playPathFill" class="pb-path" d="M70 330C130 130 200 90 260 150S330 330 400 270S500 110 580 210" fill="none"/>
+            <g id="playPoints"></g>
+            <g id="playBall"><circle r="13" class="pb-ball"/><path d="m0-6 5 4-2 6h-6l-2-6z" class="pb-ball-patch"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
 <section class="section" id="anlagen">
   <div class="wrap split">

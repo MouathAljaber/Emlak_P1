@@ -305,5 +305,16 @@
  "errors.phone": "Please enter a valid phone number with country code, e.g. +44 7700 900123.",
  "errors.club": "Please enter a valid club name (2–100 characters).",
  "errors.choose": "Please select an option.",
- "errors.fields": "Please check the highlighted fields."
+ "errors.fields": "Please check the highlighted fields.",
+ "play.tag": "The road to your camp",
+ "play.h2": "From first contact to kick-off",
+ "play.p": "Four steps, one contact person: we guide you from the enquiry to your first session in Antalya.",
+ "play.1.t": "Enquiry",
+ "play.1.d": "You send us the key details about team, dates and wishes.",
+ "play.2.t": "Offer",
+ "play.2.d": "We put together hotel, pitches, test matches and transfers.",
+ "play.3.t": "Arrival",
+ "play.3.d": "Airport transfer and check-in at the team hotel.",
+ "play.4.t": "Kick-off",
+ "play.4.d": "Training, test matches and recovery to your plan."
 }

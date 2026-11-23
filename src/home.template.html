@@ -36,6 +36,7 @@
 <script src="/site-config.js"></script>
 <script src="/site.js" defer></script>
 <script src="/home.js" defer></script>
+<script src="/fx.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">{{skip}}</a>
@@ -88,6 +89,7 @@
 
 <section class="hero">
   {{@heroVideo}}
+  <div class="hero-beams" aria-hidden="true"></div><canvas class="hero-fx" aria-hidden="true"></canvas><div class="hero-glow" aria-hidden="true"></div>
   <svg class="hero-pitch" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><rect x="60" y="40" width="1080" height="520" rx="6" pathLength="1"/><path d="M600 40v520" pathLength="1"/><circle cx="600" cy="300" r="90" pathLength="1"/><rect x="60" y="170" width="170" height="260" pathLength="1"/><rect x="970" y="170" width="170" height="260" pathLength="1"/></g></svg>
   <span class="hero-orb orb-1" aria-hidden="true"></span><span class="hero-orb orb-2" aria-hidden="true"></span>
   <img class="hero-bg" src="{{@heroImage}}&amp;w=2000" srcset="{{@heroImage}}&amp;w=900 900w, {{@heroImage}}&amp;w=1400 1400w, {{@heroImage}}&amp;w=2000 2000w" sizes="100vw" width="2000" height="1333" fetchpriority="high" alt="">
@@ -150,6 +152,38 @@
     </div>
   </div>
 </section>
+
+<section class="section playstory" id="spielzug" aria-labelledby="play-h">
+  <div class="playstory-track">
+    <div class="playstory-sticky">
+      <div class="wrap play-grid">
+        <div class="play-copy">
+          <span class="eyebrow">{{play.tag}}</span>
+          <h2 id="play-h">{{play.h2}}</h2>
+          <p>{{play.p}}</p>
+          <ol class="play-steps">
+            <li class="is-active" data-i="0"><b>{{play.1.t}}</b><span>{{play.1.d}}</span></li>
+            <li data-i="1"><b>{{play.2.t}}</b><span>{{play.2.d}}</span></li>
+            <li data-i="2"><b>{{play.3.t}}</b><span>{{play.3.d}}</span></li>
+            <li data-i="3"><b>{{play.4.t}}</b><span>{{play.4.d}}</span></li>
+          </ol>
+        </div>
+        <div class="play-board" aria-hidden="true">
+          <svg viewBox="0 0 640 420" role="presentation">
+            <rect x="8" y="8" width="624" height="404" rx="22" class="pb-field"/>
+            <g class="pb-lines" fill="none"><rect x="30" y="30" width="580" height="360" rx="6"/><path d="M320 30v360"/><circle cx="320" cy="210" r="56"/><rect x="30" y="130" width="86" height="160"/><rect x="524" y="130" width="86" height="160"/></g>
+            <path id="playPath" class="pb-path-bg" d="M70 330C130 130 200 90 260 150S330 330 400 270S500 110 580 210" fill="none"/>
+            <path id="playPathFill" class="pb-path" d="M70 330C130 130 200 90 260 150S330 330 400 270S500 110 580 210" fill="none"/>
+            <g id="playPoints"></g>
+            <g id="playBall"><circle r="13" class="pb-ball"/><path d="m0-6 5 4-2 6h-6l-2-6z" class="pb-ball-patch"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
 <section class="section" id="anlagen">
   <div class="wrap split">

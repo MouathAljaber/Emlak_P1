@@ -14,7 +14,7 @@ import { OPTIONS, COUNTRIES } from '../lib/offer.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE_URL = (process.env.PUBLIC_SITE_URL || 'https://trainingslager-antalya.de').replace(/\/+$/, '');
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&amp;fit=crop&amp;q=75';
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?auto=format&amp;fit=crop&amp;q=75';
 const FONT_LINKS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">';
 
 const LOGO = '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#1f6247"/><path d="M8.5 15a13.5 13.5 0 0 1 23 0" stroke="#e3a92f" stroke-width="2.6" stroke-linecap="round"/><path d="m20 13 4.2 3.1v5.2L20 24.4l-4.2-3.1v-5.2L20 13Z" fill="#fff"/><path d="m15.8 16.6-4.3 2m12.7-2 4.3 2M20 24.4v5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>';

@@ -8,7 +8,7 @@
     "start": "node server.js",
     "dev": "node --watch server.js",
     "build": "node scripts/build.mjs",
-    "check": "node --check server.js && node --check site.js && node --check home.js && node --check scripts/build.mjs"
+    "check": "node --check server.js && node --check site.js && node --check home.js && node --check fx.js && node --check scripts/build.mjs"
   },
   "engines": {
     "node": ">=20"
