@@ -381,7 +381,7 @@ function enrichContentPage(html, lang, slug, prefix) {
   const extraFaq = [0, 1, 2, 3].map((k) => pool[(seed + k * 3) % pool.length]).filter((v, i, arr) => arr.indexOf(v) === i);
   const baseFaq = guide ? g.faq : copy.faq;
   const allFaq = [...baseFaq, ...extraFaq.filter((q) => !baseFaq.some((b) => b[0] === q[0]))];
-  const faqItems = allFaq.map(([question, answer]) => `<details class="faq-item"><summary>${question}</summary><p>${answer}</p></details>`).join('');
+  const faqItems = allFaq.map(([question, answer]) => `<details class="qa-item"><summary>${question}</summary><p>${answer}</p></details>`).join('');
 
   const bullets = guide ? `<section class="facts"><h2>${ui.facts}</h2><ul>${g.bullets.map((x) => `<li>${ICON_CHECK_CIRCLE}<span>${x}</span></li>`).join('')}</ul></section>` : '';
   const climate = (guide && guide.climate) || /best-time|winter|preseason|klima/.test(slug) ? (() => {
@@ -401,7 +401,7 @@ function enrichContentPage(html, lang, slug, prefix) {
   const related = `<section class="related"><h2>${ui.related}</h2><ul>${picks.map(([href, title]) => `<li><a href="${href}">${stripTags(title)}<span aria-hidden="true">→</span></a></li>`).join('')}</ul></section>`;
 
   const today = new Date().toISOString().slice(0, 10);
-  const main = `<main id="main">${heroBlock}<div class="page-main"><div class="wrap"><section class="content-intro"><p>${guide ? g.lead : copy.lead}</p></section>${bullets}<div class="grid">${cards}</div>${climate}${steps}<section class="content-faq" aria-labelledby="faq-${slug}"><h2 id="faq-${slug}">${guide ? ui.moreFaq : faqTitle}</h2><div class="faq-list">${faqItems}</div></section>${related}<div class="cta"><h2>${de ? 'Vereinsdaten für ein konkretes Angebot zusammenstellen' : 'Prepare the club details for a concrete offer'}</h2><p>${de ? 'Teilt uns Teamtyp, Zeitraum, Teilnehmerzahl, gewünschte Leistungen und besondere Anforderungen mit.' : 'Share your team type, dates, participant numbers, required services and special requirements.'}</p><a class="button" href="${prefix}/#anfrage">${inquiry}</a></div><p class="updated muted">${ui.updated}: <time datetime="${today}">${today}</time></p></div></div></main>`;
+  const main = `<main id="main">${heroBlock}<div class="page-main"><div class="wrap"><section class="content-intro"><p>${guide ? g.lead : copy.lead}</p></section>${bullets}<div class="grid">${cards}</div>${climate}${steps}<section class="content-faq" aria-labelledby="faq-${slug}"><h2 id="faq-${slug}">${guide ? ui.moreFaq : faqTitle}</h2><div class="qa-list">${faqItems}</div></section>${related}<div class="cta"><h2>${de ? 'Vereinsdaten für ein konkretes Angebot zusammenstellen' : 'Prepare the club details for a concrete offer'}</h2><p>${de ? 'Teilt uns Teamtyp, Zeitraum, Teilnehmerzahl, gewünschte Leistungen und besondere Anforderungen mit.' : 'Share your team type, dates, participant numbers, required services and special requirements.'}</p><a class="button" href="${prefix}/#anfrage">${inquiry}</a></div><p class="updated muted">${ui.updated}: <time datetime="${today}">${today}</time></p></div></div></main>`;
   html = html.replace(/<main id="main"[\s\S]*?<\/main>/i, main);
   const faqLd = {
     '@context': 'https://schema.org',

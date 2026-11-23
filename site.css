@@ -670,14 +670,14 @@ a.card:hover, .card.is-interactive:hover { transform: translateY(-4px); box-shad
 .step-dot { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 14px; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 800; box-shadow: 0 0 0 6px var(--brand-soft); }
 .steps h3 { font-size: 18px; margin-bottom: 6px; } .steps p { font-size: 15px; color: var(--muted); }
 
-.faq-list { display: grid; gap: 12px; max-width: 880px; }
-.faq-item { border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--surface); transition: box-shadow .3s, border-color .3s; }
-.faq-item[open] { border-color: var(--brand); box-shadow: var(--shadow-m); }
-.faq-item summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 22px; font-weight: 700; font-size: 17px; }
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: "+"; flex-shrink: 0; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-soft); color: var(--brand); font-size: 20px; transition: transform .3s var(--ease), background .3s; }
-.faq-item[open] summary::after { transform: rotate(45deg); background: var(--accent); color: var(--ink); }
-.faq-item p { padding: 0 22px 20px; color: var(--ink-2); animation: hero-in .4s var(--ease); }
+.qa-list { display: grid; gap: 12px; max-width: 880px; }
+.qa-item { border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--surface); transition: box-shadow .3s, border-color .3s; }
+.qa-item[open] { border-color: var(--brand); box-shadow: var(--shadow-m); }
+.qa-item summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 22px; font-weight: 700; font-size: 17px; }
+.qa-item summary::-webkit-details-marker { display: none; }
+.qa-item summary::after { content: "+"; flex-shrink: 0; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-soft); color: var(--brand); font-size: 20px; transition: transform .3s var(--ease), background .3s; }
+.qa-item[open] summary::after { transform: rotate(45deg); background: var(--accent); color: var(--ink); }
+.qa-item p { padding: 0 22px 20px; color: var(--ink-2); animation: hero-in .4s var(--ease); }
 
 .related ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
 .related a { display: flex; justify-content: space-between; gap: 12px; padding: 16px 20px; border-radius: var(--radius-m); background: var(--surface); border: 1px solid var(--line); font-weight: 650; text-decoration: none; color: var(--ink); transition: transform .3s var(--ease), border-color .3s, background .3s; }
