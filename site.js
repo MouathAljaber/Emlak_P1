@@ -148,6 +148,76 @@
     revealTargets.forEach(function (target) { revealObserver.observe(target); });
   }
 
+
+  /* ---------- motion enhancements ---------- */
+  // Auto-reveal content-page blocks with a stagger (no markup changes needed).
+  Array.prototype.forEach.call(document.querySelectorAll('.page-main .grid, .page-main .content-faq .grid'), function (grid) {
+    Array.prototype.forEach.call(grid.children, function (child, i) {
+      if (child.hasAttribute('data-reveal')) return;
+      child.setAttribute('data-reveal', '');
+      child.style.transitionDelay = Math.min(i % 3, 2) * 90 + 'ms';
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.content-intro, .page-main .cta, .content-faq > h2'), function (el) { el.setAttribute('data-reveal', ''); });
+  (function () {
+    var late = document.querySelectorAll('[data-reveal]:not(.is-visible)');
+    if (!reduceMotion && 'IntersectionObserver' in window && late.length) {
+      doc.classList.add('js-reveal');
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      late.forEach(function (el) { io.observe(el); });
+    }
+  }());
+
+  // Scroll progress bar + back-to-top button.
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(bar);
+  var topBtn = document.createElement('button');
+  topBtn.type = 'button';
+  topBtn.className = 'to-top';
+  topBtn.setAttribute('aria-label', isGerman ? 'Nach oben' : 'Back to top');
+  topBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 14 6-6 6 6"/></svg>';
+  topBtn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' }); });
+  document.body.appendChild(topBtn);
+  var ticking = false;
+  function onScrollFx() {
+    ticking = false;
+    var max = doc.scrollHeight - window.innerHeight;
+    var y = window.scrollY;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+    topBtn.classList.toggle('is-shown', y > 700);
+    var hero = document.querySelector('.page-hero .wrap, .hero .wrap');
+    if (hero && !reduceMotion && y < 700) hero.style.transform = 'translate3d(0,' + (y * 0.08).toFixed(1) + 'px,0)';
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; window.requestAnimationFrame(onScrollFx); } }, { passive: true });
+  onScrollFx();
+
+  // Count-up for elements marked data-count="123".
+  var counters = document.querySelectorAll('[data-count]');
+  if (counters.length && 'IntersectionObserver' in window && !reduceMotion) {
+    var co = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        co.unobserve(entry.target);
+        var el = entry.target, end = parseFloat(el.getAttribute('data-count')), suffix = el.getAttribute('data-suffix') || '', t0 = null;
+        (function step(t) {
+          t0 = t0 || t;
+          var p = Math.min((t - t0) / 1400, 1), e = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(end * e) + suffix;
+          if (p < 1) window.requestAnimationFrame(step);
+        }(performance.now()));
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { co.observe(el); });
+  }
+
   /* ---------- footer year ---------- */
   Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function (el) {
     el.textContent = String(new Date().getFullYear());

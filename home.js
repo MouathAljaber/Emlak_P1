@@ -176,37 +176,18 @@
   function submit() {
     errorEl.hidden = true;
     var data = collect();
-    var lines = [
-      'Antalya Camp - ' + (data.lang === 'en' ? 'Training camp request' : 'Trainingslager-Anfrage'),
-      '',
-      'Club: ' + data.clubName,
-      'Country: ' + data.country,
-      'Team: ' + teamLabel(data.teamType),
-      'Contact: ' + data.contactPerson,
-      'Email: ' + data.email,
-      'Phone: ' + data.phone,
-      'Players: ' + data.players,
-      'Staff: ' + data.staff,
-      'Age group: ' + data.ageGroup,
-      'Level: ' + data.level,
-      'Dates: ' + data.dates,
-      'Nights: ' + data.nights,
-      'Budget: ' + data.budget,
-      'Services: ' + serviceLabels(data.services).join(', '),
-      'Extras: ' + data.extras,
-      'Message: ' + data.message
-    ];
-    var text = lines.join('\n');
-    var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
-    var url = URL.createObjectURL(blob);
-    var download = document.createElement('a');
-    download.href = url;
-    download.download = 'antalya-camp-request.txt';
-    document.body.appendChild(download);
-    download.click();
-    download.remove();
-    URL.revokeObjectURL(url);
+    nextBtn.disabled = true;
+    fetch('/api/offer', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (r) { return r.json().catch(function () { return { ok: false }; }).then(function (j) { return r.ok && j.ok; }); })
+      .catch(function () { return false; })
+      .then(function (ok) {
+        nextBtn.disabled = false;
+        if (!ok) { errorEl.textContent = t['errors.send']; errorEl.hidden = false; return; }
+        showSuccess();
+      });
+  }
 
+  function showSuccess() {
     var ref = document.getElementById('successRef');
     if (ref) ref.hidden = true;
     steps.forEach(function (step) { step.hidden = true; });

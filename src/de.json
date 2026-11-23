@@ -203,11 +203,11 @@
  "step5.message": "Nachricht",
  "step5.message.ph": "Gibt es sonst noch etwas, das wir wissen sollten?",
  "step5.gdpr": "Ich habe die <a href=\"{{@prefix}}/privacy-policy/\">Datenschutzerklärung</a> gelesen. Die Angaben werden nur lokal im Browser vorbereitet.",
- "success.title": "Anfrage vorbereitet",
- "success.text": "Die Zusammenfassung wurde als Textdatei heruntergeladen. Ihr könnt sie speichern und für eure weitere Anfrage verwenden.",
+ "success.title": "Anfrage gesendet",
+ "success.text": "Danke! Eure Anfrage ist bei uns eingegangen. Wir melden uns in der Regel innerhalb von 24 Stunden.",
  "btn.back": "Zurück",
  "btn.next": "Weiter",
- "btn.submit": "Zusammenfassung erstellen",
+ "btn.submit": "Anfrage senden",
  "faq.tag": "FAQ",
  "faq.h2": "Häufige Fragen",
  "faq.1.q": "Wie schnell bekommen wir ein Angebot?",
@@ -288,5 +288,6 @@
  "footer.cookies": "Cookies",
  "footer.services": "Leistungen",
  "footer.rights": "Alle Rechte vorbehalten.",
- "success.ref": "Eure Zusammenfassung wurde vorbereitet."
+ "success.ref": "Eure Anfrage wurde gesendet.",
+ "errors.send": "Die Anfrage konnte nicht gesendet werden. Bitte versucht es erneut oder schreibt uns direkt per E-Mail."
 }

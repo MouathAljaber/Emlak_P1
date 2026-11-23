@@ -343,6 +343,44 @@ function enrichContentPage(html, lang, slug, prefix) {
   return html;
 }
 
+
+/* ---------- per-page SEO head (idempotent) ---------- */
+
+function seoHead(html, lang, slug, prefix) {
+  html = html.replace(/<!-- seo:start -->[\s\S]*?<!-- seo:end -->/g, '');
+  const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
+  const descMatch = html.match(/<meta name="description" content="([^"]*)"/i);
+  if (!titleMatch) return html;
+  const title = titleMatch[1];
+  const desc = descMatch ? descMatch[1] : '';
+  const de = lang === 'de';
+  const url = `${SITE_URL}${prefix}/${slug}/`;
+  const deUrl = `${SITE_URL}/${slug}/`;
+  const enUrl = `${SITE_URL}/en/${slug}/`;
+  const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [, title])[1];
+  const has = (re) => re.test(html);
+  const tags = [];
+  if (!has(/<meta name="robots"/i)) tags.push('<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">');
+  if (!has(/hreflang="de"/i)) {
+    tags.push(`<link rel="alternate" hreflang="de" href="${deUrl}"><link rel="alternate" hreflang="en" href="${enUrl}"><link rel="alternate" hreflang="x-default" href="${deUrl}">`);
+  }
+  tags.push(`<meta property="og:type" content="website"><meta property="og:url" content="${url}"><meta property="og:title" content="${title}"><meta property="og:description" content="${desc}"><meta property="og:locale" content="${de ? 'de_DE' : 'en_GB'}"><meta property="og:locale:alternate" content="${de ? 'en_GB' : 'de_DE'}"><meta property="og:site_name" content="Antalya Camp"><meta property="og:image" content="${HERO_IMAGE}&amp;w=1200"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${title}"><meta name="twitter:description" content="${desc}"><meta name="twitter:image" content="${HERO_IMAGE}&amp;w=1200">`);
+  const ld = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'WebPage', '@id': `${url}#webpage`, url, name: stripTags(h1), description: stripTags(desc), inLanguage: lang, isPartOf: { '@id': `${SITE_URL}/#website` }, about: { '@id': `${SITE_URL}/#org` }, breadcrumb: { '@id': `${url}#breadcrumb` } },
+      { '@type': 'WebSite', '@id': `${SITE_URL}/#website`, url: `${SITE_URL}/`, name: 'Antalya Camp', publisher: { '@id': `${SITE_URL}/#org` }, inLanguage: ['de', 'en'] },
+      { '@type': 'Organization', '@id': `${SITE_URL}/#org`, name: 'Antalya Camp', url: `${SITE_URL}/`, logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.svg` }, areaServed: ['DE', 'AT', 'CH'], knowsAbout: ['Fußball-Trainingslager', 'Football training camps', 'Antalya'] },
+      { '@type': 'BreadcrumbList', '@id': `${url}#breadcrumb`, itemListElement: [
+        { '@type': 'ListItem', position: 1, name: de ? 'Startseite' : 'Home', item: `${SITE_URL}${prefix}/` },
+        { '@type': 'ListItem', position: 2, name: stripTags(h1), item: url }
+      ] }
+    ]
+  };
+  tags.push(`<script type="application/ld+json">${escapeJson(ld)}</script>`);
+  return html.replace('</head>', `<!-- seo:start -->${tags.join('')}<!-- seo:end --></head>`);
+}
+
 async function buildContentPages() {
   const pages = await listContentPages();
   for (const page of pages) {
@@ -352,6 +390,7 @@ async function buildContentPages() {
     const dePath = `/${page.slug}/`;
     const enPath = `/en/${page.slug}/`;
     html = enrichContentPage(html, lang, page.slug, page.prefix);
+    html = seoHead(html, lang, page.slug, page.prefix);
     html = html
       .replace(/<!-- site-header -->[\s\S]*?<!-- \/site-header -->/, pageHeader(lang, page.prefix, dePath, enPath))
       .replace(/<!-- site-footer -->[\s\S]*?<!-- \/site-footer -->/, pageFooter(lang, page.prefix));
@@ -378,9 +417,17 @@ Sitemap: ${SITE_URL}/sitemap.xml
   routes.push('/en/');
   for (const page of pages.filter((page) => page.prefix === '/en')) routes.push(`/en/${page.slug}/`);
   const unique = [...new Set(routes)];
-  const urls = unique.map((route) => `  <url><loc>${SITE_URL}${route}</loc><lastmod>2026-11-19</lastmod><changefreq>weekly</changefreq><priority>${route === '/' || route === '/en/' ? '1.0' : '0.8'}</priority></url>`).join('\n');
+  const alt = (route) => {
+    const isEn = route.startsWith('/en/');
+    const dePath = isEn ? route.replace(/^\/en/, '') || '/' : route;
+    const enPath = isEn ? route : `/en${route}`;
+    if (!unique.includes(dePath) || !unique.includes(enPath)) return '';
+    return `<xhtml:link rel="alternate" hreflang="de" href="${SITE_URL}${dePath}"/><xhtml:link rel="alternate" hreflang="en" href="${SITE_URL}${enPath}"/><xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${dePath}"/>`;
+  };
+  const today = new Date().toISOString().slice(0, 10);
+  const urls = unique.map((route) => `  <url><loc>${SITE_URL}${route}</loc>${alt(route)}<lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>${route === '/' || route === '/en/' ? '1.0' : '0.8'}</priority></url>`).join('\n');
   await writeFile(path.join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
 </urlset>
 `);

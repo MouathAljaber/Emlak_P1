@@ -203,11 +203,11 @@
  "step5.message": "Message",
  "step5.message.ph": "Anything else we should know?",
  "step5.gdpr": "I have read the <a href=\"{{@prefix}}/privacy-policy/\">privacy policy</a>. The details are prepared locally in the browser only.",
- "success.title": "Request prepared",
- "success.text": "A text summary has been downloaded. You can save it and use it for your next enquiry.",
+ "success.title": "Request sent",
+ "success.text": "Thank you! Your request has reached us. We usually reply within 24 hours.",
  "btn.back": "Back",
  "btn.next": "Next",
- "btn.submit": "Create summary",
+ "btn.submit": "Send request",
  "faq.tag": "FAQ",
  "faq.h2": "Frequently asked questions",
  "faq.1.q": "How fast will we get an offer?",
@@ -288,5 +288,6 @@
  "footer.cookies": "Cookies",
  "footer.services": "Services",
  "footer.rights": "All rights reserved.",
- "success.ref": "Your summary has been prepared."
+ "success.ref": "Your request has been sent.",
+ "errors.send": "Your request could not be sent. Please try again or email us directly."
 }
