@@ -10,6 +10,7 @@ import { readFile, writeFile, readdir, stat, access, mkdir } from 'node:fs/promi
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GUIDES, CLIMATE, EXTRA_FAQ } from './guides.mjs';
+import { OPTIONS, COUNTRIES } from '../lib/offer.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE_URL = (process.env.PUBLIC_SITE_URL || 'https://trainingslager-antalya.de').replace(/\/+$/, '');
@@ -174,7 +175,11 @@ async function buildHome() {
     } catch { /* no video supplied */ }
     const marqueeItems = [dict['marquee.1'], dict['marquee.2'], dict['marquee.3'], dict['marquee.4'], dict['marquee.5'], dict['marquee.6']];
     const marquee = marqueeItems.map((x) => `<span>${x}</span>`).join('');
+    const optHtml = (group) => OPTIONS[group].map((v) => `<option value="${v}">${dict[`o.${group}.${v}`]}</option>`).join('');
+    const regionNames = new Intl.DisplayNames([lang], { type: 'region' });
+    const optCountry = COUNTRIES.map((c) => ({ c, n: regionNames.of(c) })).sort((x, y) => x.n.localeCompare(y.n, lang)).map(({ c, n }) => `<option value="${c}">${n}</option>`).join('');
     const vars = {
+      optCountry, optPlayers: optHtml('players'), optStaff: optHtml('staff'), optAgeGroup: optHtml('ageGroup'), optLevel: optHtml('level'), optFlexibility: optHtml('flexibility'), optNights: optHtml('nights'), optBudget: optHtml('budget'),
       heroVideo, marquee,
       lang, prefix, canonical, siteUrl: SITE_URL, heroImage: HERO_IMAGE,
       deCurrent: lang === 'de' ? 'aria-current="true"' : '',

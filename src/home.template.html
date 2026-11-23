@@ -281,8 +281,8 @@
             <h3>{{step1.title}}</h3>
             <p class="step-intro">{{step1.intro}}</p>
             <div class="field-row">
-              <div class="field"><label for="clubName">{{step1.clubName}}<span class="req" aria-hidden="true">*</span></label><input id="clubName" name="clubName" autocomplete="organization" type="text" maxlength="500" required></div>
-              <div class="field"><label for="country">{{step1.country}}<span class="req" aria-hidden="true">*</span></label><input id="country" name="country" autocomplete="country-name" type="text" maxlength="100" required></div>
+              <div class="field"><label for="clubName">{{step1.clubName}}<span class="req" aria-hidden="true">*</span></label><input id="clubName" name="clubName" autocomplete="organization" type="text" minlength="2" maxlength="100" required></div>
+              <div class="field"><label for="country">{{step1.country}}<span class="req" aria-hidden="true">*</span></label><select id="country" name="country" autocomplete="country" required><option value="">{{opt.choose}}</option>{{@optCountry}}</select></div>
             </div>
             <div class="field-row">
               <div class="field"><label for="teamType">{{step1.teamType}}<span class="req" aria-hidden="true">*</span></label>
@@ -294,11 +294,11 @@
                   <option value="Profiteam">{{opt.profi}}</option>
                 </select>
               </div>
-              <div class="field"><label for="contactPerson">{{step1.contact}}<span class="req" aria-hidden="true">*</span></label><input id="contactPerson" name="contactPerson" autocomplete="name" type="text" maxlength="200" required></div>
+              <div class="field"><label for="contactPerson">{{step1.contact}}<span class="req" aria-hidden="true">*</span></label><input id="contactPerson" name="contactPerson" autocomplete="name" type="text" maxlength="80" required></div>
             </div>
             <div class="field-row">
               <div class="field"><label for="email">{{step1.email}}<span class="req" aria-hidden="true">*</span></label><input id="email" name="email" autocomplete="email" inputmode="email" type="email" maxlength="320" required></div>
-              <div class="field"><label for="phone">{{step1.phone}}<span class="req" aria-hidden="true">*</span></label><input id="phone" name="phone" autocomplete="tel" inputmode="tel" type="tel" maxlength="60" required></div>
+              <div class="field"><label for="phone">{{step1.phone}}<span class="req" aria-hidden="true">*</span></label><input id="phone" name="phone" autocomplete="tel" inputmode="tel" type="tel" maxlength="25" placeholder="{{step1.phone.ph}}" required></div>
             </div>
           </fieldset>
 
@@ -306,12 +306,12 @@
             <h3>{{step2.title}}</h3>
             <p class="step-intro">{{step2.intro}}</p>
             <div class="field-row">
-              <div class="field"><label for="players">{{step2.players}}</label><input id="players" name="players" inputmode="numeric" type="number" min="1" max="10000" step="1"></div>
-              <div class="field"><label for="staff">{{step2.staff}}</label><input id="staff" name="staff" inputmode="numeric" type="number" min="0" max="10000" step="1"></div>
+              <div class="field"><label for="players">{{step2.players}}<span class="req" aria-hidden="true">*</span></label><select id="players" name="players" required><option value="">{{opt.choose}}</option>{{@optPlayers}}</select></div>
+              <div class="field"><label for="staff">{{step2.staff}}<span class="req" aria-hidden="true">*</span></label><select id="staff" name="staff" required><option value="">{{opt.choose}}</option>{{@optStaff}}</select></div>
             </div>
             <div class="field-row">
-              <div class="field"><label for="ageGroup">{{step2.ageGroup}}</label><input id="ageGroup" name="ageGroup" type="text" maxlength="100" placeholder="{{step2.ageGroup.ph}}"></div>
-              <div class="field"><label for="level">{{step2.level}}</label><input id="level" name="level" type="text" maxlength="150" placeholder="{{step2.level.ph}}"></div>
+              <div class="field"><label for="ageGroup">{{step2.ageGroup}}<span class="req" aria-hidden="true">*</span></label><select id="ageGroup" name="ageGroup" required><option value="">{{opt.choose}}</option>{{@optAgeGroup}}</select></div>
+              <div class="field"><label for="level">{{step2.level}}<span class="req" aria-hidden="true">*</span></label><select id="level" name="level" required><option value="">{{opt.choose}}</option>{{@optLevel}}</select></div>
             </div>
           </fieldset>
 
@@ -319,10 +319,10 @@
             <h3>{{step3.title}}</h3>
             <p class="step-intro">{{step3.intro}}</p>
             <div class="field-row">
-              <div class="field"><label for="dates">{{step3.dates}}</label><input id="dates" name="dates" type="text" maxlength="200" placeholder="{{step3.dates.ph}}"></div>
-              <div class="field"><label for="nights">{{step3.nights}}</label><input id="nights" name="nights" inputmode="numeric" type="number" min="1" max="365" step="1"></div>
+              <div class="field"><label for="startMonth">{{step3.dates}}<span class="req" aria-hidden="true">*</span></label><select id="startMonth" name="startMonth" required data-flexible="{{month.flexible}}"><option value="">{{opt.choose}}</option></select></div>
+              <div class="field"><label for="flexibility">{{step3.flex}}<span class="req" aria-hidden="true">*</span></label><select id="flexibility" name="flexibility" required><option value="">{{opt.choose}}</option>{{@optFlexibility}}</select></div>
             </div>
-            <div class="field"><label for="budget">{{step3.budget}}</label><input id="budget" name="budget" type="text" maxlength="200" placeholder="{{step3.budget.ph}}"></div>
+            <div class="field-row"><div class="field"><label for="nights">{{step3.nights}}<span class="req" aria-hidden="true">*</span></label><select id="nights" name="nights" required><option value="">{{opt.choose}}</option>{{@optNights}}</select></div><div class="field"><label for="budget">{{step3.budget}}<span class="req" aria-hidden="true">*</span></label><select id="budget" name="budget" required><option value="">{{opt.choose}}</option>{{@optBudget}}</select></div></div>
           </fieldset>
 
           <fieldset class="form-step" data-step="4" hidden style="border:0;padding:0;margin:0">

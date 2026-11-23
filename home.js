@@ -26,28 +26,59 @@
     return String(template || '').replace(/\{(\w+)\}/g, function (_, key) { return values[key]; });
   }
 
+  var SELECTS = ['country', 'teamType', 'players', 'staff', 'ageGroup', 'level', 'startMonth', 'flexibility', 'nights', 'budget'];
+  var RE_NAME = /^[\p{L}\p{M}][\p{L}\p{M} .'-]{1,79}$/u;
+  var RE_CLUB = /^[\p{L}\p{N}][\p{L}\p{N}\p{M} .,'&()\/+-]{1,99}$/u;
+  var RE_EMAIL = /^[A-Za-z0-9._%+-]{1,64}@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
+  var RE_PHONE = /^\+?[0-9 ()./-]{6,25}$/;
+
+  function selectedLabel(id) {
+    var el = field(id);
+    return el && el.selectedIndex > 0 ? el.options[el.selectedIndex].textContent : '';
+  }
+
+  // Fill the month select: next 18 months plus "flexible".
+  (function fillMonths() {
+    var sel = field('startMonth');
+    if (!sel) return;
+    var lang = (document.documentElement.lang || 'de').slice(0, 2);
+    var fmt = new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'de-DE', { month: 'long', year: 'numeric' });
+    var now = new Date();
+    for (var i = 0; i < 18; i++) {
+      var d = new Date(now.getFullYear(), now.getMonth() + i, 1);
+      var o = document.createElement('option');
+      o.value = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+      o.textContent = fmt.format(d);
+      sel.appendChild(o);
+    }
+    var flex = document.createElement('option');
+    flex.value = 'flexible';
+    flex.textContent = sel.getAttribute('data-flexible') || 'Flexible';
+    sel.appendChild(flex);
+  }());
+
+  // Live input filters: names without digits, phone without letters.
+  var nameEl = field('contactPerson');
+  if (nameEl) nameEl.addEventListener('input', function () { nameEl.value = nameEl.value.replace(/[0-9_@#$%^*=+<>{}\[\]\\|~`!?;:"\/]/g, ''); });
+  var phoneEl = field('phone');
+  if (phoneEl) phoneEl.addEventListener('input', function () { phoneEl.value = phoneEl.value.replace(/[^0-9+ ()./-]/g, ''); });
+
   function collect() {
-    return {
-      clubName: value('clubName'),
-      country: value('country'),
-      teamType: value('teamType'),
-      contactPerson: value('contactPerson'),
-      email: value('email'),
+    var data = {
+      clubName: value('clubName').replace(/\s+/g, ' '),
+      contactPerson: value('contactPerson').replace(/\s+/g, ' '),
+      email: value('email').toLowerCase(),
       phone: value('phone'),
-      players: value('players'),
-      staff: value('staff'),
-      ageGroup: value('ageGroup'),
-      level: value('level'),
-      dates: value('dates'),
-      nights: value('nights'),
-      budget: value('budget'),
       services: Array.prototype.map.call(form.querySelectorAll('input[name="services"]:checked'), function (input) { return input.value; }),
       extras: value('extras'),
       message: value('message'),
       consent: field('gdpr').checked,
       website: value('website'),
-      lang: (document.documentElement.lang || 'de').slice(0, 2)
+      lang: (document.documentElement.lang || 'de').slice(0, 2),
+      labels: {}
     };
+    SELECTS.forEach(function (id) { data[id] = value(id); data.labels[id] = selectedLabel(id); });
+    return data;
   }
 
   function teamLabel(teamValue) {
@@ -69,10 +100,10 @@
     heading.textContent = t['summary.title'];
     summary.appendChild(heading);
     [
-      [t['summary.club'], [data.clubName, data.country].filter(Boolean).join(', ')],
+      [t['summary.club'], [data.clubName, data.labels.country].filter(Boolean).join(', ')],
       [t['summary.team'], teamLabel(data.teamType)],
-      [t['summary.group'], [data.players && data.players + ' ' + t['summary.players'], data.staff && data.staff + ' ' + t['summary.staff'], data.ageGroup].filter(Boolean).join(' · ')],
-      [t['summary.trip'], [data.dates, data.nights && data.nights + ' ' + t['summary.nights']].filter(Boolean).join(' · ')],
+      [t['summary.group'], [data.labels.players && data.labels.players + ' ' + t['summary.players'], data.labels.staff && data.labels.staff + ' ' + t['summary.staff'], data.labels.ageGroup, data.labels.level].filter(Boolean).join(' · ')],
+      [t['summary.trip'], [data.labels.startMonth, data.labels.flexibility, data.labels.nights, data.labels.budget].filter(Boolean).join(' · ')],
       [t['summary.services'], serviceLabels(data.services).join(', ')]
     ].forEach(function (row) {
       var line = document.createElement('span');
@@ -126,9 +157,12 @@
     Array.prototype.forEach.call(stepEl.querySelectorAll('input, select, textarea'), function (el) {
       if (el.name === 'services' || el.name === 'website') return;
       var key = '';
-      if (el.required && (el.type === 'checkbox' ? !el.checked : !el.value.trim())) key = 'errors.required';
-      else if (el.type === 'email' && el.value && !el.validity.valid) key = 'errors.email';
-      else if (el.type === 'number' && !el.validity.valid) key = 'errors.number';
+      var v = el.value.trim();
+      if (el.required && (el.type === 'checkbox' ? !el.checked : !v)) key = el.tagName === 'SELECT' ? 'errors.choose' : 'errors.required';
+      else if (el.id === 'clubName' && !RE_CLUB.test(v.replace(/\s+/g, ' '))) key = 'errors.club';
+      else if (el.id === 'contactPerson' && (!RE_NAME.test(v) || v.split(/\s+/).length < 2)) key = 'errors.name';
+      else if (el.id === 'email' && !RE_EMAIL.test(v)) key = 'errors.email';
+      else if (el.id === 'phone' && (!RE_PHONE.test(v) || v.replace(/\D/g, '').length < 7 || v.replace(/\D/g, '').length > 15)) key = 'errors.phone';
       if (key) {
         showError(el, key);
         if (!firstInvalid) firstInvalid = el;
@@ -178,11 +212,11 @@
     var data = collect();
     nextBtn.disabled = true;
     fetch('/api/offer', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
-      .then(function (r) { return r.json().catch(function () { return { ok: false }; }).then(function (j) { return r.ok && j.ok; }); })
-      .catch(function () { return false; })
-      .then(function (ok) {
+      .then(function (r) { return r.json().catch(function () { return { ok: false }; }).then(function (j) { return { ok: r.ok && j.ok, fields: j.fields }; }); })
+      .catch(function () { return { ok: false }; })
+      .then(function (res) {
         nextBtn.disabled = false;
-        if (!ok) { errorEl.textContent = t['errors.send']; errorEl.hidden = false; return; }
+        if (!res.ok) { errorEl.textContent = res.fields ? t['errors.fields'] : t['errors.send']; errorEl.hidden = false; return; }
         showSuccess();
       });
   }

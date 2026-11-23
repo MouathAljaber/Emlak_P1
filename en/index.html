@@ -281,8 +281,8 @@
             <h3>Your club</h3>
             <p class="step-intro">So we can match you with the right setup.</p>
             <div class="field-row">
-              <div class="field"><label for="clubName">Club name<span class="req" aria-hidden="true">*</span></label><input id="clubName" name="clubName" autocomplete="organization" type="text" maxlength="500" required></div>
-              <div class="field"><label for="country">Country<span class="req" aria-hidden="true">*</span></label><input id="country" name="country" autocomplete="country-name" type="text" maxlength="100" required></div>
+              <div class="field"><label for="clubName">Club name<span class="req" aria-hidden="true">*</span></label><input id="clubName" name="clubName" autocomplete="organization" type="text" minlength="2" maxlength="100" required></div>
+              <div class="field"><label for="country">Country<span class="req" aria-hidden="true">*</span></label><select id="country" name="country" autocomplete="country" required><option value="">Please choose</option><option value="AL">Albania</option><option value="AT">Austria</option><option value="BE">Belgium</option><option value="BA">Bosnia & Herzegovina</option><option value="BG">Bulgaria</option><option value="CA">Canada</option><option value="HR">Croatia</option><option value="CZ">Czechia</option><option value="DK">Denmark</option><option value="EG">Egypt</option><option value="FI">Finland</option><option value="FR">France</option><option value="DE">Germany</option><option value="GR">Greece</option><option value="HU">Hungary</option><option value="IE">Ireland</option><option value="IT">Italy</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="XK">Kosovo</option><option value="KW">Kuwait</option><option value="LI">Liechtenstein</option><option value="LU">Luxembourg</option><option value="NL">Netherlands</option><option value="NO">Norway</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="QA">Qatar</option><option value="RO">Romania</option><option value="SA">Saudi Arabia</option><option value="RS">Serbia</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="ES">Spain</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="TR">Türkiye</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option></select></div>
             </div>
             <div class="field-row">
               <div class="field"><label for="teamType">Team category<span class="req" aria-hidden="true">*</span></label>
@@ -294,11 +294,11 @@
                   <option value="Profiteam">Professional team</option>
                 </select>
               </div>
-              <div class="field"><label for="contactPerson">Contact person (name, role)<span class="req" aria-hidden="true">*</span></label><input id="contactPerson" name="contactPerson" autocomplete="name" type="text" maxlength="200" required></div>
+              <div class="field"><label for="contactPerson">Contact person (first and last name)<span class="req" aria-hidden="true">*</span></label><input id="contactPerson" name="contactPerson" autocomplete="name" type="text" maxlength="80" required></div>
             </div>
             <div class="field-row">
               <div class="field"><label for="email">Email<span class="req" aria-hidden="true">*</span></label><input id="email" name="email" autocomplete="email" inputmode="email" type="email" maxlength="320" required></div>
-              <div class="field"><label for="phone">Phone<span class="req" aria-hidden="true">*</span></label><input id="phone" name="phone" autocomplete="tel" inputmode="tel" type="tel" maxlength="60" required></div>
+              <div class="field"><label for="phone">Phone (with country code)<span class="req" aria-hidden="true">*</span></label><input id="phone" name="phone" autocomplete="tel" inputmode="tel" type="tel" maxlength="25" placeholder="+44 7700 900123" required></div>
             </div>
           </fieldset>
 
@@ -306,12 +306,12 @@
             <h3>Your group</h3>
             <p class="step-intro">The size and level of the group.</p>
             <div class="field-row">
-              <div class="field"><label for="players">Number of players</label><input id="players" name="players" inputmode="numeric" type="number" min="1" max="10000" step="1"></div>
-              <div class="field"><label for="staff">Number of staff</label><input id="staff" name="staff" inputmode="numeric" type="number" min="0" max="10000" step="1"></div>
+              <div class="field"><label for="players">Number of players<span class="req" aria-hidden="true">*</span></label><select id="players" name="players" required><option value="">Please choose</option><option value="1-10">1–10</option><option value="11-15">11–15</option><option value="16-20">16–20</option><option value="21-25">21–25</option><option value="26-30">26–30</option><option value="31-40">31–40</option><option value="41+">More than 40</option></select></div>
+              <div class="field"><label for="staff">Number of staff<span class="req" aria-hidden="true">*</span></label><select id="staff" name="staff" required><option value="">Please choose</option><option value="0-2">0–2</option><option value="3-5">3–5</option><option value="6-10">6–10</option><option value="11+">More than 10</option></select></div>
             </div>
             <div class="field-row">
-              <div class="field"><label for="ageGroup">Age group</label><input id="ageGroup" name="ageGroup" type="text" maxlength="100" placeholder="e.g. U17"></div>
-              <div class="field"><label for="level">Playing level</label><input id="level" name="level" type="text" maxlength="150" placeholder="e.g. regional league"></div>
+              <div class="field"><label for="ageGroup">Age group<span class="req" aria-hidden="true">*</span></label><select id="ageGroup" name="ageGroup" required><option value="">Please choose</option><option value="u7-u9">U7–U9</option><option value="u10-u12">U10–U12</option><option value="u13-u15">U13–U15</option><option value="u16-u19">U16–U19</option><option value="senior">Men / Women (senior)</option><option value="ue32">Over 32</option><option value="ue40">Over 40</option><option value="mixed">Mixed</option></select></div>
+              <div class="field"><label for="level">Playing level<span class="req" aria-hidden="true">*</span></label><select id="level" name="level" required><option value="">Please choose</option><option value="recreational">Recreational</option><option value="district">District / local league</option><option value="regional">Regional league</option><option value="oberliga">National amateur league</option><option value="semipro">Semi-professional</option><option value="pro">Professional</option><option value="academy">Academy / elite youth</option></select></div>
             </div>
           </fieldset>
 
@@ -319,10 +319,10 @@
             <h3>Your trip</h3>
             <p class="step-intro">A rough timeframe is enough — we'll sort out details in the offer.</p>
             <div class="field-row">
-              <div class="field"><label for="dates">Desired period</label><input id="dates" name="dates" type="text" maxlength="200" placeholder="flexible or fixed, e.g. Feb 2027"></div>
-              <div class="field"><label for="nights">Number of nights</label><input id="nights" name="nights" inputmode="numeric" type="number" min="1" max="365" step="1"></div>
+              <div class="field"><label for="startMonth">Preferred start (month)<span class="req" aria-hidden="true">*</span></label><select id="startMonth" name="startMonth" required data-flexible="Flexible / still open"><option value="">Please choose</option></select></div>
+              <div class="field"><label for="flexibility">Flexibility<span class="req" aria-hidden="true">*</span></label><select id="flexibility" name="flexibility" required><option value="">Please choose</option><option value="fixed">Fixed date</option><option value="flex-week">± 1 week</option><option value="flexible">Flexible</option></select></div>
             </div>
-            <div class="field"><label for="budget">Budget range (optional)</label><input id="budget" name="budget" type="text" maxlength="200" placeholder="per person or total"></div>
+            <div class="field-row"><div class="field"><label for="nights">Number of nights<span class="req" aria-hidden="true">*</span></label><select id="nights" name="nights" required><option value="">Please choose</option><option value="3">3 nights</option><option value="4">4 nights</option><option value="5">5 nights</option><option value="6">6 nights</option><option value="7">7 nights</option><option value="8-10">8–10 nights</option><option value="11-14">11–14 nights</option><option value="15+">More than 14 nights</option></select></div><div class="field"><label for="budget">Budget per person (approx.)<span class="req" aria-hidden="true">*</span></label><select id="budget" name="budget" required><option value="">Please choose</option><option value="lt500">Under €500</option><option value="500-800">€500–800</option><option value="800-1200">€800–1,200</option><option value="1200-1800">€1,200–1,800</option><option value="gt1800">Over €1,800</option><option value="unsure">Not sure yet</option></select></div></div>
           </fieldset>
 
           <fieldset class="form-step" data-step="4" hidden style="border:0;padding:0;margin:0">
@@ -461,6 +461,6 @@
   <a href="#" class="btn btn-whatsapp" tabindex="-1" hidden rel="noopener" target="_blank">WhatsApp</a>
 </aside>
 
-<script type="application/json" id="i18n">{"summary.title":"Your details","summary.club":"Club","summary.team":"Team","summary.group":"Group","summary.trip":"Trip","summary.services":"Services","summary.players":"players","summary.staff":"staff","summary.nights":"nights","btn.back":"Back","btn.next":"Next","btn.submit":"Send request","errors.required":"Please complete this field.","errors.email":"Please enter a valid email address.","errors.number":"Please enter a valid number.","progress":"Step {current} of {total}","form.sending":"Preparing …","form.error":"The summary could not be created. Please try again.","form.required":"Required","form.select":"Please choose","success.ref":"Your request has been sent.","errors.send":"Your request could not be sent. Please try again or email us directly."}</script>
+<script type="application/json" id="i18n">{"summary.title":"Your details","summary.club":"Club","summary.team":"Team","summary.group":"Group","summary.trip":"Trip","summary.services":"Services","summary.players":"players","summary.staff":"staff","summary.nights":"nights","btn.back":"Back","btn.next":"Next","btn.submit":"Send request","errors.required":"Please complete this field.","errors.email":"Please enter a valid email address.","errors.number":"Please enter a valid number.","progress":"Step {current} of {total}","form.sending":"Preparing …","form.error":"The summary could not be created. Please try again.","form.required":"Required","form.select":"Please choose","success.ref":"Your request has been sent.","errors.send":"Your request could not be sent. Please try again or email us directly.","errors.name":"Please enter first and last name (letters only).","errors.phone":"Please enter a valid phone number with country code, e.g. +44 7700 900123.","errors.club":"Please enter a valid club name (2–100 characters).","errors.choose":"Please select an option.","errors.fields":"Please check the highlighted fields."}</script>
 </body>
 </html>
