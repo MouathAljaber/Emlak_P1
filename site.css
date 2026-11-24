@@ -740,3 +740,23 @@ a.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-m); border-
 #playBall { filter: drop-shadow(0 6px 6px rgba(0,0,0,.45)); }
 @media (max-width: 900px) { .play-grid { grid-template-columns: 1fr; gap: 28px; } .play-board { order: -1; } .playstory-track { height: 280vh; } .play-steps li:not(.is-active) { display: none; } .play-steps { margin-top: 18px; } .playstory-sticky { align-items: start; } }
 @media (prefers-reduced-motion: reduce) { .hero-beams, .hero-fx { display: none; } .section-head.is-visible h2 { animation: none; } }
+
+/* ---------- hub page, scroll cue ---------- */
+.guide-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+.guide-card { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 30px 28px 26px; border-radius: var(--radius-l); background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--ink); overflow: hidden; transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .3s; }
+.guide-card::after { content: ""; position: absolute; inset: auto -40% -60% auto; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(227,169,47,.2), transparent 65%); transition: transform .6s var(--ease); }
+.guide-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-l); border-color: var(--brand); }
+.guide-card:hover::after { transform: scale(1.5) translate(-20px, -20px); }
+.guide-ico { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: var(--brand); color: #fff; font-weight: 800; font-size: 15px; letter-spacing: .04em; }
+.guide-card h2 { font-size: 22px; line-height: 1.2; letter-spacing: -.02em; }
+.guide-card p { color: var(--muted); font-size: 15px; }
+.guide-more { margin-top: auto; padding-top: 10px; font-weight: 700; color: var(--brand); }
+.guide-more b { display: inline-block; transition: transform .3s var(--ease); }
+.guide-card:hover .guide-more b { transform: translateX(6px); }
+
+.scroll-cue { position: absolute; left: 50%; bottom: 26px; z-index: 3; width: 26px; height: 42px; margin-left: -13px; border: 2px solid rgba(255,255,255,.55); border-radius: 14px; }
+.scroll-cue span { position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 3px; background: var(--accent); animation: cue 1.8s ease-in-out infinite; }
+@keyframes cue { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
+@media (max-width: 960px) { .scroll-cue { display: none; } }
+@media (max-width: 1100px) { .main-nav a { padding-inline: 10px; } }
+@media (prefers-reduced-motion: reduce) { .scroll-cue span { animation: none; opacity: 1; } .guide-card:hover { transform: none; } }

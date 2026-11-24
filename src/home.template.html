@@ -23,6 +23,8 @@
 <meta name="twitter:description" content="{{og.description}}">
 <meta name="twitter:image" content="{{@heroImage}}&amp;w=1600">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="canonical" href="{{@canonical}}">
 <link rel="alternate" hreflang="de" href="{{@siteUrl}}/">
 <link rel="alternate" hreflang="en" href="{{@siteUrl}}/en/">
@@ -52,6 +54,7 @@
       <a href="#anlagen">{{nav.anlagen}}</a>
       <a href="#ablauf">{{nav.ablauf}}</a>
       <a href="#faq">{{nav.faq}}</a>
+      <a href="{{@prefix}}/{{@hubSlug}}/">{{nav.guides}}</a>
       <a href="{{@prefix}}/about-us/">{{nav.about}}</a>
     </nav>
     <div class="header-actions">
@@ -72,7 +75,8 @@
         <li><a href="#anlagen">{{nav.anlagen}}</a></li>
         <li><a href="#ablauf">{{nav.ablauf}}</a></li>
         <li><a href="#faq">{{nav.faq}}</a></li>
-        <li><a href="{{@prefix}}/about-us/">{{nav.about}}</a></li>
+        <li><a href="{{@prefix}}/{{@hubSlug}}/">{{nav.guides}}</a></li>
+      <li><a href="{{@prefix}}/about-us/">{{nav.about}}</a></li>
       </ul>
       <div class="mobile-nav-actions">
         <div class="lang-switch" role="group" aria-label="{{lang.label}}">
@@ -114,6 +118,7 @@
       <div class="hero-stat"><span class="num">1</span><span class="label">{{hero.stat3}}</span></div>
     </aside>
   </div>
+  <a class="scroll-cue" href="#leistungen" aria-label="{{nav.leistungen}}"><span></span></a>
 </section>
 
 <div class="marquee" aria-hidden="true"><div class="marquee-track">{{@marquee}}{{@marquee}}</div></div>

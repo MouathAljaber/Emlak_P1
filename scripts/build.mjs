@@ -80,7 +80,7 @@ function pageHeader(lang, prefix, dePath, enPath) {
   const ui = UI[lang];
   const links = [
     [`${prefix}/services/`, ui.services], [`${prefix}/how-it-works/`, ui.howItWorks],
-    [`${prefix}/faq/`, ui.faq], [`${prefix}/about-us/`, ui.about], [`${prefix}/contact/`, ui.contact]
+    [`${prefix}/${HUB[lang]}/`, ui.guides], [`${prefix}/faq/`, ui.faq], [`${prefix}/about-us/`, ui.about], [`${prefix}/contact/`, ui.contact]
   ];
   return `<!-- site-header -->
 <a class="skip-link" href="#main">${ui.skip}</a>
@@ -180,7 +180,7 @@ async function buildHome() {
     const optCountry = COUNTRIES.map((c) => ({ c, n: regionNames.of(c) })).sort((x, y) => x.n.localeCompare(y.n, lang)).map(({ c, n }) => `<option value="${c}">${n}</option>`).join('');
     const vars = {
       optCountry, optPlayers: optHtml('players'), optStaff: optHtml('staff'), optAgeGroup: optHtml('ageGroup'), optLevel: optHtml('level'), optFlexibility: optHtml('flexibility'), optNights: optHtml('nights'), optBudget: optHtml('budget'),
-      heroVideo, marquee,
+      heroVideo, marquee, hubSlug: HUB[lang],
       lang, prefix, canonical, siteUrl: SITE_URL, heroImage: HERO_IMAGE,
       deCurrent: lang === 'de' ? 'aria-current="true"' : '',
       enCurrent: lang === 'en' ? 'aria-current="true"' : '',
@@ -352,6 +352,18 @@ function contentTopic(lang, slug) {
 }
 
 function enrichContentPage(html, lang, slug, prefix) {
+  if (slug === HUB[lang] && (prefix === '/en') === (lang === 'en')) {
+    const de0 = lang === 'de';
+    const hubTitle = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [, ''])[1];
+    const hubLead = (html.match(/<section class="page-hero[^"]*">[\s\S]*?<p[^>]*>([\s\S]*?)<\/p>/i) || [, ''])[1];
+    const gcards = GUIDES.map((g, i) => `<a class="guide-card" href="${prefix}/${g[lang].slug}/" data-reveal><span class="guide-ico">${String(i + 1).padStart(2, '0')}</span><h2>${g[lang].h1}</h2><p>${g[lang].lead}</p><span class="guide-more">${de0 ? 'Ratgeber lesen' : 'Read the guide'} <b aria-hidden="true">→</b></span></a>`).join('');
+    const guideHrefs = new Set(GUIDES.map((g) => `${prefix}/${g[lang].slug}/`));
+    const others = Object.entries(PAGE_TITLES[lang] || {}).filter(([href]) => !guideHrefs.has(href) && href !== `${prefix}/${HUB[lang]}/` && !/imprint|privacy|cookie|impressum|request-offer/.test(href));
+    const olist = others.map(([href, title]) => `<li><a href="${href}">${stripTags(title)}<span aria-hidden="true">→</span></a></li>`).join('');
+    const heroH = `<section class="page-hero has-art"><div class="wrap hero-split"><div class="hero-text"><nav class="breadcrumb" aria-label="${de0 ? 'Übersicht' : 'Overview'}"><a href="${prefix}/">${de0 ? 'Startseite' : 'Home'}</a><span aria-hidden="true">/</span><span>${stripTags(hubTitle)}</span></nav><h1>${hubTitle}</h1><p>${hubLead}</p><a class="button" href="${prefix}/#anfrage">${de0 ? 'Angebot anfragen' : 'Request an offer'}</a></div><div class="hero-art">${ART.tactical}</div></div></section>`;
+    const mainH = `<main id="main">${heroH}<div class="page-main"><div class="wrap"><div class="guide-grid">${gcards}</div><section class="related"><h2>${de0 ? 'Weitere Seiten und Themen' : 'More pages and topics'}</h2><ul>${olist}</ul></section></div></div></main>`;
+    return html.replace(/<main id="main"[\s\S]*?<\/main>/i, mainH);
+  }
   const legal = /^(imprint|privacy-policy|cookie-policy)$/.test(slug);
   const contact = /^(contact|request-offer)$/.test(slug);
   if (legal || contact) return html;
@@ -396,8 +408,8 @@ function enrichContentPage(html, lang, slug, prefix) {
   // related links
   const mine = `${prefix}/${slug}/`;
   const candidates = Object.entries(PAGE_TITLES[lang] || {}).filter(([href]) => href !== mine && !/imprint|privacy|cookie|impressum|request|contact/.test(href));
-  let rs = seed; const picks = [];
-  while (picks.length < Math.min(6, candidates.length)) { rs = (rs * 1103515245 + 12345) >>> 0; const c = candidates[rs % candidates.length]; if (!picks.includes(c)) picks.push(c); }
+  const start = candidates.length ? seed % candidates.length : 0;
+  const picks = candidates.length ? Array.from({ length: Math.min(6, candidates.length) }, (_, i) => candidates[(start + i * 3 + Math.floor(i / 2)) % candidates.length]).filter((c, i, arr) => arr.indexOf(c) === i) : [];
   const related = `<section class="related"><h2>${ui.related}</h2><ul>${picks.map(([href, title]) => `<li><a href="${href}">${stripTags(title)}<span aria-hidden="true">→</span></a></li>`).join('')}</ul></section>`;
 
   const today = new Date().toISOString().slice(0, 10);
@@ -456,12 +468,14 @@ function seoHead(html, lang, slug, prefix, dePath, enPath) {
 }
 
 
+const HUB = { de: 'ratgeber', en: 'guides' };
 const PAGE_TITLES = { de: {}, en: {} };
 const PAIRS = new Map(); // route -> { de, en }
 for (const g of GUIDES) {
   const de = `/${g.de.slug}/`, en = `/en/${g.en.slug}/`;
   PAIRS.set(de, { de, en }); PAIRS.set(en, { de, en });
 }
+PAIRS.set(`/${HUB.de}/`, { de: `/${HUB.de}/`, en: `/en/${HUB.en}/` }); PAIRS.set(`/en/${HUB.en}/`, { de: `/${HUB.de}/`, en: `/en/${HUB.en}/` });
 function pairFor(prefix, slug) {
   const route = `${prefix}/${slug}/`;
   return PAIRS.get(route) || { de: `/${slug}/`, en: `/en/${slug}/` };
@@ -480,8 +494,25 @@ async function writeGuideStubs() {
   }
 }
 
+
+async function writeHubStubs() {
+  const meta = {
+    de: { title: 'Ratgeber für Fußball-Trainingslager in Antalya | Antalya Camp', desc: 'Alle Ratgeber auf einen Blick: Belek, Klima und Reisezeit, Tagesablauf, Ernährung, Reiseunterlagen und der Vergleich Türkei oder Spanien für Vereine.', h1: 'Ratgeber für euer Trainingslager', lead: 'Praktisches Wissen für Trainer, Vorstände und Betreuer: von der Wahl der Destination bis zum Tagesplan vor Ort.' },
+    en: { title: 'Guides for Football Training Camps in Antalya | Antalya Camp', desc: 'All guides at a glance: Belek, climate and travel time, daily schedule, nutrition, travel documents and Turkey or Spain compared for clubs.', h1: 'Guides for your training camp', lead: 'Practical knowledge for coaches, boards and staff: from choosing a destination to the daily plan on site.' }
+  };
+  for (const lang of ['de', 'en']) {
+    const m = meta[lang];
+    const prefix = lang === 'en' ? '/en' : '';
+    const dir = path.join(root, prefix.slice(1), HUB[lang]);
+    await mkdir(dir, { recursive: true });
+    const html = `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${m.title}</title><meta name="description" content="${m.desc}"><link rel="canonical" href="${SITE_URL}${prefix}/${HUB[lang]}/"><meta name="theme-color" content="#0c1d15"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/manifest.webmanifest">${FONT_LINKS}<link rel="stylesheet" href="/site.css"></head><body><!-- site-header --><!-- /site-header --><main id="main"><section class="page-hero"><div class="wrap"><h1>${m.h1}</h1><p>${m.lead}</p></div></section></main><!-- site-footer --><!-- /site-footer --><script src="/site-config.js"></script><script src="/site.js" defer></script></body></html>`;
+    await writeFile(path.join(dir, 'index.html'), html);
+  }
+}
+
 async function buildContentPages() {
   await writeGuideStubs();
+  await writeHubStubs();
   const pages = await listContentPages();
   for (const page of pages) {
     const raw = await readFile(page.file, 'utf8');
@@ -536,6 +567,16 @@ Sitemap: ${SITE_URL}/sitemap.xml
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls}
 </urlset>
+`);
+  await writeFile(path.join(root, 'manifest.webmanifest'), JSON.stringify({ name: 'Antalya Camp – Trainingslager Antalya', short_name: 'Antalya Camp', start_url: '/', display: 'standalone', background_color: '#0c1d15', theme_color: '#0c1d15', icons: [{ src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }] }, null, 2) + '\n');
+  await writeFile(path.join(root, '_headers'), `/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Cross-Origin-Opener-Policy: same-origin
+/favicon.svg
+  Cache-Control: public, max-age=604800
 `);
   console.log('built static SEO files');
 }
