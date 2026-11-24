@@ -6,10 +6,10 @@
  *  - Generates 404.html
  * Run with: npm run build
  */
-import { readFile, writeFile, readdir, stat, access, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, readdir, stat, access, mkdir, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { GUIDES, CLIMATE, EXTRA_FAQ } from './guides.mjs';
+import { GUIDES, CLIMATE, EXTRA_FAQ, TRANSLATED } from './guides.mjs';
 import { OPTIONS, COUNTRIES } from '../lib/offer.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -475,6 +475,7 @@ for (const g of GUIDES) {
   const de = `/${g.de.slug}/`, en = `/en/${g.en.slug}/`;
   PAIRS.set(de, { de, en }); PAIRS.set(en, { de, en });
 }
+for (const t of TRANSLATED) { const de = `/${t.de}/`, en = `/en/${t.en}/`; PAIRS.set(de, { de, en }); PAIRS.set(en, { de, en }); }
 PAIRS.set(`/${HUB.de}/`, { de: `/${HUB.de}/`, en: `/en/${HUB.en}/` }); PAIRS.set(`/en/${HUB.en}/`, { de: `/${HUB.de}/`, en: `/en/${HUB.en}/` });
 function pairFor(prefix, slug) {
   const route = `${prefix}/${slug}/`;
@@ -495,6 +496,17 @@ async function writeGuideStubs() {
 }
 
 
+
+async function writeTranslatedStubs() {
+  for (const t of TRANSLATED) {
+    await rm(path.join(root, 'en', t.de), { recursive: true, force: true }); // old German duplicate under /en/
+    const dir = path.join(root, 'en', t.en);
+    await mkdir(dir, { recursive: true });
+    const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${t.title}</title><meta name="description" content="${t.desc}"><link rel="canonical" href="${SITE_URL}/en/${t.en}/"><meta name="theme-color" content="#0c1d15"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="manifest" href="/manifest.webmanifest">${FONT_LINKS}<link rel="stylesheet" href="/site.css"></head><body><!-- site-header --><!-- /site-header --><main id="main"><section class="page-hero"><div class="wrap"><h1>${t.h1}</h1><p>${t.lead}</p></div></section></main><!-- site-footer --><!-- /site-footer --><script src="/site-config.js"></script><script src="/site.js" defer></script></body></html>`;
+    await writeFile(path.join(dir, 'index.html'), html);
+  }
+}
+
 async function writeHubStubs() {
   const meta = {
     de: { title: 'Ratgeber für Fußball-Trainingslager in Antalya | Antalya Camp', desc: 'Alle Ratgeber auf einen Blick: Belek, Klima und Reisezeit, Tagesablauf, Ernährung, Reiseunterlagen und der Vergleich Türkei oder Spanien für Vereine.', h1: 'Ratgeber für euer Trainingslager', lead: 'Praktisches Wissen für Trainer, Vorstände und Betreuer: von der Wahl der Destination bis zum Tagesplan vor Ort.' },
@@ -513,6 +525,7 @@ async function writeHubStubs() {
 async function buildContentPages() {
   await writeGuideStubs();
   await writeHubStubs();
+  await writeTranslatedStubs();
   const pages = await listContentPages();
   for (const page of pages) {
     const raw = await readFile(page.file, 'utf8');
@@ -578,6 +591,7 @@ ${urls}
 /favicon.svg
   Cache-Control: public, max-age=604800
 `);
+  await writeFile(path.join(root, '_redirects'), TRANSLATED.map((t) => `/en/${t.de}/ /en/${t.en}/ 301\n/en/${t.de} /en/${t.en}/ 301`).join('\n') + '\n');
   console.log('built static SEO files');
 }
 

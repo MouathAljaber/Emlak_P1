@@ -275,7 +275,7 @@
   }
   Array.prototype.forEach.call(document.querySelectorAll('.climate, .camp-steps'), function (el) {
     if (reduceMotion || !('IntersectionObserver' in window)) { el.classList.add('is-visible'); return; }
-    var o = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { el.classList.add('is-visible'); o.disconnect(); } }, { threshold: 0.25 });
+    var o = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { el.classList.add('is-visible'); o.disconnect(); } }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
     o.observe(el);
   });
 
